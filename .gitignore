@@ -1,4 +1,5 @@
 *.class
+target/
 
 # Package Files #
 *.jar
@@ -7,3 +8,4 @@
 
 #IntelliJ
 *.iml
+.idea/
