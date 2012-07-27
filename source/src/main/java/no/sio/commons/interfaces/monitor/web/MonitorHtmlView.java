@@ -1,12 +1,8 @@
 package no.sio.commons.interfaces.monitor.web;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import no.sio.commons.interfaces.monitor.facade.dto.MonitorCase;
 import no.sio.commons.interfaces.monitor.facade.dto.MonitorSuite;
 import org.apache.commons.io.IOUtils;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -32,8 +28,7 @@ public class MonitorHtmlView {
 
     private String template() {
         try {
-            Resource templateResource = new ClassPathResource("no/sio/commons/interfaces/monitor/web/monitorViewTemplate.html");
-            return IOUtils.toString(templateResource.getInputStream(), "UTF-8");
+            return IOUtils.toString(getClass().getResourceAsStream("/no/sio/commons/interfaces/monitor/web/monitorViewTemplate.html"), "UTF-8");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
