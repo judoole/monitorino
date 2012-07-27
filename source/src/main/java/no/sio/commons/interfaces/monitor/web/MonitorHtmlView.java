@@ -16,12 +16,12 @@ import java.util.regex.Pattern;
  * Okey. So maybe I hate template frameworks also now? Nike. Just Do It. Yourself.
  */
 public class MonitorHtmlView {
-    private static final String TEMPLATE_FOR_MONITOR_CASER = "<tr><td>[navn]</td><td class=\"[erSuccess]\"/></tr>\n";
+    private static final String TEMPLATE_FOR_MONITOR_CASER = "<tr><td>[name]</td><td class=\"[isSuccess]\"/></tr>\n";
 
     public String process(MonitorSuite suite) {
         Map<String, String> map = new HashMap<String, String>();
-        map.put("navn", suite.navn);
-        map.put("caser", lagHtmlForCaser(suite.monitorCases));
+        map.put("name", suite.navn);
+        map.put("cases", createHtmlForCases(suite.monitorCases));
 
         return replaceTokens(template(), map);
     }
@@ -36,21 +36,21 @@ public class MonitorHtmlView {
         }
     }
 
-    private String lagHtmlForCaser(Collection<MonitorCase> monitorCases) {
+    private String createHtmlForCases(Collection<MonitorCase> monitorCases) {
         StringBuilder html = new StringBuilder();
         for (MonitorCase monitorCase : monitorCases) {
             Map<String, Object> replaceMap = new HashMap<String, Object>();
-            replaceMap.put("navn", (Object) monitorCase.navn);
+            replaceMap.put("name", (Object) monitorCase.navn);
             if (monitorCase.harError()) {
-                replaceMap.put("erSuccess", "error");
+                replaceMap.put("isSuccess", "error");
             } else if(monitorCase.harFeil()){
-                replaceMap.put("erSuccess", "warning");
+                replaceMap.put("isSuccess", "warning");
             }
             else {
-                replaceMap.put("erSuccess", "success");
+                replaceMap.put("isSuccess", "success");
             }
-            String enNyRow = replaceTokens(TEMPLATE_FOR_MONITOR_CASER, replaceMap);
-            html.append(enNyRow);
+            String aNewRow = replaceTokens(TEMPLATE_FOR_MONITOR_CASER, replaceMap);
+            html.append(aNewRow);
         }
 
         return html.toString();
