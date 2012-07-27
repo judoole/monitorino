@@ -3,6 +3,7 @@ package no.inspirado.monitor.internal.dto;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;
 import no.inspirado.monitor.internal.xstream.MonitorErrorConverter;
+import no.inspirado.monitor.web.MonitorHtmlView;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -47,6 +48,10 @@ public class MonitorSuite {
         StringWriter sw = new StringWriter();
         xStream.marshal(this, new CompactWriter(sw));
         return sw.toString();
+    }
+
+    public String asHtml(){
+        return new MonitorHtmlView().process(this);
     }
 
     //Contructor for XStream
