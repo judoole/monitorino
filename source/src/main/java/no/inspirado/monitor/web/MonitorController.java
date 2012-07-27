@@ -1,6 +1,6 @@
 package no.inspirado.monitor.web;
 
-import no.inspirado.monitor.facade.dto.MonitorSuite;
+import no.inspirado.monitor.internal.dto.MonitorSuite;
 import no.inspirado.monitor.internal.MonitorCaseRunner;
 import no.inspirado.monitor.internal.MonitorSuiteAssembler;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
 package no.inspirado.monitor.internal;
 
-import no.inspirado.monitor.facade.dto.MonitorCase;
-import no.inspirado.monitor.facade.dto.MonitorStacktrace;
-import no.inspirado.monitor.facade.dto.MonitorSuite;
+import no.inspirado.monitor.internal.dto.MonitorCase;
+import no.inspirado.monitor.internal.dto.MonitorStacktrace;
+import no.inspirado.monitor.internal.dto.MonitorSuite;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import java.util.Collection;

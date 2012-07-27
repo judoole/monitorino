@@ -1,8 +1,8 @@
 package no.inspirado.monitor.web
 
-import no.inspirado.monitor.facade.dto.MonitorCase
-import no.inspirado.monitor.facade.dto.MonitorStacktrace
-import no.inspirado.monitor.facade.dto.MonitorSuite
+import no.inspirado.monitor.internal.dto.MonitorCase
+import no.inspirado.monitor.internal.dto.MonitorStacktrace
+import no.inspirado.monitor.internal.dto.MonitorSuite
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock

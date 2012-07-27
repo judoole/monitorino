@@ -1,7 +1,7 @@
 package no.inspirado.monitor.web;
 
-import no.inspirado.monitor.facade.dto.MonitorCase;
-import no.inspirado.monitor.facade.dto.MonitorSuite;
+import no.inspirado.monitor.internal.dto.MonitorCase;
+import no.inspirado.monitor.internal.dto.MonitorSuite;
 import org.apache.commons.io.IOUtils;
 
 import java.io.FileNotFoundException;

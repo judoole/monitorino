@@ -1,8 +1,8 @@
 package no.inspirado.monitor.web
 
-import no.inspirado.monitor.facade.dto.MonitorCase
-import no.inspirado.monitor.facade.dto.MonitorStacktrace
-import no.inspirado.monitor.facade.dto.MonitorSuite
+import no.inspirado.monitor.internal.dto.MonitorCase
+import no.inspirado.monitor.internal.dto.MonitorStacktrace
+import no.inspirado.monitor.internal.dto.MonitorSuite
 import no.inspirado.monitor.internal.MonitorCaseRunner
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -81,7 +81,7 @@ class MonitorControllerTest {
         assertThat(suite.name, notNullValue());
     }
     private void then_the_siute_should_have_correct_number_of_tests() {
-        assertThat(suite.numberOfTests, equalTo(1));
+        assertThat(suite.tests, equalTo(1));
     }
 
     private void then_the_siute_should_have_recorded_the_time_spent() {
@@ -89,13 +89,13 @@ class MonitorControllerTest {
     }
 
     private void then_the_suite_should_have_errors() {
-        assertThat(suite.numberOfErrors, equalTo(1));
-        assertThat(suite.numberOfFailures, equalTo(0));
+        assertThat(suite.errors, equalTo(1));
+        assertThat(suite.failures, equalTo(0));
     }
 
     private void then_the_suite_should_have_failures() {
-        assertThat(suite.numberOfErrors, equalTo(0));
-        assertThat(suite.numberOfFailures, equalTo(1));
+        assertThat(suite.errors, equalTo(0));
+        assertThat(suite.failures, equalTo(1));
     }
 
     private void then_case_should_have_stacktrace() {

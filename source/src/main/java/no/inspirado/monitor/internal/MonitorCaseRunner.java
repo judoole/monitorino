@@ -1,7 +1,7 @@
 package no.inspirado.monitor.internal;
 
-import no.inspirado.monitor.facade.dto.MonitorCase;
-import no.inspirado.monitor.facade.dto.MonitorStacktrace;
+import no.inspirado.monitor.internal.dto.MonitorCase;
+import no.inspirado.monitor.internal.dto.MonitorStacktrace;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 public abstract class MonitorCaseRunner {
@@ -13,7 +13,7 @@ public abstract class MonitorCaseRunner {
         } catch (Exception e) {
             monitorCase = createCaseWithErrorFromException(e);
         }
-        monitorCase.timeInSeconds = stopWatch.stop().timeInSeconds().toString();
+        monitorCase.time = stopWatch.stop().timeInSeconds().toString();
         return monitorCase;
     }
 
