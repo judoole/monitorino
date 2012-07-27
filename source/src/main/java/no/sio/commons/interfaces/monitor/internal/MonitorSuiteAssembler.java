@@ -22,7 +22,7 @@ public class MonitorSuiteAssembler {
         for (MonitorCaseRunner runner : monitorCaseRunners) {
             kjorCase(suite, runner);
         }
-        suite.tidISekunder = stopWatch.stop().timeInSeconds().toString();
+        suite.timeInSeconds = stopWatch.stop().timeInSeconds().toString();
         return suite;
     }
 
@@ -36,9 +36,9 @@ public class MonitorSuiteAssembler {
 
     private void lagCaseMedErrorAvExceptionOgLeggTil(MonitorSuite suite, Throwable e) {
         MonitorCase monitorCase = new MonitorCase();
-        monitorCase.navn = e.getClass().getName();
+        monitorCase.name = e.getClass().getName();
         MonitorStacktrace error = new MonitorStacktrace();
-        error.beskjed = e.getMessage();
+        error.message = e.getMessage();
         error.stacktrace = ExceptionUtils.getStackTrace(e);
         monitorCase.error = error;
         suite.leggTilCase(monitorCase);

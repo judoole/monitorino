@@ -13,7 +13,7 @@ public abstract class MonitorCaseRunner {
         } catch (Exception e) {
             monitorCase = lagCaseMedErrorAvException(e);
         }
-        monitorCase.tidISekunder = stopWatch.stop().timeInSeconds().toString();
+        monitorCase.timeInSeconds = stopWatch.stop().timeInSeconds().toString();
         return monitorCase;
     }
 
@@ -21,9 +21,9 @@ public abstract class MonitorCaseRunner {
 
     private MonitorCase lagCaseMedErrorAvException(Throwable e) {
         MonitorCase monitorCase = new MonitorCase();
-        monitorCase.navn = e.getClass().getName();
+        monitorCase.name = e.getClass().getName();
         MonitorStacktrace error = new MonitorStacktrace();
-        error.beskjed = e.getMessage();
+        error.message = e.getMessage();
         error.stacktrace = ExceptionUtils.getStackTrace(e);
         monitorCase.error = error;
 

@@ -26,7 +26,7 @@ public class MonitorCaseRunnerTest {
         MonitorCase monitorCase = runner.kjor();
         assertThat(monitorCase, notNullValue());
         assertThat(monitorCase.error, notNullValue());
-        assertThat(monitorCase.error.beskjed, equalTo(FORVENTET_EXCEPTION_MESSAGE));
+        assertThat(monitorCase.error.message, equalTo(FORVENTET_EXCEPTION_MESSAGE));
         assertThat(monitorCase.error.stacktrace, containsString(getClass().name));
     }
 }

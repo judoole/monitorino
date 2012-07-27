@@ -20,7 +20,7 @@ public class MonitorHtmlView {
 
     public String process(MonitorSuite suite) {
         Map<String, String> map = new HashMap<String, String>();
-        map.put("name", suite.navn);
+        map.put("name", suite.name);
         map.put("cases", createHtmlForCases(suite.monitorCases));
 
         return replaceTokens(template(), map);
@@ -40,10 +40,10 @@ public class MonitorHtmlView {
         StringBuilder html = new StringBuilder();
         for (MonitorCase monitorCase : monitorCases) {
             Map<String, Object> replaceMap = new HashMap<String, Object>();
-            replaceMap.put("name", (Object) monitorCase.navn);
-            if (monitorCase.harError()) {
+            replaceMap.put("name", (Object) monitorCase.name);
+            if (monitorCase.hasError()) {
                 replaceMap.put("isSuccess", "error");
-            } else if(monitorCase.harFeil()){
+            } else if(monitorCase.hasFailure()){
                 replaceMap.put("isSuccess", "warning");
             }
             else {

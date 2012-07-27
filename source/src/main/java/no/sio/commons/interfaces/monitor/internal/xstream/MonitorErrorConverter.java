@@ -15,7 +15,7 @@ public class MonitorErrorConverter implements Converter {
 
     public void marshal(Object value, HierarchicalStreamWriter writer, MarshallingContext context) {
         MonitorStacktrace monitorStacktrace = (MonitorStacktrace) value;
-        if (monitorStacktrace.beskjed != null) writer.addAttribute("message", monitorStacktrace.beskjed);
+        if (monitorStacktrace.message != null) writer.addAttribute("message", monitorStacktrace.message);
         if (monitorStacktrace.stacktrace != null) writer.setValue(monitorStacktrace.stacktrace);
     }
 

@@ -10,10 +10,10 @@ class SerialiseringAvMonitorSuiteTilXml {
         XStream stream = new XStream();
         stream.autodetectAnnotations(true);
         MonitorSuite msg = new MonitorSuite(
-                navn: "Min monitorsuite",
-                monitorCases: [new MonitorCase(navn: "case1", feil: new MonitorStacktrace(beskjed: "Ting gikk langt fra bra")),
-                        new MonitorCase(navn: "case 2", error: new MonitorStacktrace(beskjed: "Ting gikk ikke bra nå heller", stacktrace: "Bla, bla, BLAM!")),
-                        new MonitorCase(navn: "case 3. The good case")]
+                name: "Min monitorsuite",
+                monitorCases: [new MonitorCase(name: "case1", failure: new MonitorStacktrace(message: "Ting gikk langt fra bra")),
+                        new MonitorCase(name: "case 2", error: new MonitorStacktrace(message: "Ting gikk ikke bra nå heller", stacktrace: "Bla, bla, BLAM!")),
+                        new MonitorCase(name: "case 3. The good case")]
         );
         System.out.println(stream.toXML(msg));
     }

@@ -65,7 +65,7 @@ class MonitorControllerTest {
 
     private void gitt_at_runner_returnerer_case_som_har_feilet() {
         MonitorCase feiletMonitorCase = new MonitorCase();
-        feiletMonitorCase.feil = new MonitorStacktrace();
+        feiletMonitorCase.failure = new MonitorStacktrace();
         given(monitorCaseRunner.kjor()).willReturn(feiletMonitorCase);
     }
 
@@ -78,24 +78,24 @@ class MonitorControllerTest {
     }
 
     private void saa_skal_suiten_ha_navn() {
-        assertThat(suite.navn, notNullValue());
+        assertThat(suite.name, notNullValue());
     }
     private void saa_skal_suiten_ha_riktig_antall_tester() {
-        assertThat(suite.antallTester, equalTo(1));
+        assertThat(suite.numberOfTests, equalTo(1));
     }
 
     private void saa_skal_suiten_ha_tatt_kjoretiden() {
-        assertThat(suite.tidISekunder, notNullValue());
+        assertThat(suite.timeInSeconds, notNullValue());
     }
 
     private void saa_skal_suiten_ha_errors() {
-        assertThat(suite.antallError, equalTo(1));
-        assertThat(suite.antallFeil, equalTo(0));
+        assertThat(suite.numberOfErrors, equalTo(1));
+        assertThat(suite.numberOfFailures, equalTo(0));
     }
 
     private void saa_skal_suiten_ha_feil() {
-        assertThat(suite.antallError, equalTo(0));
-        assertThat(suite.antallFeil, equalTo(1));
+        assertThat(suite.numberOfErrors, equalTo(0));
+        assertThat(suite.numberOfFailures, equalTo(1));
     }
 
     private void saa_skal_stacktrace_ha_blitt_lagret_paa_case() {
@@ -104,7 +104,7 @@ class MonitorControllerTest {
         assertThat(cases, not(empty()));
         MonitorStacktrace error = cases.iterator().next().error
         assertThat(error, notNullValue());
-        assertThat(error.beskjed, equalTo(FORVENTET_EXCEPTION_MESSAGE));
+        assertThat(error.message, equalTo(FORVENTET_EXCEPTION_MESSAGE));
         assertThat(error.stacktrace, containsString(getClass().name));
     }
 }

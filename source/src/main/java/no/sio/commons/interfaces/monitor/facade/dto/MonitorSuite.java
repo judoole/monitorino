@@ -11,41 +11,41 @@ import java.util.Collection;
 public class MonitorSuite {
     @XStreamAlias("time")
     @XStreamAsAttribute
-    public String tidISekunder;
+    public String timeInSeconds;
 
     @XStreamAsAttribute
     @XStreamAlias("name")
-    public String navn;
+    public String name;
 
     @XStreamAsAttribute
     @XStreamAlias("tests")
-    public int antallTester;
+    public int numberOfTests;
 
     @XStreamAsAttribute
     @XStreamAlias("skipped")
-    public int antallHoppetOver;
+    public int numberOfSkipped;
 
     @XStreamAsAttribute
     @XStreamAlias("errors")
-    public int antallError;
+    public int numberOfErrors;
 
     @XStreamAsAttribute
     @XStreamAlias("failures")
-    public int antallFeil;
+    public int numberOfFailures;
 
     @XStreamImplicit
     public Collection<MonitorCase> monitorCases;
 
-    public MonitorSuite(String navn) {
-        this.navn = navn;
+    public MonitorSuite(String name) {
+        this.name = name;
     }
 
     public void leggTilCase(MonitorCase monitorCase) {
         if (monitorCases == null) monitorCases = new ArrayList<MonitorCase>();
         monitorCases.add(monitorCase);
-        if (monitorCase.harError()) antallError++;
-        else if (monitorCase.harFeil()) antallFeil++;
-        antallTester++;
+        if (monitorCase.hasError()) numberOfErrors++;
+        else if (monitorCase.hasFailure()) numberOfFailures++;
+        numberOfTests++;
     }
 
     //Contructor for XStream

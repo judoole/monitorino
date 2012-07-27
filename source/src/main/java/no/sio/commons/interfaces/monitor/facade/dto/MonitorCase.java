@@ -7,21 +7,21 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 public class MonitorCase {
     @XStreamAlias("time")
     @XStreamAsAttribute
-    public String tidISekunder;
+    public String timeInSeconds;
     
     @XStreamAsAttribute
     @XStreamAlias("name")
-    public String navn;
+    public String name;
 
     public MonitorStacktrace error;
     @XStreamAlias("failure")
-    public MonitorStacktrace feil;
+    public MonitorStacktrace failure;
 
-    public boolean harError() {
+    public boolean hasError() {
         return error != null;
     }
 
-    public boolean harFeil() {
-        return feil != null;
+    public boolean hasFailure() {
+        return failure != null;
     }
 }

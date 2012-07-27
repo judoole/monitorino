@@ -31,8 +31,8 @@ public class MonitorControllerHtmlViewTest {
 
     private void gitt_at_jeg_har_en_suite() {
         suite = new MonitorSuite();
-        suite.navn = "What a suite navn";
-        suite.leggTilCase(new MonitorCase(navn: "Just another bad case of leprecauns", error: new MonitorStacktrace()));
+        suite.name = "What a suite name";
+        suite.leggTilCase(new MonitorCase(name: "Just another bad case of leprecauns", error: new MonitorStacktrace()));
         when(controller.kjorSuite()).thenReturn(suite);
         when(controller.htmlRapport()).thenCallRealMethod();
     }
@@ -46,11 +46,11 @@ public class MonitorControllerHtmlViewTest {
     }
 
     private void saa_skal_resultatet_inneholde_suite_navnet() {
-        assertThat(prosessResultat, containsString(suite.navn));
+        assertThat(prosessResultat, containsString(suite.name));
     }
 
     private void saa_skal_resultatet_inneholde_riktig_case() {
-        assertThat(prosessResultat, containsString(suite.monitorCases[0].navn));
+        assertThat(prosessResultat, containsString(suite.monitorCases[0].name));
     }
 
     private void saa_skal_resultatet_inneholde_en_feil_case() {
