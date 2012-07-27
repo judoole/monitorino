@@ -5,7 +5,7 @@ import static junit.framework.Assert.assertEquals
 
 public class StopWatchTest {
     @Test
-    public void  skal_regne_ut_tid_i_sekunder(){
+    public void should_calculate_time_in_seconds(){
         StopWatch stopWatch = new StopWatch();
         stopWatch.startTime = 0;
         stopWatch.stopTime = 1100;

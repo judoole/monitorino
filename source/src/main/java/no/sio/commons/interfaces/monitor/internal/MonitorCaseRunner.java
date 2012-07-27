@@ -5,21 +5,21 @@ import no.sio.commons.interfaces.monitor.facade.dto.MonitorStacktrace;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 public abstract class MonitorCaseRunner {
-    public MonitorCase kjor() {
+    public MonitorCase run() {
         StopWatch stopWatch = new StopWatch().start();
         MonitorCase monitorCase;
         try {
-            monitorCase = kjorInternally();
+            monitorCase = runInternally();
         } catch (Exception e) {
-            monitorCase = lagCaseMedErrorAvException(e);
+            monitorCase = createCaseWithErrorFromException(e);
         }
         monitorCase.timeInSeconds = stopWatch.stop().timeInSeconds().toString();
         return monitorCase;
     }
 
-    protected abstract MonitorCase kjorInternally();
+    protected abstract MonitorCase runInternally();
 
-    private MonitorCase lagCaseMedErrorAvException(Throwable e) {
+    private MonitorCase createCaseWithErrorFromException(Throwable e) {
         MonitorCase monitorCase = new MonitorCase();
         monitorCase.name = e.getClass().getName();
         MonitorStacktrace error = new MonitorStacktrace();

@@ -32,8 +32,8 @@ public class MonitorControllerHtmlViewTest {
     private void gitt_at_jeg_har_en_suite() {
         suite = new MonitorSuite();
         suite.name = "What a suite name";
-        suite.leggTilCase(new MonitorCase(name: "Just another bad case of leprecauns", error: new MonitorStacktrace()));
-        when(controller.kjorSuite()).thenReturn(suite);
+        suite.addCase(new MonitorCase(name: "Just another bad case of leprecauns", error: new MonitorStacktrace()));
+        when(controller.runSuite()).thenReturn(suite);
         when(controller.htmlRapport()).thenCallRealMethod();
     }
 

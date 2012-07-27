@@ -40,7 +40,7 @@ public class MonitorSuite {
         this.name = name;
     }
 
-    public void leggTilCase(MonitorCase monitorCase) {
+    public void addCase(MonitorCase monitorCase) {
         if (monitorCases == null) monitorCases = new ArrayList<MonitorCase>();
         monitorCases.add(monitorCase);
         if (monitorCase.hasError()) numberOfErrors++;

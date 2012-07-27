@@ -18,7 +18,7 @@ import java.util.Collection;
 @Controller
 public class MonitorController {
     private Collection<MonitorCaseRunner> monitorCaseRunners;
-    private final static String navn = "AppserverMonitor";
+    private final static String name = "AppserverMonitor";
 
     @Autowired
     public MonitorController(Collection<MonitorCaseRunner> monitorCaseRunners) {
@@ -27,13 +27,13 @@ public class MonitorController {
 
     @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET)
     public ModelAndView jUnitRapport() {
-        return new ModelAndView(xStreamMarshaller(), BindingResult.MODEL_KEY_PREFIX + "testsuite", kjorSuite());
+        return new ModelAndView(xStreamMarshaller(), BindingResult.MODEL_KEY_PREFIX + "testsuite", runSuite());
     }
 
     @RequestMapping(value = {"/", "/html"}, method = RequestMethod.GET)
     @ResponseBody
     public String htmlRapport() {
-        return new MonitorHtmlView().process(kjorSuite());
+        return new MonitorHtmlView().process(runSuite());
     }
 
     @RequestMapping(method = RequestMethod.HEAD)
@@ -42,8 +42,8 @@ public class MonitorController {
         return "Hello world. I am alive.";
     }
 
-    MonitorSuite kjorSuite() {
-        return new MonitorSuiteAssembler(navn, monitorCaseRunners).kjor();
+    MonitorSuite runSuite() {
+        return new MonitorSuiteAssembler(name, monitorCaseRunners).run();
     }
 
     private MarshallingView xStreamMarshaller() {

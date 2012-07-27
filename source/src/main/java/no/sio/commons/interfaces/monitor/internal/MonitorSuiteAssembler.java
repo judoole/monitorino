@@ -9,38 +9,38 @@ import java.util.Collection;
 
 public class MonitorSuiteAssembler {
     private final Collection<MonitorCaseRunner> monitorCaseRunners;
-    private final String suiteNavn;
+    private final String suiteName;
 
-    public MonitorSuiteAssembler(String monitorNavn, Collection<MonitorCaseRunner> monitorCaseRunners) {
+    public MonitorSuiteAssembler(String monitorName, Collection<MonitorCaseRunner> monitorCaseRunners) {
         this.monitorCaseRunners = monitorCaseRunners;
-        this.suiteNavn = monitorNavn;
+        this.suiteName = monitorName;
     }
 
-    public MonitorSuite kjor() {
-        MonitorSuite suite = new MonitorSuite(suiteNavn);
+    public MonitorSuite run() {
+        MonitorSuite suite = new MonitorSuite(suiteName);
         StopWatch stopWatch = new StopWatch().start();
         for (MonitorCaseRunner runner : monitorCaseRunners) {
-            kjorCase(suite, runner);
+            runCase(suite, runner);
         }
         suite.timeInSeconds = stopWatch.stop().timeInSeconds().toString();
         return suite;
     }
 
-    private void kjorCase(MonitorSuite suite, MonitorCaseRunner runner) {
+    private void runCase(MonitorSuite suite, MonitorCaseRunner runner) {
         try {
-            suite.leggTilCase(runner.kjor());
+            suite.addCase(runner.run());
         } catch (Exception e) {
-            lagCaseMedErrorAvExceptionOgLeggTil(suite, e);
+            createCaseWithErrorFromExceptionAndAdd(suite, e);
         }
     }
 
-    private void lagCaseMedErrorAvExceptionOgLeggTil(MonitorSuite suite, Throwable e) {
+    private void createCaseWithErrorFromExceptionAndAdd(MonitorSuite suite, Throwable e) {
         MonitorCase monitorCase = new MonitorCase();
         monitorCase.name = e.getClass().getName();
         MonitorStacktrace error = new MonitorStacktrace();
         error.message = e.getMessage();
         error.stacktrace = ExceptionUtils.getStackTrace(e);
         monitorCase.error = error;
-        suite.leggTilCase(monitorCase);
+        suite.addCase(monitorCase);
     }
 }

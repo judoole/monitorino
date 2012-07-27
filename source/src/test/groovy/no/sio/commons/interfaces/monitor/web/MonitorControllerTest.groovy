@@ -15,96 +15,96 @@ import static org.mockito.BDDMockito.given
 
 @RunWith(MockitoJUnit44Runner.class)
 class MonitorControllerTest {
-    private static final String FORVENTET_EXCEPTION_MESSAGE = "Exception som mockito laget for test"
+    private static final String EXPECTED_EXCEPTION_MESSAGE = "Exception made by mockito for unit test"
     @Mock
     MonitorCaseRunner monitorCaseRunner;
     MonitorController controller;
     MonitorSuite suite;
 
     @Test
-    void skal_kunne_lage_en_monitor_suite() {
-        gitt_at_kontroller_er_laget();
-        gitt_at_runner_returnerer_suksessfullt_case();
-        naar_jeg_kjorer_controlleren();
-        saa_skal_jeg_faa_tilbake_en_suite();
-        saa_skal_suiten_ha_navn();
-        saa_skal_suiten_ha_riktig_antall_tester();
-        saa_skal_suiten_ha_tatt_kjoretiden();
+    void should_create_a_monitor_suite() {
+        given_controller_is_created();
+        given_runner_returns_successful_case();
+        when_I_run_the_controller();
+        then_I_shall_receive_a_suite();
+        then_the_suite_should_have_a_name();
+        then_the_siute_should_have_correct_number_of_tests();
+        then_the_siute_should_have_recorded_the_time_spent();
     }
 
     @Test
-    void skal_ikke_krasje_selv_om_runner_kaster_exception() {
-        gitt_at_kontroller_er_laget();
-        gitt_at_runner_kaster_en_exception();
-        naar_jeg_kjorer_controlleren();
-        saa_skal_jeg_faa_tilbake_en_suite();
-        saa_skal_suiten_ha_errors();
-        saa_skal_stacktrace_ha_blitt_lagret_paa_case();
+    void should_not_crash_even_if_runner_throws_exception() {
+        given_controller_is_created();
+        given_runner_throws_exception();
+        when_I_run_the_controller();
+        then_I_shall_receive_a_suite();
+        then_the_suite_should_have_errors();
+        then_case_should_have_stacktrace();
     }
 
     @Test
-    void skal_telle_opp_caser_som_feiler() {
-        gitt_at_kontroller_er_laget();
-        gitt_at_runner_returnerer_case_som_har_feilet();
-        naar_jeg_kjorer_controlleren();
-        saa_skal_jeg_faa_tilbake_en_suite();
-        saa_skal_suiten_ha_feil();
+    void should_count_number_of_failing_cases() {
+        given_controller_is_created();
+        given_runner_returns_case_that_has_failed();
+        when_I_run_the_controller();
+        then_I_shall_receive_a_suite();
+        then_the_suite_should_have_failures();
     }
 
-    private void gitt_at_kontroller_er_laget() {
+    private void given_controller_is_created() {
         controller = new MonitorController([monitorCaseRunner]);
     }
 
-    private void gitt_at_runner_returnerer_suksessfullt_case() {
-        given(monitorCaseRunner.kjor()).willReturn(new MonitorCase())
+    private void given_runner_returns_successful_case() {
+        given(monitorCaseRunner.run()).willReturn(new MonitorCase())
     }
 
-    private void gitt_at_runner_kaster_en_exception() {
-        given(monitorCaseRunner.kjor()).willThrow(new RuntimeException(FORVENTET_EXCEPTION_MESSAGE))
+    private void given_runner_throws_exception() {
+        given(monitorCaseRunner.run()).willThrow(new RuntimeException(EXPECTED_EXCEPTION_MESSAGE))
     }
 
-    private void gitt_at_runner_returnerer_case_som_har_feilet() {
-        MonitorCase feiletMonitorCase = new MonitorCase();
-        feiletMonitorCase.failure = new MonitorStacktrace();
-        given(monitorCaseRunner.kjor()).willReturn(feiletMonitorCase);
+    private void given_runner_returns_case_that_has_failed() {
+        MonitorCase failedMonitorCase = new MonitorCase();
+        failedMonitorCase.failure = new MonitorStacktrace();
+        given(monitorCaseRunner.run()).willReturn(failedMonitorCase);
     }
 
-    private void naar_jeg_kjorer_controlleren() {
-        suite = controller.kjorSuite()
+    private void when_I_run_the_controller() {
+        suite = controller.runSuite()
     }
 
-    private def saa_skal_jeg_faa_tilbake_en_suite() {
+    private def then_I_shall_receive_a_suite() {
         assertThat(suite, notNullValue())
     }
 
-    private void saa_skal_suiten_ha_navn() {
+    private void then_the_suite_should_have_a_name() {
         assertThat(suite.name, notNullValue());
     }
-    private void saa_skal_suiten_ha_riktig_antall_tester() {
+    private void then_the_siute_should_have_correct_number_of_tests() {
         assertThat(suite.numberOfTests, equalTo(1));
     }
 
-    private void saa_skal_suiten_ha_tatt_kjoretiden() {
+    private void then_the_siute_should_have_recorded_the_time_spent() {
         assertThat(suite.timeInSeconds, notNullValue());
     }
 
-    private void saa_skal_suiten_ha_errors() {
+    private void then_the_suite_should_have_errors() {
         assertThat(suite.numberOfErrors, equalTo(1));
         assertThat(suite.numberOfFailures, equalTo(0));
     }
 
-    private void saa_skal_suiten_ha_feil() {
+    private void then_the_suite_should_have_failures() {
         assertThat(suite.numberOfErrors, equalTo(0));
         assertThat(suite.numberOfFailures, equalTo(1));
     }
 
-    private void saa_skal_stacktrace_ha_blitt_lagret_paa_case() {
+    private void then_case_should_have_stacktrace() {
         Collection<MonitorCase> cases = suite.monitorCases;
         assertThat(cases, notNullValue());
         assertThat(cases, not(empty()));
         MonitorStacktrace error = cases.iterator().next().error
         assertThat(error, notNullValue());
-        assertThat(error.message, equalTo(FORVENTET_EXCEPTION_MESSAGE));
+        assertThat(error.message, equalTo(EXPECTED_EXCEPTION_MESSAGE));
         assertThat(error.stacktrace, containsString(getClass().name));
     }
 }

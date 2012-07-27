@@ -14,19 +14,19 @@ import static org.mockito.Mockito.when
 
 @RunWith(MockitoJUnit44Runner.class)
 public class MonitorCaseRunnerTest {
-    final String FORVENTET_EXCEPTION_MESSAGE = "Exception laget av mockito";
+    final String EXPECTED_EXCEPTION_MESSAGE = "Exception made by mockito";
     @Mock
     MonitorCaseRunner runner;
 
     @Test
-    public void kjor_skal_catche_alle_exceptions() {
-        when(runner.kjor()).thenCallRealMethod();
-        when(runner.kjorInternally()).thenThrow(new RuntimeException(FORVENTET_EXCEPTION_MESSAGE));
+    public void run_should_catch_all_exceptions() {
+        when(runner.run()).thenCallRealMethod();
+        when(runner.runInternally()).thenThrow(new RuntimeException(EXPECTED_EXCEPTION_MESSAGE));
 
-        MonitorCase monitorCase = runner.kjor();
+        MonitorCase monitorCase = runner.run();
         assertThat(monitorCase, notNullValue());
         assertThat(monitorCase.error, notNullValue());
-        assertThat(monitorCase.error.message, equalTo(FORVENTET_EXCEPTION_MESSAGE));
+        assertThat(monitorCase.error.message, equalTo(EXPECTED_EXCEPTION_MESSAGE));
         assertThat(monitorCase.error.stacktrace, containsString(getClass().name));
     }
 }
