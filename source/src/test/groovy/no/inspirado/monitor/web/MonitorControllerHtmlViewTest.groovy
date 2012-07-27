@@ -1,8 +1,8 @@
-package no.sio.commons.interfaces.monitor.web
+package no.inspirado.monitor.web
 
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorCase
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorStacktrace
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorSuite
+import no.inspirado.monitor.facade.dto.MonitorCase
+import no.inspirado.monitor.facade.dto.MonitorStacktrace
+import no.inspirado.monitor.facade.dto.MonitorSuite
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock

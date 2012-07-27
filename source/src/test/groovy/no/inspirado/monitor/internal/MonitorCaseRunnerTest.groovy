@@ -1,7 +1,7 @@
-package no.sio.commons.interfaces.monitor.internal;
+package no.inspirado.monitor.internal;
 
 
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorCase
+import no.inspirado.monitor.facade.dto.MonitorCase
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock

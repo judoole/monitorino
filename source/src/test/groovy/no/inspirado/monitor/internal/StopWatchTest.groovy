@@ -1,4 +1,4 @@
-package no.sio.commons.interfaces.monitor.internal
+package no.inspirado.monitor.internal
 
 import org.junit.Test
 import static junit.framework.Assert.assertEquals

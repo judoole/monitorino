@@ -1,11 +1,11 @@
-package no.sio.commons.interfaces.monitor.internal.xstream;
+package no.inspirado.monitor.internal.xstream;
 
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorStacktrace;
+import no.inspirado.monitor.facade.dto.MonitorStacktrace;
 
 public class MonitorErrorConverter implements Converter {
 

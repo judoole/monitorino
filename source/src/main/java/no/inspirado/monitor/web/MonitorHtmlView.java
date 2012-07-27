@@ -1,7 +1,7 @@
-package no.sio.commons.interfaces.monitor.web;
+package no.inspirado.monitor.web;
 
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorCase;
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorSuite;
+import no.inspirado.monitor.facade.dto.MonitorCase;
+import no.inspirado.monitor.facade.dto.MonitorSuite;
 import org.apache.commons.io.IOUtils;
 
 import java.io.FileNotFoundException;
@@ -28,7 +28,7 @@ public class MonitorHtmlView {
 
     private String template() {
         try {
-            return IOUtils.toString(getClass().getResourceAsStream("/no/sio/commons/interfaces/monitor/web/monitorViewTemplate.html"), "UTF-8");
+            return IOUtils.toString(getClass().getResourceAsStream("/no/inspirado/monitor/web/monitorViewTemplate.html"), "UTF-8");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

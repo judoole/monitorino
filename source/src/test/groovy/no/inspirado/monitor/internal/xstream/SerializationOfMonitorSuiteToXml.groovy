@@ -1,9 +1,9 @@
-package no.sio.commons.interfaces.monitor.internal.xstream
+package no.inspirado.monitor.internal.xstream
 
 import com.thoughtworks.xstream.XStream
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorCase
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorStacktrace
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorSuite
+import no.inspirado.monitor.facade.dto.MonitorCase
+import no.inspirado.monitor.facade.dto.MonitorStacktrace
+import no.inspirado.monitor.facade.dto.MonitorSuite
 
 /*
 Helper class for testing xml output.

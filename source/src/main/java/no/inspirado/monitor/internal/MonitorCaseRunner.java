@@ -1,7 +1,7 @@
-package no.sio.commons.interfaces.monitor.internal;
+package no.inspirado.monitor.internal;
 
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorCase;
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorStacktrace;
+import no.inspirado.monitor.facade.dto.MonitorCase;
+import no.inspirado.monitor.facade.dto.MonitorStacktrace;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 public abstract class MonitorCaseRunner {

@@ -1,8 +1,8 @@
-package no.sio.commons.interfaces.monitor.web;
+package no.inspirado.monitor.web;
 
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorSuite;
-import no.sio.commons.interfaces.monitor.internal.MonitorCaseRunner;
-import no.sio.commons.interfaces.monitor.internal.MonitorSuiteAssembler;
+import no.inspirado.monitor.facade.dto.MonitorSuite;
+import no.inspirado.monitor.internal.MonitorCaseRunner;
+import no.inspirado.monitor.internal.MonitorSuiteAssembler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.xstream.XStreamMarshaller;
 import org.springframework.stereotype.Controller;

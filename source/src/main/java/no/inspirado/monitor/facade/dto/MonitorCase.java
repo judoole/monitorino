@@ -1,4 +1,4 @@
-package no.sio.commons.interfaces.monitor.facade.dto;
+package no.inspirado.monitor.facade.dto;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;

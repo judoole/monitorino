@@ -1,4 +1,4 @@
-package no.sio.commons.interfaces.monitor.internal;
+package no.inspirado.monitor.internal;
 
 public class StopWatch {
     long startTime;

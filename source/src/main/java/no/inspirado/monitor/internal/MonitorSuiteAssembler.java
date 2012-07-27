@@ -1,8 +1,8 @@
-package no.sio.commons.interfaces.monitor.internal;
+package no.inspirado.monitor.internal;
 
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorCase;
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorStacktrace;
-import no.sio.commons.interfaces.monitor.facade.dto.MonitorSuite;
+import no.inspirado.monitor.facade.dto.MonitorCase;
+import no.inspirado.monitor.facade.dto.MonitorStacktrace;
+import no.inspirado.monitor.facade.dto.MonitorSuite;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import java.util.Collection;
