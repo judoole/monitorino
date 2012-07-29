@@ -8,10 +8,13 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.runners.MockitoJUnit44Runner
-import static org.hamcrest.Matchers.*
 import static org.hamcrest.core.IsNot.not
 import static org.junit.Assert.assertThat
 import static org.mockito.BDDMockito.given
+import static org.hamcrest.core.IsNull.notNullValue
+import static org.hamcrest.core.IsEqual.equalTo
+import static org.hamcrest.core.IsNull.nullValue
+import static org.junit.matchers.JUnitMatchers.containsString
 
 @RunWith(MockitoJUnit44Runner.class)
 class MonitorControllerTest {
@@ -85,7 +88,7 @@ class MonitorControllerTest {
     }
 
     private void then_the_siute_should_have_recorded_the_time_spent() {
-        assertThat(suite.timeInSeconds, notNullValue());
+        assertThat(suite.time, not(nullValue()));
     }
 
     private void then_the_suite_should_have_errors() {
@@ -101,7 +104,7 @@ class MonitorControllerTest {
     private void then_case_should_have_stacktrace() {
         Collection<MonitorCase> cases = suite.monitorCases;
         assertThat(cases, notNullValue());
-        assertThat(cases, not(empty()));
+        assertThat(cases.size(), not(0));
         MonitorStacktrace error = cases.iterator().next().error
         assertThat(error, notNullValue());
         assertThat(error.message, equalTo(EXPECTED_EXCEPTION_MESSAGE));

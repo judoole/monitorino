@@ -6,9 +6,11 @@
     <groupId>no.inspirado</groupId>
     <artifactId>webapp-healtcheck-parent</artifactId>
     <version>0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <modules>
         <module>source</module>
+        <module>example</module>
     </modules>
 
 </project>

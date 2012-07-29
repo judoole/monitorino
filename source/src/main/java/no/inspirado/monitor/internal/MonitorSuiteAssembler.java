@@ -22,7 +22,7 @@ public class MonitorSuiteAssembler {
         for (MonitorCaseRunner runner : monitorCaseRunners) {
             runCase(suite, runner);
         }
-        suite.timeInSeconds = stopWatch.stop().timeInSeconds().toString();
+        suite.time = stopWatch.stop().timeInSeconds().toString();
         return suite;
     }
 

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class MonitorSuite {
-    public String timeInSeconds;
+    public String time;
     public String name;
     public int tests;
     public int skipped;

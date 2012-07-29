@@ -1,17 +1,13 @@
 package no.inspirado.monitor.web;
 
-import no.inspirado.monitor.internal.dto.MonitorSuite;
 import no.inspirado.monitor.internal.MonitorCaseRunner;
 import no.inspirado.monitor.internal.MonitorSuiteAssembler;
+import no.inspirado.monitor.internal.dto.MonitorSuite;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.oxm.xstream.XStreamMarshaller;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.xml.MarshallingView;
 
 import java.util.Collection;
 
@@ -26,14 +22,15 @@ public class MonitorController {
     }
 
     @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET)
-    public ModelAndView jUnitRapport() {
-        return new ModelAndView(xStreamMarshaller(), BindingResult.MODEL_KEY_PREFIX + "testsuite", runSuite());
+    @ResponseBody
+    public String jUnitRapport() {
+        return runSuite().asXml();// new ModelAndView(xStreamMarshaller(), BindingResult.MODEL_KEY_PREFIX + "testsuite", runSuite());
     }
 
     @RequestMapping(value = {"/", "/html"}, method = RequestMethod.GET)
     @ResponseBody
     public String htmlRapport() {
-        return new MonitorHtmlView().process(runSuite());
+        return runSuite().asHtml();
     }
 
     @RequestMapping(method = RequestMethod.HEAD)
@@ -46,11 +43,4 @@ public class MonitorController {
         return new MonitorSuiteAssembler(name, monitorCaseRunners).run();
     }
 
-    private MarshallingView xStreamMarshaller() {
-        MarshallingView view = new MarshallingView();
-        XStreamMarshaller marshaller = new XStreamMarshaller();
-        marshaller.setAutodetectAnnotations(true);
-        view.setMarshaller(marshaller);
-        return view;
-    }
 }
