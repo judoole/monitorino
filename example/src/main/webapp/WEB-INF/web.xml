@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+
+    <display-name>Webapp Monitor Example</display-name>
+
+    <servlet>
+        <servlet-name>pure-http-servlet</servlet-name>
+        <servlet-class>no.inspirado.monitor.WebappMonitorHttpServletExample</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>spring</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>
+                org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>no.inspirado.monitor.MonitorApplicationContext</param-value>
+        </init-param>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>pure-http-servlet</servlet-name>
+        <url-pattern>/pure-http-servlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/spring/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>
