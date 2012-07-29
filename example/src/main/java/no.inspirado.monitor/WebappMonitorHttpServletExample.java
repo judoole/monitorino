@@ -1,7 +1,7 @@
 package no.inspirado.monitor;
 
 import no.inspirado.monitor.cases.MonitorCaseThatFailes;
-import no.inspirado.monitor.cases.MonitorCaseThatGoesOk;
+import no.inspirado.monitor.cases.MonitorCaseThatIsSuccess;
 import no.inspirado.monitor.cases.MonitorCaseThatThrowsRuntimeException;
 import no.inspirado.monitor.internal.MonitorCaseRunner;
 import no.inspirado.monitor.internal.MonitorSuiteAssembler;
@@ -23,7 +23,7 @@ public class WebappMonitorHttpServletExample extends HttpServlet {
         Collection<MonitorCaseRunner> list = new ArrayList<MonitorCaseRunner>();
         list.add(new MonitorCaseThatThrowsRuntimeException());
         list.add(new MonitorCaseThatFailes());
-        list.add(new MonitorCaseThatGoesOk());
+        list.add(new MonitorCaseThatIsSuccess());
         out.println(new MonitorSuiteAssembler("My first stab at it", list).run().asXml());
     }
 }

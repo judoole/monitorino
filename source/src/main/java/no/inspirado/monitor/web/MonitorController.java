@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.Set;
 
 @Controller
+@RequestMapping("/monitor")
 public class MonitorController {
     Collection<MonitorCaseRunner> monitorCaseRunners;
     String name = "AppserverMonitor";
@@ -22,13 +23,13 @@ public class MonitorController {
         this.monitorCaseRunners = monitorCaseRunners;
     }
 
-    @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET, headers = "Accept=application/xml")
     @ResponseBody
     public String jUnitRapport() {
         return runSuite().asXml();
     }
 
-    @RequestMapping(value = {"/", "/html"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/html"}, method = RequestMethod.GET, headers = "Accept=text/html")
     @ResponseBody
     public String htmlRapport() {
         return runSuite().asHtml();
