@@ -7,7 +7,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import no.inspirado.monitor.internal.dto.MonitorStacktrace;
 
-public class MonitorErrorConverter implements Converter {
+public class MonitorStacktraceConverter implements Converter {
 
     public boolean canConvert(Class clazz) {
         return clazz.equals(MonitorStacktrace.class);

@@ -17,7 +17,8 @@ public class MonitorSuiteAssembler {
     }
 
     public MonitorSuite run() {
-        MonitorSuite suite = new MonitorSuite(suiteName);
+        MonitorSuite suite = new MonitorSuite();
+        suite.name = suiteName;
         StopWatch stopWatch = new StopWatch().start();
         for (MonitorCaseRunner runner : monitorCaseRunners) {
             runCase(suite, runner);
