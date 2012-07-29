@@ -15,14 +15,14 @@ import static org.hamcrest.core.IsNull.notNullValue
 import static org.hamcrest.core.IsEqual.equalTo
 import static org.hamcrest.core.IsNull.nullValue
 import static org.junit.matchers.JUnitMatchers.containsString
+import org.springframework.beans.factory.annotation.Configurable
+import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Bean
+import no.inspirado.monitor.internal.dto.MonitorFailureCase
+import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 @RunWith(MockitoJUnit44Runner.class)
 class MonitorControllerTest {
-    private static final String EXPECTED_EXCEPTION_MESSAGE = "Exception made by mockito for unit test"
-    @Mock
-    MonitorCaseRunner monitorCaseRunner;
-    MonitorController controller;
-    MonitorSuite suite;
 
     @Test
     void should_create_a_monitor_suite() {
@@ -54,8 +54,16 @@ class MonitorControllerTest {
         then_the_suite_should_have_failures();
     }
 
+    @Test
+    void should_autowire_all_runners_to_controller() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigurationMonitorControllerTest.class);
+        MonitorController controller = context.getBean(MonitorController.class);
+        assertThat(controller, notNullValue());
+        assertThat(controller.monitorCaseRunners.size(), not(equalTo(0)));
+    }
+
     private void given_controller_is_created() {
-        controller = new MonitorController([monitorCaseRunner]);
+        controller = new MonitorController(monitorCaseRunners:[monitorCaseRunner]);
     }
 
     private void given_runner_returns_successful_case() {
@@ -83,6 +91,7 @@ class MonitorControllerTest {
     private void then_the_suite_should_have_a_name() {
         assertThat(suite.name, notNullValue());
     }
+
     private void then_the_siute_should_have_correct_number_of_tests() {
         assertThat(suite.tests, equalTo(1));
     }
@@ -110,4 +119,11 @@ class MonitorControllerTest {
         assertThat(error.message, equalTo(EXPECTED_EXCEPTION_MESSAGE));
         assertThat(error.stacktrace, containsString(getClass().name));
     }
+
+    private static final String EXPECTED_EXCEPTION_MESSAGE = "Exception made by mockito for unit test"
+    @Mock
+    MonitorCaseRunner monitorCaseRunner;
+    MonitorController controller;
+    MonitorSuite suite;
+
 }

@@ -10,21 +10,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Collection;
+import java.util.Set;
 
 @Controller
 public class MonitorController {
-    private Collection<MonitorCaseRunner> monitorCaseRunners;
-    private final static String name = "AppserverMonitor";
+    Collection<MonitorCaseRunner> monitorCaseRunners;
+    String name = "AppserverMonitor";
 
     @Autowired
-    public MonitorController(Collection<MonitorCaseRunner> monitorCaseRunners) {
+    public void setMonitorCaseRunners(Collection<MonitorCaseRunner> monitorCaseRunners) {
         this.monitorCaseRunners = monitorCaseRunners;
     }
 
     @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET)
     @ResponseBody
     public String jUnitRapport() {
-        return runSuite().asXml();// new ModelAndView(xStreamMarshaller(), BindingResult.MODEL_KEY_PREFIX + "testsuite", runSuite());
+        return runSuite().asXml();
     }
 
     @RequestMapping(value = {"/", "/html"}, method = RequestMethod.GET)
@@ -37,6 +38,10 @@ public class MonitorController {
     @ResponseBody
     public String iAmAlive() {
         return "Hello world. I am alive.";
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     MonitorSuite runSuite() {
