@@ -1,24 +1,30 @@
 package no.inspirado.monitor.internal;
 
 import no.inspirado.monitor.internal.dto.MonitorCase;
+import no.inspirado.monitor.internal.dto.MonitorProperty;
 import no.inspirado.monitor.internal.dto.MonitorStacktrace;
 import no.inspirado.monitor.internal.dto.MonitorSuite;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
 public class MonitorSuiteAssembler {
     private final Collection<MonitorCaseRunner> monitorCaseRunners;
     private final String suiteName;
+    private Set<MonitorProperty> monitorProperties;
 
-    public MonitorSuiteAssembler(String monitorName, Collection<MonitorCaseRunner> monitorCaseRunners) {
+    public MonitorSuiteAssembler(String monitorName, Collection<MonitorCaseRunner> monitorCaseRunners, Set<MonitorProperty> monitorProperties) {
         this.monitorCaseRunners = monitorCaseRunners;
         this.suiteName = monitorName;
+        this.monitorProperties = monitorProperties;
     }
 
     public MonitorSuite run() {
         MonitorSuite suite = new MonitorSuite();
         suite.name = suiteName;
+        suite.properties = monitorProperties;
         StopWatch stopWatch = new StopWatch().start();
         for (MonitorCaseRunner runner : monitorCaseRunners) {
             runCase(suite, runner);

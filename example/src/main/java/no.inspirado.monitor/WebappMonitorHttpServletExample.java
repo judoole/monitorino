@@ -24,6 +24,6 @@ public class WebappMonitorHttpServletExample extends HttpServlet {
         list.add(new MonitorCaseThatThrowsRuntimeException());
         list.add(new MonitorCaseThatFailes());
         list.add(new MonitorCaseThatIsSuccess());
-        out.println(new MonitorSuiteAssembler("My first stab at it", list).run().asXml());
+        out.println(new MonitorSuiteAssembler("My first stab at it", list, null).run().asXml());
     }
 }

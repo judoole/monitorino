@@ -62,6 +62,14 @@ class MonitorControllerTest {
         assertThat(controller.monitorCaseRunners.size(), not(equalTo(0)));
     }
 
+    @Test
+    void should_autowire_all_properties_to_controller() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigurationMonitorControllerTest.class);
+        MonitorController controller = context.getBean(MonitorController.class);
+        assertThat(controller, notNullValue());
+        assertThat(controller.monitorProperties.size(), not(equalTo(0)));
+    }
+
     private void given_controller_is_created() {
         controller = new MonitorController(monitorCaseRunners:[monitorCaseRunner]);
     }

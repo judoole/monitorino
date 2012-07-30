@@ -4,6 +4,7 @@ import no.inspirado.monitor.internal.MonitorCaseRunner
 import org.springframework.context.annotation.Bean
 import no.inspirado.monitor.internal.dto.MonitorFailureCase
 import org.springframework.context.annotation.Configuration
+import no.inspirado.monitor.internal.dto.MonitorProperty
 
 @Configuration
 public class SpringConfigurationMonitorControllerTest {
@@ -22,6 +23,11 @@ public class SpringConfigurationMonitorControllerTest {
             }
 
         };
+    }
+
+    @Bean
+    public MonitorProperty myPropertyToBeInjected(){
+        return new MonitorProperty("My Property Name", "My property value")
     }
 
     @Bean

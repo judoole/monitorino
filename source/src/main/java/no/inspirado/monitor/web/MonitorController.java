@@ -2,6 +2,7 @@ package no.inspirado.monitor.web;
 
 import no.inspirado.monitor.internal.MonitorCaseRunner;
 import no.inspirado.monitor.internal.MonitorSuiteAssembler;
+import no.inspirado.monitor.internal.dto.MonitorProperty;
 import no.inspirado.monitor.internal.dto.MonitorSuite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,21 +10,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
 @Controller
 @RequestMapping("/monitor")
 public class MonitorController {
-    Collection<MonitorCaseRunner> monitorCaseRunners;
+    Set<MonitorCaseRunner> monitorCaseRunners;
+    Set<MonitorProperty> monitorProperties;
+
     String name = "AppserverMonitor";
 
     @Autowired
-    public void setMonitorCaseRunners(Collection<MonitorCaseRunner> monitorCaseRunners) {
+    public void setMonitorCaseRunners(Set<MonitorCaseRunner> monitorCaseRunners) {
         this.monitorCaseRunners = monitorCaseRunners;
     }
 
-    @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET)
+    @Autowired
+    public void setMonitorProperties(Set<MonitorProperty> monitorProperties) {
+        this.monitorProperties = monitorProperties;
+    }
+
+    @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET, produces = "text/plain")
     @ResponseBody
     public String jUnitRapport() {
         return runSuite().asXml();
@@ -46,7 +55,7 @@ public class MonitorController {
     }
 
     MonitorSuite runSuite() {
-        return new MonitorSuiteAssembler(name, monitorCaseRunners).run();
+        return new MonitorSuiteAssembler(name, monitorCaseRunners, monitorProperties).run();
     }
 
 }

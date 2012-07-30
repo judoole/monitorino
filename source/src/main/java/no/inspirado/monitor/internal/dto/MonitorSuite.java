@@ -8,6 +8,8 @@ import no.inspirado.monitor.web.MonitorHtmlView;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MonitorSuite {
     public String time;
@@ -16,20 +18,15 @@ public class MonitorSuite {
     public int skipped;
     public int errors;
     public int failures;
-    public ArrayList<MonitorCase> monitorCases;
-    public ArrayList<MonitorProperty> properties;
+    public Set<MonitorCase> monitorCases;
+    public Set<MonitorProperty> properties;
 
     public void addCase(MonitorCase monitorCase) {
-        if (monitorCases == null) monitorCases = new ArrayList<MonitorCase>();
+        if (monitorCases == null) monitorCases = new HashSet<MonitorCase>();
         monitorCases.add(monitorCase);
         if (monitorCase.hasError()) errors++;
         else if (monitorCase.hasFailure()) failures++;
         tests++;
-    }
-
-    public void addProperty(MonitorProperty monitorProperty) {
-        if (properties == null) properties = new ArrayList<MonitorProperty>();
-        properties.add(monitorProperty);
     }
 
     public String asXml() {
