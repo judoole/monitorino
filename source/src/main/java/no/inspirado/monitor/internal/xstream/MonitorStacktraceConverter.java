@@ -20,7 +20,7 @@ public class MonitorStacktraceConverter implements Converter {
     }
 
     public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-        //Screw you. Vi trenger ikke unmarshalle.
+        //Screw you. We don't need to unmarshall
         return null;
     }
 

@@ -17,7 +17,7 @@ class MonitorSuiteTest {
         then_the_xml_should_contain('<testcase name="case1"><failure message="Things went far from good"/></testcase>');
         then_the_xml_should_contain('<testcase name="case 2"><error message="Things did not go so well no either">Bla, bla, BLAM!</error></testcase>');
         then_the_xml_should_contain('<testcase name="case 3. The good case"/>');
-        then_the_xml_should_contain('<properties><property name="Simple property" value="Simple value"/></properties>');
+        then_the_xml_should_contain('<property name="Simple property" value="Simple value"/></properties>');
     }
 
     @Test
@@ -38,7 +38,7 @@ class MonitorSuiteTest {
     }
 
     void given_monitorsuite_has_property(MonitorProperty monitorProperty) {
-        msg.addProperty(monitorProperty);
+        msg.monitorProperties.add(monitorProperty);
     }
 
     void given_monitorsuite_has_name(String name) {
@@ -53,5 +53,5 @@ class MonitorSuiteTest {
         assertThat(msg.asHtml(), containsString(string));
     }
 
-    MonitorSuite msg = new MonitorSuite(name: "", monitorCases: new ArrayList());
+    MonitorSuite msg = new MonitorSuite(name: "", monitorCases: new HashSet(), monitorProperties: new HashSet());
 }

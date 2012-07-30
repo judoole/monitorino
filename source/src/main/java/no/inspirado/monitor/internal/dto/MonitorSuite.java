@@ -6,10 +6,7 @@ import no.inspirado.monitor.internal.xstream.MonitorStacktraceConverter;
 import no.inspirado.monitor.web.MonitorHtmlView;
 
 import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class MonitorSuite {
     public String time;
@@ -19,7 +16,16 @@ public class MonitorSuite {
     public int errors;
     public int failures;
     public Set<MonitorCase> monitorCases;
-    public Set<MonitorProperty> properties;
+    public Set<MonitorProperty> monitorProperties;
+
+    public static void main(String[] args) {
+        Properties p = System.getProperties();
+        Enumeration e = p.propertyNames();
+        while (e.hasMoreElements()) {
+            String pro = (String) e.nextElement();
+            System.out.println(pro + ":: " + System.getProperty(pro));
+        }
+    }
 
     public void addCase(MonitorCase monitorCase) {
         if (monitorCases == null) monitorCases = new HashSet<MonitorCase>();
@@ -38,7 +44,7 @@ public class MonitorSuite {
 
         xStream.alias("testsuite", MonitorSuite.class);
         xStream.alias("testcase", MonitorCase.class);
-        xStream.alias("property", MonitorProperty.class);
+        xStream.aliasType("property", MonitorProperty.class);
 
         xStream.useAttributeFor(MonitorSuite.class, "name");
         xStream.useAttributeFor(MonitorSuite.class, "tests");
@@ -47,6 +53,7 @@ public class MonitorSuite {
         xStream.useAttributeFor(MonitorSuite.class, "errors");
         xStream.useAttributeFor(MonitorSuite.class, "failures");
         xStream.addImplicitCollection(MonitorSuite.class, "monitorCases");
+        xStream.aliasField("properties", MonitorSuite.class, "monitorProperties");
 
         xStream.useAttributeFor(MonitorProperty.class, "name");
         xStream.useAttributeFor(MonitorProperty.class, "value");

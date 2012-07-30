@@ -5,7 +5,9 @@ import no.inspirado.monitor.cases.MonitorCaseThatIsSuccess;
 import no.inspirado.monitor.cases.MonitorCaseThatThrowsRuntimeException;
 import no.inspirado.monitor.internal.MonitorCaseRunner;
 import no.inspirado.monitor.internal.dto.MonitorProperty;
+import no.inspirado.monitor.properties.JavaVersionMonitorProperty;
 import no.inspirado.monitor.web.MonitorController;
+import org.apache.commons.lang3.JavaVersion;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,6 +32,11 @@ public class MonitorApplicationContext {
     @Bean
     public MonitorProperty mySimpleProperty(){
         return new MonitorProperty("My Simple property", "My simple value");
+    }
+
+    @Bean
+    public JavaVersionMonitorProperty javaVersionMonitorProperty(){
+        return new JavaVersionMonitorProperty();
     }
 
     @Bean

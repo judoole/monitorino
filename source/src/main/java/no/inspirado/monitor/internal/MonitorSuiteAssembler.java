@@ -6,7 +6,6 @@ import no.inspirado.monitor.internal.dto.MonitorStacktrace;
 import no.inspirado.monitor.internal.dto.MonitorSuite;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
@@ -24,7 +23,7 @@ public class MonitorSuiteAssembler {
     public MonitorSuite run() {
         MonitorSuite suite = new MonitorSuite();
         suite.name = suiteName;
-        suite.properties = monitorProperties;
+        suite.monitorProperties = monitorProperties;
         StopWatch stopWatch = new StopWatch().start();
         for (MonitorCaseRunner runner : monitorCaseRunners) {
             runCase(suite, runner);
