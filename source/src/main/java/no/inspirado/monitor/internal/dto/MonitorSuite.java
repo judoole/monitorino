@@ -27,6 +27,10 @@ public class MonitorSuite {
     }
 
     public String asXml() {
+        return asXml(true);
+    }
+
+    String asXml(boolean prettyPrint) {
         XStream xStream = new XStream();
 
         xStream.alias("testsuite", MonitorSuite.class);
@@ -44,9 +48,14 @@ public class MonitorSuite {
         xStream.useAttributeFor(MonitorCase.class, "time");
 
         xStream.registerConverter(new MonitorStacktraceConverter());
-        StringWriter sw = new StringWriter();
-        xStream.marshal(this, new CompactWriter(sw));
-        return sw.toString();
+
+        if (!prettyPrint) {
+            StringWriter sw = new StringWriter();
+            xStream.marshal(this, new CompactWriter(sw));
+            return sw.toString();
+        } else {
+            return xStream.toXML(this);
+        }
     }
 
     public String asHtml() {

@@ -40,7 +40,7 @@ class MonitorSuiteTest {
     }
 
     void then_the_xml_should_contain(String string) {
-        assertThat(msg.asXml(), containsString(string));
+        assertThat(msg.asXml(false), containsString(string));
     }
 
     void then_the_html_should_contain(String string) {
