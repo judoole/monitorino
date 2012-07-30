@@ -12,10 +12,12 @@ class MonitorSuiteTest {
         given_monitorsuite_has_case(new MonitorCase(name: "case1", failure: new MonitorStacktrace(message: "Things went far from good")));
         given_monitorsuite_has_case(new MonitorCase(name: "case 2", error: new MonitorStacktrace(message: "Things did not go so well no either", stacktrace: "Bla, bla, BLAM!")));
         given_monitorsuite_has_case(new MonitorCase(name: "case 3. The good case"));
+        given_monitorsuite_has_property(new MonitorProperty(name:"Simple property", value:"Simple value"))
         then_the_xml_should_contain('<testsuite name="My monitorsuite" tests="3" skipped="0" errors="1" failures="1">');
         then_the_xml_should_contain('<testcase name="case1"><failure message="Things went far from good"/></testcase>');
         then_the_xml_should_contain('<testcase name="case 2"><error message="Things did not go so well no either">Bla, bla, BLAM!</error></testcase>');
         then_the_xml_should_contain('<testcase name="case 3. The good case"/>');
+        then_the_xml_should_contain('<properties><property name="Simple property" value="Simple value"/></properties>');
     }
 
     @Test
@@ -33,6 +35,10 @@ class MonitorSuiteTest {
 
     void given_monitorsuite_has_case(MonitorCase monitorCase) {
         msg.addCase(monitorCase);
+    }
+
+    void given_monitorsuite_has_property(MonitorProperty monitorProperty) {
+        msg.addProperty(monitorProperty);
     }
 
     void given_monitorsuite_has_name(String name) {

@@ -16,7 +16,8 @@ public class MonitorSuite {
     public int skipped;
     public int errors;
     public int failures;
-    public Collection<MonitorCase> monitorCases;
+    public ArrayList<MonitorCase> monitorCases;
+    public ArrayList<MonitorProperty> properties;
 
     public void addCase(MonitorCase monitorCase) {
         if (monitorCases == null) monitorCases = new ArrayList<MonitorCase>();
@@ -24,6 +25,11 @@ public class MonitorSuite {
         if (monitorCase.hasError()) errors++;
         else if (monitorCase.hasFailure()) failures++;
         tests++;
+    }
+
+    public void addProperty(MonitorProperty monitorProperty) {
+        if (properties == null) properties = new ArrayList<MonitorProperty>();
+        properties.add(monitorProperty);
     }
 
     public String asXml() {
@@ -35,6 +41,7 @@ public class MonitorSuite {
 
         xStream.alias("testsuite", MonitorSuite.class);
         xStream.alias("testcase", MonitorCase.class);
+        xStream.alias("property", MonitorProperty.class);
 
         xStream.useAttributeFor(MonitorSuite.class, "name");
         xStream.useAttributeFor(MonitorSuite.class, "tests");
@@ -43,6 +50,9 @@ public class MonitorSuite {
         xStream.useAttributeFor(MonitorSuite.class, "errors");
         xStream.useAttributeFor(MonitorSuite.class, "failures");
         xStream.addImplicitCollection(MonitorSuite.class, "monitorCases");
+
+        xStream.useAttributeFor(MonitorProperty.class, "name");
+        xStream.useAttributeFor(MonitorProperty.class, "value");
 
         xStream.useAttributeFor(MonitorCase.class, "name");
         xStream.useAttributeFor(MonitorCase.class, "time");
