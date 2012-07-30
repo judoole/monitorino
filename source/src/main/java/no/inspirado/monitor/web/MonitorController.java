@@ -23,19 +23,19 @@ public class MonitorController {
         this.monitorCaseRunners = monitorCaseRunners;
     }
 
-    @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET, headers = "Accept=application/xml")
+    @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET)
     @ResponseBody
     public String jUnitRapport() {
         return runSuite().asXml();
     }
 
-    @RequestMapping(value = {"/", "/html"}, method = RequestMethod.GET, headers = "Accept=text/html")
+    @RequestMapping(value = {"/", "/html"}, method = RequestMethod.GET)
     @ResponseBody
     public String htmlRapport() {
         return runSuite().asHtml();
     }
 
-    @RequestMapping(method = RequestMethod.HEAD)
+    @RequestMapping(value = {"/xml", "/junit", "/", "html"}, method = RequestMethod.HEAD)
     @ResponseBody
     public String iAmAlive() {
         return "Hello world. I am alive.";
