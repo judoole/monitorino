@@ -13,4 +13,19 @@
         <module>example</module>
     </modules>
 
+    <build>
+        <plugins>
+            <!-- We don't have no distribution repo yet, so we only do install. Jars are loaded up to github as of yet
+             See source/pom.xml for more.
+            -->
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <goals>install</goals>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
