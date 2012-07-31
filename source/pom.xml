@@ -6,12 +6,6 @@
     <groupId>no.inspirado</groupId>
     <artifactId>webapp-healthcheck</artifactId>
 
-    <parent>
-        <groupId>no.inspirado</groupId>
-        <artifactId>webapp-healthcheck-parent</artifactId>
-        <version>0.1-SNAPSHOT</version>
-    </parent>
-
     <description>
         This projects goal is to deliver helper classes for easily monitoring your Java Webapp.
     </description>

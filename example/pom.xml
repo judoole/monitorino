@@ -8,16 +8,10 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <parent>
-        <groupId>no.inspirado</groupId>
-        <artifactId>webapp-healthcheck-parent</artifactId>
-        <version>0.1-SNAPSHOT</version>
-    </parent>
-
     <dependencies>
         <dependency>
             <groupId>no.inspirado</groupId>
-            <artifactId>webapp-healtcheck</artifactId>
+            <artifactId>webapp-healthcheck</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
