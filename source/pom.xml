@@ -7,9 +7,8 @@
     <artifactId>webapp-healthcheck</artifactId>
     <version>0.1-SNAPSHOT</version>
     <description>
-		The NoCommons library is a collection of helper classes for manipulation and validation of data specific to
-		Norway and Norwegian citizens.
-	</description>
+        This projects goal is to deliver helper classes for easily monitoring your Java Webapp.
+    </description>
 
     <prerequisites>
         <maven>3.0</maven>
@@ -60,6 +59,13 @@
             <id>judoole</id>
         </developer>
     </developers>
+
+    <distributionManagement>
+        <site>
+            <id>WebappMonitor</id>
+            <url>http://judoole.github.com/${project.artifactId}/</url>
+        </site>
+    </distributionManagement>
 
 
     <build>
