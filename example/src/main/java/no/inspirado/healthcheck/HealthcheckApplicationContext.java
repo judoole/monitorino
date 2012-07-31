@@ -43,8 +43,8 @@ public class HealthcheckApplicationContext {
         return new HealthcheckController();
     }
 
-    @Bean
-    public HealthcheckController healthcheckControllerMyOwnRequestMapping() {
-        return new HealthcheckControllerMyOwnRequestMapping();
-    }
+//    @Bean
+//    public HealthcheckController healthcheckControllerMyOwnRequestMapping() {
+//        return new HealthcheckControllerMyOwnRequestMapping();
+//    }
 }
