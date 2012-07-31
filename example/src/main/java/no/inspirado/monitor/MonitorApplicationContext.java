@@ -7,7 +7,6 @@ import no.inspirado.monitor.internal.MonitorCaseRunner;
 import no.inspirado.monitor.internal.dto.MonitorProperty;
 import no.inspirado.monitor.properties.JavaVersionMonitorProperty;
 import no.inspirado.monitor.web.MonitorController;
-import org.apache.commons.lang3.JavaVersion;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

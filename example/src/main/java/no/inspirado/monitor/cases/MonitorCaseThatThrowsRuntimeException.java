@@ -1,17 +1,16 @@
 package no.inspirado.monitor.cases;
 
 import no.inspirado.monitor.internal.MonitorCaseRunner;
-import no.inspirado.monitor.internal.dto.MonitorCase;
 import no.inspirado.monitor.internal.dto.MonitorFailureCase;
 
-public class MonitorCaseThatFailes extends MonitorCaseRunner{
+public class MonitorCaseThatThrowsRuntimeException extends MonitorCaseRunner{
     @Override
     protected String getName() {
-        return "MonitorCase that fails";
+        return "MonitorCase that throws RuntimeException";
     }
 
     @Override
     protected MonitorFailureCase assertNoFailure() {
-        return new MonitorFailureCase("Failed because I told i to");
+        throw new RuntimeException("I deliberately threw this exception");
     }
 }
