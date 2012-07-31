@@ -27,4 +27,4 @@ public HealthcheckProperty mySimpleProperty() {
 }
 ````
 
-That's it. Your good to go.
+That's it. You're good to go.
