@@ -1,0 +1,17 @@
+*.class
+target/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+#IntelliJ
+*.iml
+.idea/
+
+#Mac things
+.DS_Store
+
+#Maven
+release.properties
