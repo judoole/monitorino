@@ -1,5 +1,5 @@
-no.inspirado.monitor.internal.dto
-no.inspirado.monitor.internal
-no.inspirado.monitor.internal.xstream
-no.inspirado.monitor.properties
-no.inspirado.monitor.web
+no.inspirado.healthcheck.internal.dto
+no.inspirado.healthcheck.internal
+no.inspirado.healthcheck.internal.xstream
+no.inspirado.healthcheck.properties
+no.inspirado.healthcheck.web

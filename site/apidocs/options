@@ -15,10 +15,10 @@
 -docencoding
 'UTF-8'
 -doctitle
-'Webapp Monitor 0.1-SNAPSHOT API'
+'Webapp Healthcheck 0.1-SNAPSHOT API'
 -link
 'http://java.sun.com/j2se/1.5.0/docs/api'
 -use
 -version
 -windowtitle
-'Webapp Monitor 0.1-SNAPSHOT API'
+'Webapp Healthcheck 0.1-SNAPSHOT API'
