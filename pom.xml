@@ -7,6 +7,7 @@
     <artifactId>webapp-healthcheck-parent</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>Webapp Monitor Parent</name>
 
     <modules>
         <module>source</module>
@@ -29,6 +30,7 @@
                 <version>2.3.2</version>
                 <configuration>
                     <goals>install</goals>
+                    <tag>webapp monitor ${project.artifactId}</tag>
                 </configuration>
             </plugin>
         </plugins>

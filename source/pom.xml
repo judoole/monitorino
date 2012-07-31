@@ -6,7 +6,8 @@
     <groupId>no.inspirado</groupId>
     <artifactId>webapp-healthcheck</artifactId>
     <version>0.1-SNAPSHOT</version>
-
+    <name>Webapp Monitor</name>
+    <url>http://judoole.github.com/${project.artifactId}/</url>
     <description>
         This projects goal is to deliver helper classes for easily monitoring your Java Webapp.
     </description>
@@ -62,13 +63,6 @@
         </developer>
     </developers>
 
-    <distributionManagement>
-        <site>
-            <id>WebappMonitor</id>
-            <url>http://judoole.github.com/${project.artifactId}/</url>
-        </site>
-    </distributionManagement>
-
     <build>
         <plugins>
             <plugin>
@@ -116,7 +110,6 @@
                                 <report>project-team</report>
                                 <report>scm</report>
                                 <report>dependencies</report>
-                                <report>distribution-management</report>
                             </reports>
                         </plugin>
                         <plugin>
