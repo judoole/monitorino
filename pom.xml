@@ -30,7 +30,7 @@
                 <version>2.3.2</version>
                 <configuration>
                     <goals>install</goals>
-                    <tag>webapp monitor ${project.artifactId}</tag>
+                    <tag>webapp monitor ${project.version}</tag>
                 </configuration>
             </plugin>
         </plugins>
