@@ -26,11 +26,11 @@ public class HealthcheckCaseRunnerTest {
         when(runner.run()).thenCallRealMethod();
         when(runner.assertNoFailure()).thenThrow(new RuntimeException(EXPECTED_EXCEPTION_MESSAGE));
 
-        HealthcheckCase monitorCase = runner.run();
-        assertThat(monitorCase, notNullValue());
-        assertThat(monitorCase.error, notNullValue());
-        assertThat(monitorCase.error.message, equalTo(EXPECTED_EXCEPTION_MESSAGE));
-        assertThat(monitorCase.error.stacktrace, containsString(getClass().name));
+        HealthcheckCase healthcheckCase = runner.run();
+        assertThat(healthcheckCase, notNullValue());
+        assertThat(healthcheckCase.error, notNullValue());
+        assertThat(healthcheckCase.error.message, equalTo(EXPECTED_EXCEPTION_MESSAGE));
+        assertThat(healthcheckCase.error.stacktrace, containsString(getClass().name));
     }
 
     @Test
@@ -38,10 +38,10 @@ public class HealthcheckCaseRunnerTest {
         when(runner.run()).thenCallRealMethod();
         when(runner.assertNoFailure()).thenReturn(new HealthcheckFailureCase("Testcase"));
 
-        HealthcheckCase monitorCase = runner.run();
-        assertThat(monitorCase, notNullValue());
-        assertThat(monitorCase.error, nullValue());
-        assertThat(monitorCase.failure.message, equalTo("Testcase"));
+        HealthcheckCase healthcheckCase = runner.run();
+        assertThat(healthcheckCase, notNullValue());
+        assertThat(healthcheckCase.error, nullValue());
+        assertThat(healthcheckCase.failure.message, equalTo("Testcase"));
     }
 
     @Test
@@ -49,9 +49,9 @@ public class HealthcheckCaseRunnerTest {
         when(runner.run()).thenCallRealMethod();
         when(runner.assertNoFailure()).thenReturn(null);
 
-        HealthcheckCase monitorCase = runner.run();
-        assertThat(monitorCase, notNullValue());
-        assertThat(monitorCase.error, nullValue());
-        assertThat(monitorCase.failure, nullValue());
+        HealthcheckCase healthcheckCase = runner.run();
+        assertThat(healthcheckCase, notNullValue());
+        assertThat(healthcheckCase.error, nullValue());
+        assertThat(healthcheckCase.failure, nullValue());
     }
 }

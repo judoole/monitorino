@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/monitor")
+@RequestMapping("/healthcheck")
 public class HealthcheckController {
     Set<HealthcheckCaseRunner> healthcheckCaseRunners;
     Set<HealthcheckProperty> healthcheckProperties;
 
-    String name = "AppserverMonitor";
+    String name = "AppserverHealthcheck";
 
     @Autowired
     public void setHealthcheckCaseRunners(Set<HealthcheckCaseRunner> healthcheckCaseRunners) {

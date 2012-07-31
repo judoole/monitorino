@@ -17,8 +17,8 @@ import java.util.regex.Pattern;
  * Okey. So maybe I hate template frameworks also now? Nike. Just Do It. Yourself.
  */
 public class HealthcheckHtmlView {
-    private static final String TEMPLATE_FOR_MONITOR_CASER = "<tr><td>[name]</td><td class=\"[isSuccess]\"/></tr>\n";
-    private static final String TEMPLATE_FOR_MONITOR_PROPERTY = "<tr><td><b>[name]:</b></td><td>[value]</td></tr>\n";
+    private static final String TEMPLATE_FOR_HEALTHCHECK_CASER = "<tr><td>[name]</td><td class=\"[isSuccess]\"/></tr>\n";
+    private static final String TEMPLATE_FOR_HEALTHCHECK_PROPERTY = "<tr><td><b>[name]:</b></td><td>[value]</td></tr>\n";
 
     public String process(HealthcheckSuite suite) {
         Map<String, String> map = new HashMap<String, String>();
@@ -31,7 +31,7 @@ public class HealthcheckHtmlView {
 
     private String template() {
         try {
-            return IOUtils.toString(getClass().getResourceAsStream("/no/inspirado/healthcheck/web/monitorViewTemplate.html"), "UTF-8");
+            return IOUtils.toString(getClass().getResourceAsStream("/no/inspirado/healthcheck/web/healthcheckViewTemplate.html"), "UTF-8");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -52,7 +52,7 @@ public class HealthcheckHtmlView {
             else {
                 replaceMap.put("isSuccess", "success");
             }
-            String aNewRow = replaceTokens(TEMPLATE_FOR_MONITOR_CASER, replaceMap);
+            String aNewRow = replaceTokens(TEMPLATE_FOR_HEALTHCHECK_CASER, replaceMap);
             html.append(aNewRow);
         }
 
@@ -65,7 +65,7 @@ public class HealthcheckHtmlView {
             Map<String, Object> replaceMap = new HashMap<String, Object>();
             replaceMap.put("name", (Object) healthcheckCase.getName());
             replaceMap.put("value", (Object) healthcheckCase.getValue());
-            String aNewRow = replaceTokens(TEMPLATE_FOR_MONITOR_PROPERTY, replaceMap);
+            String aNewRow = replaceTokens(TEMPLATE_FOR_HEALTHCHECK_PROPERTY, replaceMap);
             html.append(aNewRow);
         }
 

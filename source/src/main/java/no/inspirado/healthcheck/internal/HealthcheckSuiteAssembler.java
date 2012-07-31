@@ -14,9 +14,9 @@ public class HealthcheckSuiteAssembler {
     private final String suiteName;
     private Set<HealthcheckProperty> healthcheckProperties;
 
-    public HealthcheckSuiteAssembler(String monitorName, Collection<HealthcheckCaseRunner> healthcheckCaseRunners, Set<HealthcheckProperty> healthcheckProperties) {
+    public HealthcheckSuiteAssembler(String healthcheckName, Collection<HealthcheckCaseRunner> healthcheckCaseRunners, Set<HealthcheckProperty> healthcheckProperties) {
         this.healthcheckCaseRunners = healthcheckCaseRunners;
-        this.suiteName = monitorName;
+        this.suiteName = healthcheckName;
         this.healthcheckProperties = healthcheckProperties;
     }
 

@@ -1,4 +1,4 @@
-webapp-monitor
+webapp-healthcheck
 ==============
 
 A easy pluggable Java monitor/healthcheck for your webapp.

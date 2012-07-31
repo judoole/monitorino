@@ -14,17 +14,17 @@ import org.springframework.context.annotation.Configuration;
 public class HealthcheckApplicationContext {
 
     @Bean
-    public HealthcheckCaseRunner monitorCaseThatFailes() {
+    public HealthcheckCaseRunner healthcheckCaseThatFailes() {
         return new HealthcheckThatFailes();
     }
 
     @Bean
-    public HealthcheckCaseRunner monitorCaseThatIsSuccess() {
+    public HealthcheckCaseRunner healthcheckCaseThatIsSuccess() {
         return new HealthcheckThatIsSuccess();
     }
 
     @Bean
-    public HealthcheckCaseRunner monitorCaseThatThrowsRuntimeException() {
+    public HealthcheckCaseRunner healthcheckCaseThatThrowsRuntimeException() {
         return new HealthcheckThatThrowsRuntimeException();
     }
 
@@ -34,17 +34,17 @@ public class HealthcheckApplicationContext {
     }
 
     @Bean
-    public JavaVersionHealthcheckProperty javaVersionMonitorProperty() {
+    public JavaVersionHealthcheckProperty javaVersionhealthcheckProperty() {
         return new JavaVersionHealthcheckProperty();
     }
 
     @Bean
-    public HealthcheckController monitorController() {
+    public HealthcheckController healthcheckController() {
         return new HealthcheckController();
     }
 
     @Bean
-    public HealthcheckController monitorControllerMyOwnRequestMapping() {
+    public HealthcheckController healthcheckControllerMyOwnRequestMapping() {
         return new HealthcheckControllerMyOwnRequestMapping();
     }
 }

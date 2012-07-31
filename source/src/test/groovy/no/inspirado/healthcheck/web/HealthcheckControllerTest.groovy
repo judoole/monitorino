@@ -24,7 +24,7 @@ import no.inspirado.healthcheck.internal.dto.HealthcheckStacktrace
 class HealthcheckControllerTest {
 
     @Test
-    void should_create_a_monitor_suite() {
+    void should_create_a_healthcheck_suite() {
         given_controller_is_created();
         given_runner_returns_successful_case();
         when_I_run_the_controller();
@@ -70,21 +70,21 @@ class HealthcheckControllerTest {
     }
 
     private void given_controller_is_created() {
-        controller = new HealthcheckController(healthcheckCaseRunners:[monitorCaseRunner]);
+        controller = new HealthcheckController(healthcheckCaseRunners:[healthcheckCaseRunner]);
     }
 
     private void given_runner_returns_successful_case() {
-        given(monitorCaseRunner.run()).willReturn(new HealthcheckCase())
+        given(healthcheckCaseRunner.run()).willReturn(new HealthcheckCase())
     }
 
     private void given_runner_throws_exception() {
-        given(monitorCaseRunner.run()).willThrow(new RuntimeException(EXPECTED_EXCEPTION_MESSAGE))
+        given(healthcheckCaseRunner.run()).willThrow(new RuntimeException(EXPECTED_EXCEPTION_MESSAGE))
     }
 
     private void given_runner_returns_case_that_has_failed() {
-        HealthcheckCase failedMonitorCase = new HealthcheckCase();
-        failedMonitorCase.failure = new HealthcheckStacktrace();
-        given(monitorCaseRunner.run()).willReturn(failedMonitorCase);
+        HealthcheckCase failedHealthcheckCase = new HealthcheckCase();
+        failedHealthcheckCase.failure = new HealthcheckStacktrace();
+        given(healthcheckCaseRunner.run()).willReturn(failedHealthcheckCase);
     }
 
     private void when_I_run_the_controller() {
@@ -129,7 +129,7 @@ class HealthcheckControllerTest {
 
     private static final String EXPECTED_EXCEPTION_MESSAGE = "Exception made by mockito for unit test"
     @Mock
-    HealthcheckCaseRunner monitorCaseRunner;
+    HealthcheckCaseRunner healthcheckCaseRunner;
     HealthcheckController controller;
     HealthcheckSuite suite;
 
