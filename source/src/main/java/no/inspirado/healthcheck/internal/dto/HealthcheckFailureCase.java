@@ -1,9 +1,9 @@
 package no.inspirado.healthcheck.internal.dto;
 
-public class MonitorFailureCase {
+public class HealthcheckFailureCase {
     public final String reason;
 
-    public  MonitorFailureCase(String reason){
+    public HealthcheckFailureCase(String reason){
         this.reason = reason;
     }
 }

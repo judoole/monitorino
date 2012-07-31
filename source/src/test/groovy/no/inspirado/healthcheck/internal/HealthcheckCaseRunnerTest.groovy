@@ -1,7 +1,6 @@
 package no.inspirado.healthcheck.internal;
 
 
-import no.inspirado.healthcheck.internal.dto.MonitorCase
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -11,21 +10,23 @@ import static org.hamcrest.core.IsNull.notNullValue
 import static org.junit.Assert.assertThat
 import static org.junit.internal.matchers.StringContains.containsString
 import static org.mockito.Mockito.when
-import no.inspirado.healthcheck.internal.dto.MonitorFailureCase
+
 import static org.hamcrest.core.IsNull.nullValue
+import no.inspirado.healthcheck.internal.dto.HealthcheckCase
+import no.inspirado.healthcheck.internal.dto.HealthcheckFailureCase
 
 @RunWith(MockitoJUnit44Runner.class)
-public class MonitorCaseRunnerTest {
+public class HealthcheckCaseRunnerTest {
     final String EXPECTED_EXCEPTION_MESSAGE = "Exception made by mockito";
     @Mock
-    MonitorCaseRunner runner;
+    HealthcheckCaseRunner runner;
 
     @Test
     public void run_should_catch_all_exceptions() {
         when(runner.run()).thenCallRealMethod();
         when(runner.assertNoFailure()).thenThrow(new RuntimeException(EXPECTED_EXCEPTION_MESSAGE));
 
-        MonitorCase monitorCase = runner.run();
+        HealthcheckCase monitorCase = runner.run();
         assertThat(monitorCase, notNullValue());
         assertThat(monitorCase.error, notNullValue());
         assertThat(monitorCase.error.message, equalTo(EXPECTED_EXCEPTION_MESSAGE));
@@ -35,9 +36,9 @@ public class MonitorCaseRunnerTest {
     @Test
     public void run_should_create_case_with_failure() {
         when(runner.run()).thenCallRealMethod();
-        when(runner.assertNoFailure()).thenReturn(new MonitorFailureCase("Testcase"));
+        when(runner.assertNoFailure()).thenReturn(new HealthcheckFailureCase("Testcase"));
 
-        MonitorCase monitorCase = runner.run();
+        HealthcheckCase monitorCase = runner.run();
         assertThat(monitorCase, notNullValue());
         assertThat(monitorCase.error, nullValue());
         assertThat(monitorCase.failure.message, equalTo("Testcase"));
@@ -48,7 +49,7 @@ public class MonitorCaseRunnerTest {
         when(runner.run()).thenCallRealMethod();
         when(runner.assertNoFailure()).thenReturn(null);
 
-        MonitorCase monitorCase = runner.run();
+        HealthcheckCase monitorCase = runner.run();
         assertThat(monitorCase, notNullValue());
         assertThat(monitorCase.error, nullValue());
         assertThat(monitorCase.failure, nullValue());

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
 
-    <display-name>Webapp Monitor Example</display-name>
+    <display-name>Webapp Healthcheck Example</display-name>
 
     <servlet>
         <servlet-name>pure-http-servlet</servlet-name>
-        <servlet-class>no.inspirado.healthcheck.WebappMonitorHttpServletExample</servlet-class>
+        <servlet-class>no.inspirado.healthcheck.WebappHealthcheckHttpServletExample</servlet-class>
     </servlet>
 
     <servlet>
@@ -19,7 +19,7 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>no.inspirado.healthcheck.MonitorApplicationContext</param-value>
+            <param-value>no.inspirado.healthcheck.HealthcheckApplicationContext</param-value>
         </init-param>
     </servlet>
 

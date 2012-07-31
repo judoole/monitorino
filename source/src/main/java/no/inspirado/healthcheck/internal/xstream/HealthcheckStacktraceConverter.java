@@ -5,18 +5,18 @@ import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-import no.inspirado.healthcheck.internal.dto.MonitorStacktrace;
+import no.inspirado.healthcheck.internal.dto.HealthcheckStacktrace;
 
-public class MonitorStacktraceConverter implements Converter {
+public class HealthcheckStacktraceConverter implements Converter {
 
     public boolean canConvert(Class clazz) {
-        return clazz.equals(MonitorStacktrace.class);
+        return clazz.equals(HealthcheckStacktrace.class);
     }
 
     public void marshal(Object value, HierarchicalStreamWriter writer, MarshallingContext context) {
-        MonitorStacktrace monitorStacktrace = (MonitorStacktrace) value;
-        if (monitorStacktrace.message != null) writer.addAttribute("message", monitorStacktrace.message);
-        if (monitorStacktrace.stacktrace != null) writer.setValue(monitorStacktrace.stacktrace);
+        HealthcheckStacktrace healthcheckStacktrace = (HealthcheckStacktrace) value;
+        if (healthcheckStacktrace.message != null) writer.addAttribute("message", healthcheckStacktrace.message);
+        if (healthcheckStacktrace.stacktrace != null) writer.setValue(healthcheckStacktrace.stacktrace);
     }
 
     public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {

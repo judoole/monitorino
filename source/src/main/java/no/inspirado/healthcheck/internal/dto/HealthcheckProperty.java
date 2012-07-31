@@ -1,14 +1,14 @@
 package no.inspirado.healthcheck.internal.dto;
 
-public class MonitorProperty {
+public class HealthcheckProperty {
     private String name;
     private String value;
 
-    public MonitorProperty() {
+    public HealthcheckProperty() {
 
     }
 
-    public MonitorProperty(String name, String value) {
+    public HealthcheckProperty(String name, String value) {
         this.value = value;
         this.name = name;
     }

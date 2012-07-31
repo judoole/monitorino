@@ -1,8 +1,8 @@
 package no.inspirado.healthcheck.web;
 
-import no.inspirado.healthcheck.internal.dto.MonitorCase;
-import no.inspirado.healthcheck.internal.dto.MonitorProperty;
-import no.inspirado.healthcheck.internal.dto.MonitorSuite;
+import no.inspirado.healthcheck.internal.dto.HealthcheckCase;
+import no.inspirado.healthcheck.internal.dto.HealthcheckProperty;
+import no.inspirado.healthcheck.internal.dto.HealthcheckSuite;
 import org.apache.commons.io.IOUtils;
 
 import java.io.FileNotFoundException;
@@ -16,15 +16,15 @@ import java.util.regex.Pattern;
 /**
  * Okey. So maybe I hate template frameworks also now? Nike. Just Do It. Yourself.
  */
-public class MonitorHtmlView {
+public class HealthcheckHtmlView {
     private static final String TEMPLATE_FOR_MONITOR_CASER = "<tr><td>[name]</td><td class=\"[isSuccess]\"/></tr>\n";
     private static final String TEMPLATE_FOR_MONITOR_PROPERTY = "<tr><td><b>[name]:</b></td><td>[value]</td></tr>\n";
 
-    public String process(MonitorSuite suite) {
+    public String process(HealthcheckSuite suite) {
         Map<String, String> map = new HashMap<String, String>();
         map.put("name", suite.name);
-        map.put("cases", createHtmlForCases(suite.monitorCases));
-        map.put("properties", createHtmlForProperties(suite.monitorProperties));
+        map.put("cases", createHtmlForCases(suite.healthcheckCases));
+        map.put("properties", createHtmlForProperties(suite.healthcheckProperties));
 
         return replaceTokens(template(), map);
     }
@@ -39,14 +39,14 @@ public class MonitorHtmlView {
         }
     }
 
-    private String createHtmlForCases(Collection<MonitorCase> monitorCases) {
+    private String createHtmlForCases(Collection<HealthcheckCase> healthcheckCases) {
         StringBuilder html = new StringBuilder();
-        for (MonitorCase monitorCase : monitorCases) {
+        for (HealthcheckCase healthcheckCase : healthcheckCases) {
             Map<String, Object> replaceMap = new HashMap<String, Object>();
-            replaceMap.put("name", (Object) monitorCase.name);
-            if (monitorCase.hasError()) {
+            replaceMap.put("name", (Object) healthcheckCase.name);
+            if (healthcheckCase.hasError()) {
                 replaceMap.put("isSuccess", "error");
-            } else if(monitorCase.hasFailure()){
+            } else if(healthcheckCase.hasFailure()){
                 replaceMap.put("isSuccess", "warning");
             }
             else {
@@ -59,12 +59,12 @@ public class MonitorHtmlView {
         return html.toString();
     }
 
-    private String createHtmlForProperties(Collection<MonitorProperty> monitorCases) {
+    private String createHtmlForProperties(Collection<HealthcheckProperty> healthcheckCases) {
         StringBuilder html = new StringBuilder();
-        for (MonitorProperty monitorCase : monitorCases) {
+        for (HealthcheckProperty healthcheckCase : healthcheckCases) {
             Map<String, Object> replaceMap = new HashMap<String, Object>();
-            replaceMap.put("name", (Object) monitorCase.getName());
-            replaceMap.put("value", (Object) monitorCase.getValue());
+            replaceMap.put("name", (Object) healthcheckCase.getName());
+            replaceMap.put("value", (Object) healthcheckCase.getValue());
             String aNewRow = replaceTokens(TEMPLATE_FOR_MONITOR_PROPERTY, replaceMap);
             html.append(aNewRow);
         }

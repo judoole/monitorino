@@ -1,9 +1,9 @@
 package no.inspirado.healthcheck.web;
 
-import no.inspirado.healthcheck.internal.MonitorCaseRunner;
-import no.inspirado.healthcheck.internal.MonitorSuiteAssembler;
-import no.inspirado.healthcheck.internal.dto.MonitorProperty;
-import no.inspirado.healthcheck.internal.dto.MonitorSuite;
+import no.inspirado.healthcheck.internal.HealthcheckCaseRunner;
+import no.inspirado.healthcheck.internal.HealthcheckSuiteAssembler;
+import no.inspirado.healthcheck.internal.dto.HealthcheckProperty;
+import no.inspirado.healthcheck.internal.dto.HealthcheckSuite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,20 +14,20 @@ import java.util.Set;
 
 @Controller
 @RequestMapping("/monitor")
-public class MonitorController {
-    Set<MonitorCaseRunner> monitorCaseRunners;
-    Set<MonitorProperty> monitorProperties;
+public class HealthcheckController {
+    Set<HealthcheckCaseRunner> healthcheckCaseRunners;
+    Set<HealthcheckProperty> healthcheckProperties;
 
     String name = "AppserverMonitor";
 
     @Autowired
-    public void setMonitorCaseRunners(Set<MonitorCaseRunner> monitorCaseRunners) {
-        this.monitorCaseRunners = monitorCaseRunners;
+    public void setHealthcheckCaseRunners(Set<HealthcheckCaseRunner> healthcheckCaseRunners) {
+        this.healthcheckCaseRunners = healthcheckCaseRunners;
     }
 
     @Autowired
-    public void setMonitorProperties(Set<MonitorProperty> monitorProperties) {
-        this.monitorProperties = monitorProperties;
+    public void setHealthcheckProperties(Set<HealthcheckProperty> healthcheckProperties) {
+        this.healthcheckProperties = healthcheckProperties;
     }
 
     @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET)
@@ -52,8 +52,8 @@ public class MonitorController {
         this.name = name;
     }
 
-    MonitorSuite runSuite() {
-        return new MonitorSuiteAssembler(name, monitorCaseRunners, monitorProperties).run();
+    HealthcheckSuite runSuite() {
+        return new HealthcheckSuiteAssembler(name, healthcheckCaseRunners, healthcheckProperties).run();
     }
 
 }

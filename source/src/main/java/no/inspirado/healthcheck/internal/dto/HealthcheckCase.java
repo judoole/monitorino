@@ -1,10 +1,10 @@
 package no.inspirado.healthcheck.internal.dto;
 
-public class MonitorCase {
+public class HealthcheckCase {
     public String time;
     public String name;
-    public MonitorStacktrace error;
-    public MonitorStacktrace failure;
+    public HealthcheckStacktrace error;
+    public HealthcheckStacktrace failure;
 
     public boolean hasError() {
         return error != null;
