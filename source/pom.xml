@@ -89,6 +89,13 @@
                 </plugins>
             </build>
         </profile>
+        <!-- Stupid release-plugin needs to have at least one profile activeByDefault. Ref http://jira.codehaus.org/browse/MRELEASE-459 -->
+        <profile>
+            <id>dummyprofile</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
     </profiles>
 
     <build>
