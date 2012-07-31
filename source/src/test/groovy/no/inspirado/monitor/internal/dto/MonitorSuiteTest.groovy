@@ -26,7 +26,9 @@ class MonitorSuiteTest {
         given_monitorsuite_has_case(new MonitorCase(name: "case 1", failure: new MonitorStacktrace(message: "Things went far from good")));
         given_monitorsuite_has_case(new MonitorCase(name: "case 2", error: new MonitorStacktrace(message: "Things did not go so well no either", stacktrace: "Bla, bla, BLAM!")));
         given_monitorsuite_has_case(new MonitorCase(name: "case 3. The good case"));
+        given_monitorsuite_has_property(new MonitorProperty(name:"Simple property", value:"Simple value"))
         then_the_html_should_contain('<title>My monitorsuite</title>');
+        then_the_html_should_contain('<tr><td><b>Simple property:</b></td><td>Simple value</td></tr>');
         then_the_html_should_contain('<tr><td>case 1</td><td class="warning"/></tr>');
         then_the_html_should_contain('<tr><td>case 2</td><td class="error"/></tr>');
         then_the_html_should_contain('<tr><td>case 3. The good case</td><td class="success"/></tr>');

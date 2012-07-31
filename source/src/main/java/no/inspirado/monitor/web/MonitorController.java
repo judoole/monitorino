@@ -32,7 +32,7 @@ public class MonitorController {
         this.monitorProperties = monitorProperties;
     }
 
-    @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET, produces = "text/plain")
+    @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET)
     @ResponseBody
     public String jUnitRapport() {
         return runSuite().asXml();
@@ -44,7 +44,7 @@ public class MonitorController {
         return runSuite().asHtml();
     }
 
-    @RequestMapping(value = {"/xml", "/junit", "/", "html"}, method = RequestMethod.HEAD)
+    @RequestMapping(value = {"/xml", "/junit", "/", "/html"}, method = RequestMethod.HEAD)
     @ResponseBody
     public String iAmAlive() {
         return "Hello world. I am alive.";

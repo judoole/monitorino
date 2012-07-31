@@ -1,6 +1,7 @@
 package no.inspirado.monitor.web;
 
 import no.inspirado.monitor.internal.dto.MonitorCase;
+import no.inspirado.monitor.internal.dto.MonitorProperty;
 import no.inspirado.monitor.internal.dto.MonitorSuite;
 import org.apache.commons.io.IOUtils;
 
@@ -17,11 +18,13 @@ import java.util.regex.Pattern;
  */
 public class MonitorHtmlView {
     private static final String TEMPLATE_FOR_MONITOR_CASER = "<tr><td>[name]</td><td class=\"[isSuccess]\"/></tr>\n";
+    private static final String TEMPLATE_FOR_MONITOR_PROPERTY = "<tr><td><b>[name]:</b></td><td>[value]</td></tr>\n";
 
     public String process(MonitorSuite suite) {
         Map<String, String> map = new HashMap<String, String>();
         map.put("name", suite.name);
         map.put("cases", createHtmlForCases(suite.monitorCases));
+        map.put("properties", createHtmlForProperties(suite.monitorProperties));
 
         return replaceTokens(template(), map);
     }
@@ -50,6 +53,19 @@ public class MonitorHtmlView {
                 replaceMap.put("isSuccess", "success");
             }
             String aNewRow = replaceTokens(TEMPLATE_FOR_MONITOR_CASER, replaceMap);
+            html.append(aNewRow);
+        }
+
+        return html.toString();
+    }
+
+    private String createHtmlForProperties(Collection<MonitorProperty> monitorCases) {
+        StringBuilder html = new StringBuilder();
+        for (MonitorProperty monitorCase : monitorCases) {
+            Map<String, Object> replaceMap = new HashMap<String, Object>();
+            replaceMap.put("name", (Object) monitorCase.getName());
+            replaceMap.put("value", (Object) monitorCase.getValue());
+            String aNewRow = replaceTokens(TEMPLATE_FOR_MONITOR_PROPERTY, replaceMap);
             html.append(aNewRow);
         }
 
