@@ -5,7 +5,7 @@
 
     <servlet>
         <servlet-name>pure-http-servlet</servlet-name>
-        <servlet-class>no.inspirado.monitor.WebappMonitorHttpServletExample</servlet-class>
+        <servlet-class>no.inspirado.healthcheck.WebappMonitorHttpServletExample</servlet-class>
     </servlet>
 
     <servlet>
@@ -19,7 +19,7 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>no.inspirado.monitor.MonitorApplicationContext</param-value>
+            <param-value>no.inspirado.healthcheck.MonitorApplicationContext</param-value>
         </init-param>
     </servlet>
 

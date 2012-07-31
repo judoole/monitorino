@@ -6,7 +6,7 @@
     <groupId>no.inspirado</groupId>
     <artifactId>webapp-healthcheck</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>Webapp Monitor</name>
+    <name>Webapp Healthcheck</name>
     <url>http://judoole.github.com/${project.artifactId}/</url>
     <description>
         This projects goal is to deliver helper classes for easily monitoring your Java Webapp.
