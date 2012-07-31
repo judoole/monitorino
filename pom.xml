@@ -13,6 +13,12 @@
         <module>example</module>
     </modules>
 
+    <scm>
+        <url>https://github.com/judoole/webapp-healthcheck</url>
+        <connection>scm:git:git://github.com/judoole/webapp-healthcheck.git</connection>
+        <developerConnection>scm:git:git@github.com:judoole/webapp-healthcheck.git</developerConnection>
+    </scm>
+
     <build>
         <plugins>
             <!-- We don't have no distribution repo yet, so we only do install. Jars are loaded up to github as of yet
