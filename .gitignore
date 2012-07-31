@@ -12,3 +12,6 @@ target/
 
 #Mac things
 .DS_Store
+
+#Maven
+release.properties
