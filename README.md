@@ -32,6 +32,18 @@ That's it. You're good to go.
 Test example by git cloning/forking and run [start-example-webapp.sh](https://github.com/judoole/webapp-healthcheck/blob/master/start-example-webapp.sh).
 Results for html and junit should be accessable from [http://localhost:8090/spring/healthcheck](http://localhost:8090/spring/healthcheck)
 
+## HttpServlet
+TODO
+
+## Jenkins
+TODO
+
+## Deploy Pipeline
+TODO
+
+## Heroku
+TODO
+
 ## What else?
 
 Go see the [Project Documentation](http://judoole.github.com/webapp-healthcheck/site/)
