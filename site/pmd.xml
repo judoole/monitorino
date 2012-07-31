@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-07-31T16:25:02.030">
+<file name="/Users/judoole/dev/github/webapp-healthcheck/source/src/main/java/no/inspirado/monitor/internal/MonitorCaseRunner.java">
+<violation beginline="15" endline="15" begincolumn="27" endcolumn="30" rule="AvoidLiteralsInIfCondition" ruleset="Controversial Rules" package="no.inspirado.monitor.internal" class="MonitorCaseRunner" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#AvoidLiteralsInIfCondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+</file>
+<file name="/Users/judoole/dev/github/webapp-healthcheck/source/src/main/java/no/inspirado/monitor/internal/StopWatch.java">
+<violation beginline="4" endline="4" begincolumn="5" endcolumn="19" rule="DefaultPackage" ruleset="Controversial Rules" package="no.inspirado.monitor.internal" class="StopWatch" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="5" endline="5" begincolumn="5" endcolumn="18" rule="DefaultPackage" ruleset="Controversial Rules" package="no.inspirado.monitor.internal" class="StopWatch" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="6" endline="6" begincolumn="5" endcolumn="28" rule="DefaultPackage" ruleset="Controversial Rules" package="no.inspirado.monitor.internal" class="StopWatch" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+</file>
+<file name="/Users/judoole/dev/github/webapp-healthcheck/source/src/main/java/no/inspirado/monitor/internal/dto/MonitorStacktrace.java">
+<violation beginline="3" endline="6" begincolumn="8" endcolumn="1" rule="AtLeastOneConstructor" ruleset="Controversial Rules" package="no.inspirado.monitor.internal.dto" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#AtLeastOneConstructor" priority="3">
+Each class should declare at least one constructor
+</violation>
+</file>
+<file name="/Users/judoole/dev/github/webapp-healthcheck/source/src/main/java/no/inspirado/monitor/internal/xstream/MonitorStacktraceConverter.java">
+<violation beginline="18" endline="18" begincolumn="42" endcolumn="45" rule="AvoidLiteralsInIfCondition" ruleset="Controversial Rules" package="no.inspirado.monitor.internal.xstream" class="MonitorStacktraceConverter" method="marshal" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#AvoidLiteralsInIfCondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="19" endline="19" begincolumn="45" endcolumn="48" rule="AvoidLiteralsInIfCondition" ruleset="Controversial Rules" package="no.inspirado.monitor.internal.xstream" class="MonitorStacktraceConverter" method="marshal" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#AvoidLiteralsInIfCondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+</file>
+</pmd>

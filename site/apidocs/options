@@ -1,0 +1,24 @@
+-classpath
+'/Users/judoole/dev/github/webapp-healthcheck/source/target/classes:/Users/judoole/.m2/repository/com/thoughtworks/xstream/xstream/1.4.1/xstream-1.4.1.jar:/Users/judoole/.m2/repository/org/apache/commons/commons-lang3/3.1/commons-lang3-3.1.jar:/Users/judoole/.m2/repository/org/springframework/spring-beans/3.1.2.RELEASE/spring-beans-3.1.2.RELEASE.jar:/Users/judoole/.m2/repository/cglib/cglib/2.2.2/cglib-2.2.2.jar:/Users/judoole/.m2/repository/org/springframework/spring-web/3.1.2.RELEASE/spring-web-3.1.2.RELEASE.jar:/Users/judoole/.m2/repository/org/springframework/spring-asm/3.1.2.RELEASE/spring-asm-3.1.2.RELEASE.jar:/Users/judoole/.m2/repository/org/springframework/spring-core/3.1.2.RELEASE/spring-core-3.1.2.RELEASE.jar:/Users/judoole/.m2/repository/org/springframework/spring-webmvc/3.1.2.RELEASE/spring-webmvc-3.1.2.RELEASE.jar:/Users/judoole/.m2/repository/org/springframework/spring-context-support/3.1.2.RELEASE/spring-context-support-3.1.2.RELEASE.jar:/Users/judoole/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/Users/judoole/.m2/repository/org/springframework/spring-aop/3.1.2.RELEASE/spring-aop-3.1.2.RELEASE.jar:/Users/judoole/.m2/repository/org/apache/commons/commons-io/1.3.2/commons-io-1.3.2.jar:/Users/judoole/.m2/repository/org/springframework/spring-expression/3.1.2.RELEASE/spring-expression-3.1.2.RELEASE.jar:/Users/judoole/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar:/Users/judoole/.m2/repository/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar:/Users/judoole/.m2/repository/asm/asm/3.3.1/asm-3.3.1.jar:/Users/judoole/.m2/repository/org/springframework/spring-context/3.1.2.RELEASE/spring-context-3.1.2.RELEASE.jar:/Users/judoole/.m2/repository/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/Users/judoole/dev/github/webapp-healthcheck/source/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2012. All Rights Reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/judoole/dev/github/webapp-healthcheck/source/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Webapp Monitor 0.1-SNAPSHOT API'
+-link
+'http://java.sun.com/j2se/1.5.0/docs/api'
+-use
+-version
+-windowtitle
+'Webapp Monitor 0.1-SNAPSHOT API'
