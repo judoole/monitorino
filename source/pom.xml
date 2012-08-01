@@ -6,6 +6,7 @@
     <groupId>com.github.judoole</groupId>
     <artifactId>webapp-healthcheck</artifactId>
     <version>0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>Webapp Healthcheck</name>
     <url>http://judoole.github.com/webapp-healthcheck/</url>
     <description>
@@ -95,8 +96,6 @@
                         <version>0.7</version>
                         <configuration>
                             <message>Creating site for ${project.version}</message>
-                            <path>site</path>
-                            <merge>true</merge>
                         </configuration>
                         <executions>
                             <execution>
