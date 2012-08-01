@@ -81,7 +81,7 @@
 
     <profiles>
         <profile>
-            <id>release</id>
+            <id>release-github-site</id>
             <activation>
                 <property>
                     <name>performRelease</name>
@@ -106,6 +106,19 @@
                             </execution>
                         </executions>
                     </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>release-sign-artifact</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
