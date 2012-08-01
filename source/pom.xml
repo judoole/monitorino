@@ -3,11 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>no.inspirado</groupId>
+    <groupId>com.github.judoole</groupId>
     <artifactId>webapp-healthcheck</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>Webapp Healthcheck</name>
-    <url>http://judoole.github.com/${project.artifactId}/</url>
+    <url>http://judoole.github.com/webapp-healthcheck/</url>
     <description>
         This projects goal is to deliver helper classes for easily monitoring your Java Webapp.
     </description>
@@ -19,7 +19,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <github.global.server>github</github.global.server>
-        <github.repo>judoole</github.repo>
         <surefire-plugin.version>2.6</surefire-plugin.version>
         <clean-plugin.version>2.4.1</clean-plugin.version>
         <gpg-plugin>1.1</gpg-plugin>
@@ -36,22 +35,21 @@
     </properties>
 
     <issueManagement>
-        <url>https://github.com/judoole/${project.artifactId}/issues</url>
+        <url>https://github.com/judoole/webapp-healthcheck/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
 
     <licenses>
         <license>
-            <name>MIT License</name>
-            <url>http://www.opensource.org/licenses/mit-license.php</url>
-            <distribution>repo</distribution>
+            <name>BSD License</name>
+            <url>http://www.opensource.org/licenses/bsd-license.php</url>
         </license>
     </licenses>
 
     <scm>
-        <url>https://github.com/${github.repo}/${project.artifactId}</url>
-        <connection>scm:git:git://github.com/${github.repo}/${project.artifactId}.git</connection>
-        <developerConnection>scm:git:git@github.com:${github.repo}/${project.artifactId}.git</developerConnection>
+        <url>https://github.com/judoole/webapp-healthcheck</url>
+        <connection>scm:git:git://github.com/judoole/webapp-healthcheck.git</connection>
+        <developerConnection>scm:git:git@github.com:judoole/webapp-healthcheck.git</developerConnection>
     </scm>
 
     <developers>
