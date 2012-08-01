@@ -13,12 +13,12 @@ Anyways, this is a light jar-file which you can plug into any webapp project you
 If you can read code check out the [example](https://github.com/judoole/webapp-healthcheck/tree/master/example) project.
 
 ## Spring
-For Spring it's as easy as to include a bean of class `no.inspirado.healthcheck.web.HealthcheckController`.
+For Spring it's as easy as to include a bean of class `com.github.judoole.healthcheck.web.HealthcheckController`.
 The junit report will now be accessible from `.../your-spring-dispatcher-mapping/healtcheck/xml` and as html on `.../your-spring-dispatcher-mapping/healtcheck/html`
 
-But to make it show something you need to add some healthchecks. Create beans that extends `no.inspirado.healthcheck.internal.HealthcheckCaseRunner` like  [HealthcheckThatIsSuccess](https://github.com/judoole/webapp-healthcheck/blob/master/example/src/main/java/no/inspirado/healthcheck/cases/HealthcheckThatIsSuccess.java) and be sure to **return null if success**
+But to make it show something you need to add some healthchecks. Create beans that extends `com.github.judoole.healthcheck.internal.HealthcheckCaseRunner` like  [HealthcheckThatIsSuccess](https://github.com/judoole/webapp-healthcheck/blob/master/example/src/main/java/no/inspirado/healthcheck/cases/HealthcheckThatIsSuccess.java) and be sure to **return null if success**
 
-If you'd like to see some properties the application is set up with also, just throw in some beans of `no.inspirado.healthcheck.internal.dto.HealthcheckProperty` like 
+If you'd like to see some properties the application is set up with also, just throw in some beans of `com.github.judoole.healthcheck.internal.dto.HealthcheckProperty` like
 
 ````java
 @Bean
