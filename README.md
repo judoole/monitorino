@@ -1,7 +1,7 @@
 Webapp Healthcheck
 ==================
 
-A easy pluggable Java monitor/healthcheck for your webapp.
+An easy pluggable Java monitor/healthcheck for your webapp.
 
 Ever been in the situation where you would like to run **diagnostics** on your webapp? Or see some of the **properties** the application uses? Maybe even run the diagnostics **scheduled** and receive **alerts** when something is not how it is supposed to be?
 
