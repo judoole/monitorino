@@ -7,7 +7,8 @@
     <artifactId>webapp-healthcheck-project</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Webapp Healthcheck Parent. Convinient file for development. Works nicely with example.</name>
+    <name>Webapp Healthcheck Parent.</name>
+    <description>Convinient file for development. Works nicely with example.</description>
 
     <modules>
         <module>source</module>

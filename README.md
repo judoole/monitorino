@@ -10,7 +10,7 @@ Inspired by [Knut Haugen](https://github.com/knuthaug)s [presentation at Roots 2
 Anyways, this is a light jar-file which you can plug into any webapp project you would like.
 
 # Usage
-If you can read code check out the [example](https://github.com/judoole/webapp-healthcheck/tree/master/example) project.
+If you can read code check out the [example](https://github.com/judoole/webapp-healthcheck/tree/master/example) project. Simplest way to get the example started is running [start-example-webapp.sh](https://github.com/judoole/webapp-healthcheck/blob/master/start-example-webapp.sh) and checking the result at [http://localhost:8090/spring/healthcheck/](http://localhost:8090/spring/healthcheck/) or [http://localhost:8090/spring/healthcheck/junit](http://localhost:8090/spring/healthcheck/junit)
 
 ## Spring
 For Spring it's as easy as to include a bean of class `com.github.judoole.healthcheck.web.HealthcheckController`.
