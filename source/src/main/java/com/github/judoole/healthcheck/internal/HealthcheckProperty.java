@@ -1,4 +1,4 @@
-package com.github.judoole.healthcheck.internal.dto;
+package com.github.judoole.healthcheck.internal;
 
 public class HealthcheckProperty {
     private String name;

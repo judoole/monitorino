@@ -1,6 +1,6 @@
-package com.github.judoole.healthcheck.properties;
+package com.github.judoole.healthcheck.internal;
 
-import com.github.judoole.healthcheck.internal.dto.HealthcheckProperty;
+import com.github.judoole.healthcheck.internal.HealthcheckProperty;
 
 public class JavaVersionHealthcheckProperty extends HealthcheckProperty {
     public JavaVersionHealthcheckProperty() {

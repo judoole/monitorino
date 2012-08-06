@@ -4,7 +4,7 @@ import com.github.judoole.healthcheck.internal.HealthcheckCaseRunner
 import org.springframework.context.annotation.Bean
 
 import org.springframework.context.annotation.Configuration
-import com.github.judoole.healthcheck.internal.dto.HealthcheckProperty
+import com.github.judoole.healthcheck.internal.HealthcheckProperty
 import com.github.judoole.healthcheck.internal.dto.HealthcheckFailureCase
 
 @Configuration

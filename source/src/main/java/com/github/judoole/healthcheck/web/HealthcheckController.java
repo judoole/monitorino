@@ -2,7 +2,7 @@ package com.github.judoole.healthcheck.web;
 
 import com.github.judoole.healthcheck.internal.HealthcheckCaseRunner;
 import com.github.judoole.healthcheck.internal.HealthcheckSuiteAssembler;
-import com.github.judoole.healthcheck.internal.dto.HealthcheckProperty;
+import com.github.judoole.healthcheck.internal.HealthcheckProperty;
 import com.github.judoole.healthcheck.internal.dto.HealthcheckSuite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +15,8 @@ import java.util.Set;
 @Controller
 @RequestMapping("/healthcheck")
 public class HealthcheckController {
+    private HealthcheckHtmlView htmlView = new HealthcheckHtmlView();
+    private HealthcheckXmlView xmlView = new HealthcheckXmlView();
     Set<HealthcheckCaseRunner> healthcheckCaseRunners;
     Set<HealthcheckProperty> healthcheckProperties;
 
@@ -33,13 +35,13 @@ public class HealthcheckController {
     @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET)
     @ResponseBody
     public String jUnitRapport() {
-        return runSuite().asXml();
+        return xmlView.process(runSuite());
     }
 
     @RequestMapping(value = {"/", "/html"}, method = RequestMethod.GET)
     @ResponseBody
     public String htmlRapport() {
-        return runSuite().asHtml();
+        return htmlView.process(runSuite());
     }
 
     @RequestMapping(value = {"/xml", "/junit", "/", "/html"}, method = RequestMethod.HEAD)

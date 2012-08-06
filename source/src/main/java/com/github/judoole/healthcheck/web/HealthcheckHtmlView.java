@@ -1,7 +1,7 @@
 package com.github.judoole.healthcheck.web;
 
+import com.github.judoole.healthcheck.internal.HealthcheckProperty;
 import com.github.judoole.healthcheck.internal.dto.HealthcheckCase;
-import com.github.judoole.healthcheck.internal.dto.HealthcheckProperty;
 import com.github.judoole.healthcheck.internal.dto.HealthcheckSuite;
 import org.apache.commons.io.IOUtils;
 

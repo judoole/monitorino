@@ -5,6 +5,8 @@ import com.github.judoole.healthcheck.internal.HealthcheckSuiteAssembler;
 import com.github.judoole.healthcheck.cases.HealthcheckThatFailes;
 import com.github.judoole.healthcheck.cases.HealthcheckThatIsSuccess;
 import com.github.judoole.healthcheck.cases.HealthcheckThatThrowsRuntimeException;
+import com.github.judoole.healthcheck.internal.dto.HealthcheckSuite;
+import com.github.judoole.healthcheck.web.HealthcheckHtmlView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +26,7 @@ public class WebappHealthcheckHttpServletExample extends HttpServlet {
         list.add(new HealthcheckThatThrowsRuntimeException());
         list.add(new HealthcheckThatFailes());
         list.add(new HealthcheckThatIsSuccess());
-        out.println(new HealthcheckSuiteAssembler("My first stab at it", list, null).run().asXml());
+        HealthcheckSuite suite = new HealthcheckSuiteAssembler("My first stab at it", list, null).run();
+        out.println(new HealthcheckHtmlView().process(suite));
     }
 }

@@ -1,4 +1,4 @@
-package com.github.judoole.healthcheck.internal.xstream;
+package com.github.judoole.healthcheck.web.xstream;
 
 import com.github.judoole.healthcheck.internal.dto.HealthcheckStacktrace;
 import com.thoughtworks.xstream.converters.Converter;
