@@ -2,7 +2,7 @@
 
 if [ -z "$1" ]
 then
-    echo "usage: healthcheck.sh <url>"
+    echo "usage: smoketest.sh <url>"
     exit 1
 fi
 
@@ -20,4 +20,4 @@ then
 fi
 
 #put the xml version of the page into a file
-curl --silent $1 > reports/healthcheck.xml
+curl --silent $1 > reports/smoke.xml
