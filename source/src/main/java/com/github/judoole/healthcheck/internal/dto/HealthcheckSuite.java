@@ -1,13 +1,8 @@
 package com.github.judoole.healthcheck.internal.dto;
 
-import com.github.judoole.healthcheck.internal.HealthcheckProperty;
-import com.github.judoole.healthcheck.web.xstream.HealthcheckStacktraceConverter;
-import com.github.judoole.healthcheck.web.HealthcheckHtmlView;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.CompactWriter;
-
-import java.io.StringWriter;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Properties;
+import java.util.Set;
 
 public class HealthcheckSuite {
     public String time;
