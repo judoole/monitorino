@@ -54,4 +54,14 @@ public class HealthcheckCaseRunnerTest {
         assertThat(healthcheckCase.error, nullValue());
         assertThat(healthcheckCase.failure, nullValue());
     }
+
+    @Test
+    public void run_should_be_able_to_have_empty_cases_and_empty_properties() {
+        when(runner.run()).thenCallRealMethod();
+
+        HealthcheckCase healthcheckCase = runner.run();
+        assertThat(healthcheckCase, notNullValue());
+        assertThat(healthcheckCase.error, nullValue());
+        assertThat(healthcheckCase.failure, nullValue());
+    }
 }

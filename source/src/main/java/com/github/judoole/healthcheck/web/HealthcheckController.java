@@ -2,7 +2,6 @@ package com.github.judoole.healthcheck.web;
 
 import com.github.judoole.healthcheck.internal.HealthcheckCaseRunner;
 import com.github.judoole.healthcheck.internal.HealthcheckSuiteAssembler;
-import com.github.judoole.healthcheck.internal.HealthcheckProperty;
 import com.github.judoole.healthcheck.internal.dto.HealthcheckSuite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Properties;
 import java.util.Set;
 
 @Controller
@@ -18,17 +18,16 @@ public class HealthcheckController {
     private HealthcheckHtmlView htmlView = new HealthcheckHtmlView();
     private HealthcheckXmlView xmlView = new HealthcheckXmlView();
     Set<HealthcheckCaseRunner> healthcheckCaseRunners;
-    Set<HealthcheckProperty> healthcheckProperties;
+    Properties healthcheckProperties;
 
     String name = "AppserverHealthcheck";
 
-    @Autowired
+    @Autowired(required = false)
     public void setHealthcheckCaseRunners(Set<HealthcheckCaseRunner> healthcheckCaseRunners) {
         this.healthcheckCaseRunners = healthcheckCaseRunners;
     }
 
-    @Autowired
-    public void setHealthcheckProperties(Set<HealthcheckProperty> healthcheckProperties) {
+    public void setHealthcheckProperties(Properties healthcheckProperties) {
         this.healthcheckProperties = healthcheckProperties;
     }
 

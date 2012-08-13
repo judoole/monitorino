@@ -6,14 +6,15 @@ import com.github.judoole.healthcheck.internal.dto.HealthcheckSuite;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import java.util.Collection;
+import java.util.Properties;
 import java.util.Set;
 
 public class HealthcheckSuiteAssembler {
     private final Collection<HealthcheckCaseRunner> healthcheckCaseRunners;
     private final String suiteName;
-    private Set<HealthcheckProperty> healthcheckProperties;
+    private Properties healthcheckProperties;
 
-    public HealthcheckSuiteAssembler(String healthcheckName, Collection<HealthcheckCaseRunner> healthcheckCaseRunners, Set<HealthcheckProperty> healthcheckProperties) {
+    public HealthcheckSuiteAssembler(String healthcheckName, Collection<HealthcheckCaseRunner> healthcheckCaseRunners, Properties healthcheckProperties) {
         this.healthcheckCaseRunners = healthcheckCaseRunners;
         this.suiteName = healthcheckName;
         this.healthcheckProperties = healthcheckProperties;

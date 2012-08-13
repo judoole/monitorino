@@ -1,6 +1,5 @@
 package com.github.judoole.healthcheck.web;
 
-import com.github.judoole.healthcheck.internal.HealthcheckProperty;
 import com.github.judoole.healthcheck.internal.dto.HealthcheckCase;
 import com.github.judoole.healthcheck.internal.dto.HealthcheckSuite;
 import com.github.judoole.healthcheck.web.xstream.HealthcheckStacktraceConverter;
@@ -10,7 +9,7 @@ import com.thoughtworks.xstream.io.xml.CompactWriter;
 import java.io.StringWriter;
 
 public class HealthcheckXmlView {
-    public String process(HealthcheckSuite suite){
+    public String process(HealthcheckSuite suite) {
         return process(suite, true);
     }
 
@@ -19,7 +18,6 @@ public class HealthcheckXmlView {
 
         xStream.alias("testsuite", HealthcheckSuite.class);
         xStream.alias("testcase", HealthcheckCase.class);
-        xStream.aliasType("property", HealthcheckProperty.class);
 
         xStream.useAttributeFor(HealthcheckSuite.class, "name");
         xStream.useAttributeFor(HealthcheckSuite.class, "tests");
@@ -29,9 +27,6 @@ public class HealthcheckXmlView {
         xStream.useAttributeFor(HealthcheckSuite.class, "failures");
         xStream.addImplicitCollection(HealthcheckSuite.class, "healthcheckCases");
         xStream.aliasField("properties", HealthcheckSuite.class, "healthcheckProperties");
-
-        xStream.useAttributeFor(HealthcheckProperty.class, "name");
-        xStream.useAttributeFor(HealthcheckProperty.class, "value");
 
         xStream.useAttributeFor(HealthcheckCase.class, "name");
         xStream.useAttributeFor(HealthcheckCase.class, "time");

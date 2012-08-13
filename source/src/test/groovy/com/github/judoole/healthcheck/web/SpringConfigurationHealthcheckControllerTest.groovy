@@ -1,11 +1,9 @@
 package com.github.judoole.healthcheck.web
 
 import com.github.judoole.healthcheck.internal.HealthcheckCaseRunner
-import org.springframework.context.annotation.Bean
-
-import org.springframework.context.annotation.Configuration
-import com.github.judoole.healthcheck.internal.HealthcheckProperty
 import com.github.judoole.healthcheck.internal.dto.HealthcheckFailureCase
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 
 @Configuration
 public class SpringConfigurationHealthcheckControllerTest {
@@ -24,11 +22,6 @@ public class SpringConfigurationHealthcheckControllerTest {
             }
 
         };
-    }
-
-    @Bean
-    public HealthcheckProperty myPropertyToBeInjected(){
-        return new HealthcheckProperty("My Property Name", "My property value")
     }
 
     @Bean

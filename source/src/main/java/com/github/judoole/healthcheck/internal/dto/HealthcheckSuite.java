@@ -17,7 +17,7 @@ public class HealthcheckSuite {
     public int errors;
     public int failures;
     public Set<HealthcheckCase> healthcheckCases;
-    public Set<HealthcheckProperty> healthcheckProperties;
+    public Properties healthcheckProperties;
 
     public void addCase(HealthcheckCase healthcheckCase) {
         if (healthcheckCases == null) healthcheckCases = new HashSet<HealthcheckCase>();

@@ -7,9 +7,7 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,10 +44,9 @@ public class HealthcheckHtmlView {
             replaceMap.put("name", (Object) healthcheckCase.name);
             if (healthcheckCase.hasError()) {
                 replaceMap.put("isSuccess", "error");
-            } else if(healthcheckCase.hasFailure()){
+            } else if (healthcheckCase.hasFailure()) {
                 replaceMap.put("isSuccess", "warning");
-            }
-            else {
+            } else {
                 replaceMap.put("isSuccess", "success");
             }
             String aNewRow = replaceTokens(TEMPLATE_FOR_HEALTHCHECK_CASER, replaceMap);
@@ -59,12 +56,14 @@ public class HealthcheckHtmlView {
         return html.toString();
     }
 
-    private String createHtmlForProperties(Collection<HealthcheckProperty> healthcheckCases) {
+    private String createHtmlForProperties(Properties healthcheckCases) {
         StringBuilder html = new StringBuilder();
-        for (HealthcheckProperty healthcheckCase : healthcheckCases) {
+        Enumeration<?> keys = healthcheckCases.propertyNames();
+        while (keys.hasMoreElements()) {
             Map<String, Object> replaceMap = new HashMap<String, Object>();
-            replaceMap.put("name", (Object) healthcheckCase.getName());
-            replaceMap.put("value", (Object) healthcheckCase.getValue());
+            Object name = keys.nextElement();
+            replaceMap.put("name", name);
+            replaceMap.put("value", healthcheckCases.getProperty((String) name));
             String aNewRow = replaceTokens(TEMPLATE_FOR_HEALTHCHECK_PROPERTY, replaceMap);
             html.append(aNewRow);
         }

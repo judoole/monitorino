@@ -61,14 +61,6 @@ class HealthcheckControllerTest {
         assertThat(controller.healthcheckCaseRunners.size(), not(equalTo(0)));
     }
 
-    @Test
-    void should_autowire_all_properties_to_controller() {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigurationHealthcheckControllerTest.class);
-        HealthcheckController controller = context.getBean(HealthcheckController.class);
-        assertThat(controller, notNullValue());
-        assertThat(controller.healthcheckProperties.size(), not(equalTo(0)));
-    }
-
     private void given_controller_is_created() {
         controller = new HealthcheckController(healthcheckCaseRunners:[healthcheckCaseRunner]);
     }
