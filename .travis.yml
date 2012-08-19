@@ -1,0 +1,6 @@
+# whitelist
+branches:
+  only:
+    - master
+
+script: sh -c 'cd source' && mvn clean test
