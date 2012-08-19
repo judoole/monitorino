@@ -3,4 +3,4 @@ branches:
   only:
     - master
 
-script: sh -c 'cd source' && mvn clean test
+script: cd source && mvn clean test
