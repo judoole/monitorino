@@ -1,7 +1,4 @@
-![CloudBees Logo](http://www.cloudbees.com/sites/default/files/Button-Built-on-CB-1.png)
-
 [![Build Status](https://secure.travis-ci.org/judoole/webapp-healthcheck.png)](http://travis-ci.org/judoole/webapp-healthcheck) 
-
 
 Webapp Healthcheck
 ==================
