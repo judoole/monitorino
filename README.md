@@ -15,7 +15,7 @@ Inspired by [Knut Haugen](https://github.com/knuthaug)s [presentation at Roots 2
 Anyways, this is a light jar-file which you can plug into any webapp project you would like.
 
 # Usage
-If you can read code check out the [example](https://github.com/judoole/webapp-healthcheck/tree/master/example) project. Simplest way to get the example started is running [start-example-webapp.sh](https://github.com/judoole/webapp-healthcheck/blob/master/start-example-webapp.sh) and checking the result at [http://localhost:8090/spring/healthcheck/](http://localhost:8090/spring/healthcheck/) or [http://localhost:8090/spring/healthcheck/junit](http://localhost:8090/spring/healthcheck/junit)
+If you like reading code check out the [example](https://github.com/judoole/webapp-healthcheck/tree/master/example) project. Simplest way to get the example started is running [start-example-webapp.sh](https://github.com/judoole/webapp-healthcheck/blob/master/start-example-webapp.sh) and checking the result at [http://localhost:8090/spring/healthcheck/](http://localhost:8090/spring/healthcheck/) or [http://localhost:8090/spring/healthcheck/junit](http://localhost:8090/spring/healthcheck/junit)
 
 ## Spring
 For Spring it's as easy as to include a bean of class `com.github.judoole.healthcheck.web.HealthcheckController`.
@@ -23,12 +23,22 @@ The junit report will now be accessible from `.../your-spring-dispatcher-mapping
 
 But to make it show something you need to add some healthchecks. Create beans that extends `com.github.judoole.healthcheck.internal.HealthcheckCaseRunner` like  [HealthcheckThatIsSuccess](https://github.com/judoole/webapp-healthcheck/blob/master/example/src/main/java/com/github/judoole/healthcheck/cases/HealthcheckThatIsSuccess.java) and be sure to **return null if success**
 
-If you'd like to see some properties the application is set up with also, just throw in some beans of `com.github.judoole.healthcheck.internal.dto.HealthcheckProperty` like
+If you'd like to see some properties add them to your Controller, perhaps like this from the example apps [HealthcheckApplicationContext](https://github.com/judoole/webapp-healthcheck/blob/master/example/src/main/java/com/github/judoole/healthcheck/HealthcheckApplicationContext.java)
 
 ````java
 @Bean
-public HealthcheckProperty mySimpleProperty() {
-    return new HealthcheckProperty("My Simple property", "My simple value");
+public HealthcheckController healthcheckController() throws IOException {
+    HealthcheckController controller = new HealthcheckController();
+    controller.setProperties(mavenBuildProperties());
+    return controller;
+}
+
+@Bean
+public Properties mavenBuildProperties() throws IOException {
+    PropertiesFactoryBean factory = new PropertiesFactoryBean();
+    factory.setLocation(new ClassPathResource("mavenbuild.properties"));
+    factory.afterPropertiesSet();
+    return factory.getObject();
 }
 ````
 
