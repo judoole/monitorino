@@ -27,7 +27,7 @@ public class HealthcheckController {
         this.healthcheckCaseRunners = healthcheckCaseRunners;
     }
 
-    public void setHealthcheckProperties(Properties healthcheckProperties) {
+    public void setProperties(Properties healthcheckProperties) {
         this.healthcheckProperties = healthcheckProperties;
     }
 

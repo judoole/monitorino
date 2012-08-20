@@ -4,11 +4,14 @@ import com.github.judoole.healthcheck.cases.HealthcheckThatFailes;
 import com.github.judoole.healthcheck.cases.HealthcheckThatIsSuccess;
 import com.github.judoole.healthcheck.cases.HealthcheckThatThrowsRuntimeException;
 import com.github.judoole.healthcheck.internal.HealthcheckCaseRunner;
-import com.github.judoole.healthcheck.internal.HealthcheckProperty;
-import com.github.judoole.healthcheck.internal.JavaVersionHealthcheckProperty;
 import com.github.judoole.healthcheck.web.HealthcheckController;
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+
+import java.io.IOException;
+import java.util.Properties;
 
 @Configuration
 public class HealthcheckApplicationContext {
@@ -29,18 +32,18 @@ public class HealthcheckApplicationContext {
     }
 
     @Bean
-    public HealthcheckProperty mySimpleProperty() {
-        return new HealthcheckProperty("My Simple property", "My simple value");
+    public HealthcheckController healthcheckController() throws IOException {
+        HealthcheckController controller = new HealthcheckController();
+        controller.setProperties(mavenBuildProperties());
+        return controller;
     }
 
     @Bean
-    public JavaVersionHealthcheckProperty javaVersionhealthcheckProperty() {
-        return new JavaVersionHealthcheckProperty();
-    }
-
-    @Bean
-    public HealthcheckController healthcheckController() {
-        return new HealthcheckController();
+    public Properties mavenBuildProperties() throws IOException {
+        PropertiesFactoryBean factory = new PropertiesFactoryBean();
+        factory.setLocation(new ClassPathResource("mavenbuild.properties"));
+        factory.afterPropertiesSet();
+        return factory.getObject();
     }
 
     @Bean
