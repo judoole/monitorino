@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2012-07-31T17:05:03.438">
-<file name="/Users/judoole/dev/github/webapp-healthcheck/source/src/main/java/no/inspirado/healthcheck/internal/HealthcheckCaseRunner.java">
-<violation beginline="15" endline="15" begincolumn="27" endcolumn="30" rule="AvoidLiteralsInIfCondition" ruleset="Controversial Rules" package="no.inspirado.healthcheck.internal" class="HealthcheckCaseRunner" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#AvoidLiteralsInIfCondition" priority="3">
+<pmd version="4.3" timestamp="2012-08-20T21:13:13.785">
+<file name="/Users/judoole/Code/github/webapp-healthcheck/source/src/main/java/com/github/judoole/healthcheck/internal/HealthcheckCaseRunner.java">
+<violation beginline="15" endline="15" begincolumn="27" endcolumn="30" rule="AvoidLiteralsInIfCondition" ruleset="Controversial Rules" package="com.github.judoole.healthcheck.internal" class="HealthcheckCaseRunner" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#AvoidLiteralsInIfCondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
 </file>
-<file name="/Users/judoole/dev/github/webapp-healthcheck/source/src/main/java/no/inspirado/healthcheck/internal/StopWatch.java">
-<violation beginline="4" endline="4" begincolumn="5" endcolumn="19" rule="DefaultPackage" ruleset="Controversial Rules" package="no.inspirado.healthcheck.internal" class="StopWatch" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+<file name="/Users/judoole/Code/github/webapp-healthcheck/source/src/main/java/com/github/judoole/healthcheck/internal/StopWatch.java">
+<violation beginline="4" endline="4" begincolumn="5" endcolumn="19" rule="DefaultPackage" ruleset="Controversial Rules" package="com.github.judoole.healthcheck.internal" class="StopWatch" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
 Use explicit scoping instead of the default package private level
 </violation>
-<violation beginline="5" endline="5" begincolumn="5" endcolumn="18" rule="DefaultPackage" ruleset="Controversial Rules" package="no.inspirado.healthcheck.internal" class="StopWatch" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+<violation beginline="5" endline="5" begincolumn="5" endcolumn="18" rule="DefaultPackage" ruleset="Controversial Rules" package="com.github.judoole.healthcheck.internal" class="StopWatch" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
 Use explicit scoping instead of the default package private level
 </violation>
-<violation beginline="6" endline="6" begincolumn="5" endcolumn="28" rule="DefaultPackage" ruleset="Controversial Rules" package="no.inspirado.healthcheck.internal" class="StopWatch" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+<violation beginline="6" endline="6" begincolumn="5" endcolumn="28" rule="DefaultPackage" ruleset="Controversial Rules" package="com.github.judoole.healthcheck.internal" class="StopWatch" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
 Use explicit scoping instead of the default package private level
 </violation>
 </file>
-<file name="/Users/judoole/dev/github/webapp-healthcheck/source/src/main/java/no/inspirado/healthcheck/internal/dto/HealthcheckStacktrace.java">
-<violation beginline="3" endline="6" begincolumn="8" endcolumn="1" rule="AtLeastOneConstructor" ruleset="Controversial Rules" package="no.inspirado.healthcheck.internal.dto" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#AtLeastOneConstructor" priority="3">
+<file name="/Users/judoole/Code/github/webapp-healthcheck/source/src/main/java/com/github/judoole/healthcheck/internal/dto/HealthcheckStacktrace.java">
+<violation beginline="3" endline="6" begincolumn="8" endcolumn="1" rule="AtLeastOneConstructor" ruleset="Controversial Rules" package="com.github.judoole.healthcheck.internal.dto" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#AtLeastOneConstructor" priority="3">
 Each class should declare at least one constructor
 </violation>
 </file>
-<file name="/Users/judoole/dev/github/webapp-healthcheck/source/src/main/java/no/inspirado/healthcheck/internal/xstream/HealthcheckStacktraceConverter.java">
-<violation beginline="18" endline="18" begincolumn="46" endcolumn="49" rule="AvoidLiteralsInIfCondition" ruleset="Controversial Rules" package="no.inspirado.healthcheck.internal.xstream" class="HealthcheckStacktraceConverter" method="marshal" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#AvoidLiteralsInIfCondition" priority="3">
+<file name="/Users/judoole/Code/github/webapp-healthcheck/source/src/main/java/com/github/judoole/healthcheck/web/HealthcheckXmlView.java">
+<violation beginline="16" endline="43" begincolumn="5" endcolumn="5" rule="DefaultPackage" ruleset="Controversial Rules" package="com.github.judoole.healthcheck.web" class="HealthcheckXmlView" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="39" endline="39" begincolumn="13" endcolumn="33" rule="OnlyOneReturn" ruleset="Controversial Rules" package="com.github.judoole.healthcheck.web" class="HealthcheckXmlView" method="process" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#OnlyOneReturn" priority="3">
+A method should have only one exit point, and that should be the last statement in the method
+</violation>
+</file>
+<file name="/Users/judoole/Code/github/webapp-healthcheck/source/src/main/java/com/github/judoole/healthcheck/web/xstream/HealthcheckStacktraceConverter.java">
+<violation beginline="18" endline="18" begincolumn="46" endcolumn="49" rule="AvoidLiteralsInIfCondition" ruleset="Controversial Rules" package="com.github.judoole.healthcheck.web.xstream" class="HealthcheckStacktraceConverter" method="marshal" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#AvoidLiteralsInIfCondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="19" endline="19" begincolumn="49" endcolumn="52" rule="AvoidLiteralsInIfCondition" ruleset="Controversial Rules" package="no.inspirado.healthcheck.internal.xstream" class="HealthcheckStacktraceConverter" method="marshal" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#AvoidLiteralsInIfCondition" priority="3">
+<violation beginline="19" endline="19" begincolumn="49" endcolumn="52" rule="AvoidLiteralsInIfCondition" ruleset="Controversial Rules" package="com.github.judoole.healthcheck.web.xstream" class="HealthcheckStacktraceConverter" method="marshal" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#AvoidLiteralsInIfCondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
 </file>

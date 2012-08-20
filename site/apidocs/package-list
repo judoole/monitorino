@@ -1,5 +1,4 @@
-no.inspirado.healthcheck.internal
-no.inspirado.healthcheck.internal.dto
-no.inspirado.healthcheck.internal.xstream
-no.inspirado.healthcheck.properties
-no.inspirado.healthcheck.web
+com.github.judoole.healthcheck.internal
+com.github.judoole.healthcheck.internal.dto
+com.github.judoole.healthcheck.web
+com.github.judoole.healthcheck.web.xstream
