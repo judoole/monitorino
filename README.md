@@ -47,16 +47,10 @@ That's it. You're good to go.
 Test example by git cloning/forking and run [start-example-webapp.sh](https://github.com/judoole/webapp-healthcheck/blob/master/start-example-webapp.sh).
 Results for html and junit should be accessable from [http://localhost:8090/spring/healthcheck](http://localhost:8090/spring/healthcheck)
 
-## HttpServlet
-TODO
-
 ## Jenkins
-TODO
+The real power lies in getting Jenkins to give you quick feedback. For setup look at Knut Haugens [Ruby Smoketest blogpost](http://blog.knuthaugen.no/2011/04/continuous-delivery-ii-smoketests-in-ruby-and-rails.html)
 
-## Deploy Pipeline
-TODO
-
-## Heroku
+## HttpServlet
 TODO
 
 ## What else?
