@@ -18,9 +18,9 @@ If you like reading code check out the [example](https://github.com/judoole/weba
 For Spring it's as easy as to include a bean of class `com.github.judoole.healthcheck.web.HealthcheckController`.
 The junit report will now be accessible from `.../your-spring-dispatcher-mapping/healtcheck/xml` and as html on `.../your-spring-dispatcher-mapping/healtcheck/html`
 
-But to make it show something you need to add some healthchecks. Create beans that extends `com.github.judoole.healthcheck.internal.HealthcheckCaseRunner` like  [HealthcheckThatIsSuccess](https://github.com/judoole/webapp-healthcheck/blob/master/example/src/main/java/com/github/judoole/healthcheck/cases/HealthcheckThatIsSuccess.java) and be sure to **return null if success**
+But to make it show something you need to add some healthchecks. Create beans that extends `com.github.judoole.healthcheck.internal.HealthcheckCaseRunner` like  [EverythingIsOk](https://github.com/judoole/webapp-healthcheck/blob/master/example/src/main/java/com/github/judoole/healthcheck/cases/EverythingIsOk.java) and be sure to **return null if success**
 
-If you'd like to see some properties add them to your Controller, perhaps like this from the example apps [HealthcheckApplicationContext](https://github.com/judoole/webapp-healthcheck/blob/master/example/src/main/java/com/github/judoole/healthcheck/HealthcheckApplicationContext.java)
+If you'd like to see some properties add them to your Controller, perhaps like this from the example apps [SpringApplicationContext](https://github.com/judoole/webapp-healthcheck/blob/master/example/src/main/java/com/github/judoole/healthcheck/SpringApplicationContext.java)
 
 ````java
 @Bean
@@ -53,3 +53,5 @@ TODO
 ## What else?
 
 Go see the [Project Documentation](http://judoole.github.com/webapp-healthcheck/site/)
+
+The project has a Procfile and the example is reguarly deployed to Heroku on [http://gentle-dawn-7825.herokuapp.com/](http://gentle-dawn-7825.herokuapp.com/)
