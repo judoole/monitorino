@@ -1,8 +1,7 @@
 package com.github.judoole.healthcheck;
 
-import com.github.judoole.healthcheck.cases.HealthcheckThatFailes;
-import com.github.judoole.healthcheck.cases.HealthcheckThatIsSuccess;
-import com.github.judoole.healthcheck.cases.HealthcheckThatThrowsRuntimeException;
+import com.github.judoole.healthcheck.cases.AssertTwoPlusTwoIsFour;
+import com.github.judoole.healthcheck.cases.EverythingIsOk;
 import com.github.judoole.healthcheck.internal.HealthcheckCaseRunner;
 import com.github.judoole.healthcheck.web.HealthcheckController;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
@@ -14,21 +13,16 @@ import java.io.IOException;
 import java.util.Properties;
 
 @Configuration
-public class HealthcheckApplicationContext {
+public class SpringApplicationContext {
 
     @Bean
-    public HealthcheckCaseRunner healthcheckCaseThatFailes() {
-        return new HealthcheckThatFailes();
+    public HealthcheckCaseRunner caseOfTwoPlusTwo() {
+        return new AssertTwoPlusTwoIsFour();
     }
 
     @Bean
-    public HealthcheckCaseRunner healthcheckCaseThatIsSuccess() {
-        return new HealthcheckThatIsSuccess();
-    }
-
-    @Bean
-    public HealthcheckCaseRunner healthcheckCaseThatThrowsRuntimeException() {
-        return new HealthcheckThatThrowsRuntimeException();
+    public HealthcheckCaseRunner everythingIsOk() {
+        return new EverythingIsOk();
     }
 
     @Bean
@@ -42,12 +36,19 @@ public class HealthcheckApplicationContext {
     public Properties mavenBuildProperties() throws IOException {
         PropertiesFactoryBean factory = new PropertiesFactoryBean();
         factory.setLocation(new ClassPathResource("mavenbuild.properties"));
+
+        Properties extraProps = new Properties();
+        extraProps.put("os.name", System.getProperty("os.name"));
+        factory.setProperties(extraProps);
+
         factory.afterPropertiesSet();
         return factory.getObject();
     }
 
     @Bean
-    public HealthcheckController healthcheckControllerMyOwnRequestMapping() {
-        return new HealthcheckControllerMyOwnRequestMapping();
+    public HealthcheckController controllerWithMyOwnMapping() {
+        ControllerWithMyOwnRequestMapping controller = new ControllerWithMyOwnRequestMapping();
+        controller.setName("App Smoketest");
+        return controller;
     }
 }

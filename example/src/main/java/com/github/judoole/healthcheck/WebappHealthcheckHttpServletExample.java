@@ -2,9 +2,8 @@ package com.github.judoole.healthcheck;
 
 import com.github.judoole.healthcheck.internal.HealthcheckCaseRunner;
 import com.github.judoole.healthcheck.internal.HealthcheckSuiteAssembler;
-import com.github.judoole.healthcheck.cases.HealthcheckThatFailes;
-import com.github.judoole.healthcheck.cases.HealthcheckThatIsSuccess;
-import com.github.judoole.healthcheck.cases.HealthcheckThatThrowsRuntimeException;
+import com.github.judoole.healthcheck.cases.AssertTwoPlusTwoIsFour;
+import com.github.judoole.healthcheck.cases.EverythingIsOk;
 import com.github.judoole.healthcheck.internal.dto.HealthcheckSuite;
 import com.github.judoole.healthcheck.web.HealthcheckHtmlView;
 
@@ -23,10 +22,9 @@ public class WebappHealthcheckHttpServletExample extends HttpServlet {
         PrintWriter out = resp.getWriter();
         resp.setContentType("text/html");
         Collection<HealthcheckCaseRunner> list = new ArrayList<HealthcheckCaseRunner>();
-        list.add(new HealthcheckThatThrowsRuntimeException());
-        list.add(new HealthcheckThatFailes());
-        list.add(new HealthcheckThatIsSuccess());
-        HealthcheckSuite suite = new HealthcheckSuiteAssembler("My first stab at it", list, null).run();
+        list.add(new AssertTwoPlusTwoIsFour());
+        list.add(new EverythingIsOk());
+        HealthcheckSuite suite = new HealthcheckSuiteAssembler("Monitor from HttpServlet", list, null).run();
         out.println(new HealthcheckHtmlView().process(suite));
     }
 }

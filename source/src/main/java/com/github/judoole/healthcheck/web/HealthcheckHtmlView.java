@@ -36,9 +36,11 @@ public class HealthcheckHtmlView {
         }
     }
 
-    private String createHtmlForCases(Collection<HealthcheckCase> healthcheckCases) {
+    private String createHtmlForCases(Collection<HealthcheckCase> cases) {
+        if(cases == null) return "";
+
         StringBuilder html = new StringBuilder();
-        for (HealthcheckCase healthcheckCase : healthcheckCases) {
+        for (HealthcheckCase healthcheckCase : cases) {
             Map<String, Object> replaceMap = new HashMap<String, Object>();
             replaceMap.put("name", (Object) healthcheckCase.name);
             if (healthcheckCase.hasError()) {
@@ -55,14 +57,16 @@ public class HealthcheckHtmlView {
         return html.toString();
     }
 
-    private String createHtmlForProperties(Properties healthcheckCases) {
+    private String createHtmlForProperties(Properties properties) {
+        if (properties == null) return "";
+
         StringBuilder html = new StringBuilder();
-        Enumeration<?> keys = healthcheckCases.propertyNames();
+        Enumeration<?> keys = properties.propertyNames();
         while (keys.hasMoreElements()) {
             Map<String, Object> replaceMap = new HashMap<String, Object>();
             Object name = keys.nextElement();
             replaceMap.put("name", name);
-            replaceMap.put("value", healthcheckCases.getProperty((String) name));
+            replaceMap.put("value", properties.getProperty((String) name));
             String aNewRow = replaceTokens(TEMPLATE_FOR_HEALTHCHECK_PROPERTY, replaceMap);
             html.append(aNewRow);
         }

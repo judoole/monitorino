@@ -19,7 +19,7 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>com.github.judoole.healthcheck.HealthcheckApplicationContext</param-value>
+            <param-value>com.github.judoole.healthcheck.SpringApplicationContext</param-value>
         </init-param>
     </servlet>
 

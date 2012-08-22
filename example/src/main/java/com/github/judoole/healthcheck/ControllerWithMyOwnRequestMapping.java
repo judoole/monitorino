@@ -4,5 +4,5 @@ import com.github.judoole.healthcheck.web.HealthcheckController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/smoketest")
-public class HealthcheckControllerMyOwnRequestMapping extends HealthcheckController {
+public class ControllerWithMyOwnRequestMapping extends HealthcheckController {
 }
