@@ -1,4 +1,4 @@
-com.github.judoole.healthcheck.internal.dto
-com.github.judoole.healthcheck.internal
-com.github.judoole.healthcheck.web
-com.github.judoole.healthcheck.web.xstream
+com.github.judoole.monitorino.internal.dto
+com.github.judoole.monitorino.internal
+com.github.judoole.monitorino.web
+com.github.judoole.monitorino.web.xstream
