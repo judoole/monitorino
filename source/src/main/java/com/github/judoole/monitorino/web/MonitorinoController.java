@@ -1,8 +1,8 @@
 package com.github.judoole.monitorino.web;
 
-import com.github.judoole.monitorino.internal.HealthcheckCaseRunner;
-import com.github.judoole.monitorino.internal.HealthcheckSuiteAssembler;
-import com.github.judoole.monitorino.internal.dto.TestSuite;
+import com.github.judoole.monitorino.internal.MonitorinoRunner;
+import com.github.judoole.monitorino.internal.SuiteAssembler;
+import com.github.judoole.monitorino.internal.dto.MonitorinoSuite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +17,14 @@ import java.util.Set;
 public class MonitorinoController {
     private HtmlView htmlView = new HtmlView();
     private XmlView xmlView = new XmlView();
-    Set<HealthcheckCaseRunner> healthcheckCaseRunners;
+    Set<MonitorinoRunner> runners;
     Properties healthcheckProperties;
 
     String name = "AppserverHealthcheck";
 
     @Autowired(required = false)
-    public void setHealthcheckCaseRunners(Set<HealthcheckCaseRunner> healthcheckCaseRunners) {
-        this.healthcheckCaseRunners = healthcheckCaseRunners;
+    public void setRunners(Set<MonitorinoRunner> runners) {
+        this.runners = runners;
     }
 
     public void setProperties(Properties healthcheckProperties) {
@@ -53,8 +53,8 @@ public class MonitorinoController {
         this.name = name;
     }
 
-    TestSuite runSuite() {
-        return new HealthcheckSuiteAssembler(name, healthcheckCaseRunners, healthcheckProperties).run();
+    MonitorinoSuite runSuite() {
+        return new SuiteAssembler(name, runners, healthcheckProperties).run();
     }
 
 }

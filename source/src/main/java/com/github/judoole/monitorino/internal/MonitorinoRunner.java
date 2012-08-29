@@ -1,14 +1,14 @@
 package com.github.judoole.monitorino.internal;
 
 import com.github.judoole.monitorino.internal.dto.Stacktrace;
-import com.github.judoole.monitorino.internal.dto.TestCase;
+import com.github.judoole.monitorino.internal.dto.Case;
 import com.github.judoole.monitorino.internal.dto.MonitorinoFailureCase;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-public abstract class HealthcheckCaseRunner {
-    public TestCase run() {
+public abstract class MonitorinoRunner {
+    public Case run() {
         StopWatch stopWatch = new StopWatch().start();
-        TestCase testCase = new TestCase();
+        Case testCase = new Case();
         testCase.name = getName();
         try {
             MonitorinoFailureCase failure = assertNoFailure();

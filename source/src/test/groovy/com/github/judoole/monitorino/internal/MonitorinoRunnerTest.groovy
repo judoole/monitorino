@@ -13,21 +13,21 @@ import static org.mockito.Mockito.when
 
 import static org.hamcrest.core.IsNull.nullValue
 
-import com.github.judoole.monitorino.internal.dto.TestCase
 import com.github.judoole.monitorino.internal.dto.MonitorinoFailureCase
+import com.github.judoole.monitorino.internal.dto.Case
 
 @RunWith(MockitoJUnit44Runner.class)
-public class HealthcheckCaseRunnerTest {
+public class MonitorinoRunnerTest {
     final String EXPECTED_EXCEPTION_MESSAGE = "Exception made by mockito";
     @Mock
-    HealthcheckCaseRunner runner;
+    MonitorinoRunner runner;
 
     @Test
     public void run_should_catch_all_exceptions() {
         when(runner.run()).thenCallRealMethod();
         when(runner.assertNoFailure()).thenThrow(new RuntimeException(EXPECTED_EXCEPTION_MESSAGE));
 
-        TestCase healthcheckCase = runner.run();
+        Case healthcheckCase = runner.run();
         assertThat(healthcheckCase, notNullValue());
         assertThat(healthcheckCase.error, notNullValue());
         assertThat(healthcheckCase.error.message, equalTo(EXPECTED_EXCEPTION_MESSAGE));
@@ -39,7 +39,7 @@ public class HealthcheckCaseRunnerTest {
         when(runner.run()).thenCallRealMethod();
         when(runner.assertNoFailure()).thenReturn(new MonitorinoFailureCase("Testcase"));
 
-        TestCase healthcheckCase = runner.run();
+        Case healthcheckCase = runner.run();
         assertThat(healthcheckCase, notNullValue());
         assertThat(healthcheckCase.error, nullValue());
         assertThat(healthcheckCase.failure.message, equalTo("Testcase"));
@@ -50,7 +50,7 @@ public class HealthcheckCaseRunnerTest {
         when(runner.run()).thenCallRealMethod();
         when(runner.assertNoFailure()).thenReturn(null);
 
-        TestCase healthcheckCase = runner.run();
+        Case healthcheckCase = runner.run();
         assertThat(healthcheckCase, notNullValue());
         assertThat(healthcheckCase.error, nullValue());
         assertThat(healthcheckCase.failure, nullValue());
@@ -60,7 +60,7 @@ public class HealthcheckCaseRunnerTest {
     public void run_should_be_able_to_have_empty_cases_and_empty_properties() {
         when(runner.run()).thenCallRealMethod();
 
-        TestCase healthcheckCase = runner.run();
+        Case healthcheckCase = runner.run();
         assertThat(healthcheckCase, notNullValue());
         assertThat(healthcheckCase.error, nullValue());
         assertThat(healthcheckCase.failure, nullValue());

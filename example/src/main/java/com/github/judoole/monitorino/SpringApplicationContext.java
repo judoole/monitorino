@@ -2,7 +2,7 @@ package com.github.judoole.monitorino;
 
 import com.github.judoole.monitorino.cases.AssertTwoPlusTwoIsFour;
 import com.github.judoole.monitorino.cases.EverythingIsOk;
-import com.github.judoole.monitorino.internal.HealthcheckCaseRunner;
+import com.github.judoole.monitorino.internal.MonitorinoRunner;
 import com.github.judoole.monitorino.web.MonitorinoController;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
@@ -16,12 +16,12 @@ import java.util.Properties;
 public class SpringApplicationContext {
 
     @Bean
-    public HealthcheckCaseRunner caseOfTwoPlusTwo() {
+    public MonitorinoRunner caseOfTwoPlusTwo() {
         return new AssertTwoPlusTwoIsFour();
     }
 
     @Bean
-    public HealthcheckCaseRunner everythingIsOk() {
+    public MonitorinoRunner everythingIsOk() {
         return new EverythingIsOk();
     }
 

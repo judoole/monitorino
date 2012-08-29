@@ -1,6 +1,6 @@
 package com.github.judoole.monitorino.internal.dto;
 
-public class TestCase {
+public class Case {
     public String time;
     public String name;
     public Stacktrace error;

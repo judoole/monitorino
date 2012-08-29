@@ -1,6 +1,6 @@
 package com.github.judoole.monitorino.web
 
-import com.github.judoole.monitorino.internal.HealthcheckCaseRunner
+import com.github.judoole.monitorino.internal.MonitorinoRunner
 import com.github.judoole.monitorino.internal.dto.MonitorinoFailureCase
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration
 public class SpringConfigurationMonitorinoControllerTest {
 
     @Bean
-    public HealthcheckCaseRunner runnerToBeInjected() {
-        return new HealthcheckCaseRunner() {
+    public MonitorinoRunner runnerToBeInjected() {
+        return new MonitorinoRunner() {
             @Override
             protected String getName() {
                 return null  //To change body of implemented methods use File | Settings | File Templates.

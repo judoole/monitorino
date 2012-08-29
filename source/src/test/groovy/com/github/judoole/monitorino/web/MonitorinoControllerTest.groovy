@@ -13,11 +13,11 @@ import static org.hamcrest.core.IsNull.nullValue
 import static org.junit.matchers.JUnitMatchers.containsString
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
-import com.github.judoole.monitorino.internal.HealthcheckCaseRunner
 
-import com.github.judoole.monitorino.internal.dto.TestCase
-import com.github.judoole.monitorino.internal.dto.TestSuite
 import com.github.judoole.monitorino.internal.dto.Stacktrace
+import com.github.judoole.monitorino.internal.MonitorinoRunner
+import com.github.judoole.monitorino.internal.dto.MonitorinoSuite
+import com.github.judoole.monitorino.internal.dto.Case
 
 @RunWith(MockitoJUnit44Runner.class)
 class MonitorinoControllerTest {
@@ -57,15 +57,15 @@ class MonitorinoControllerTest {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigurationMonitorinoControllerTest.class);
         MonitorinoController controller = context.getBean(MonitorinoController.class);
         assertThat(controller, notNullValue());
-        assertThat(controller.healthcheckCaseRunners.size(), not(equalTo(0)));
+        assertThat(controller.runners.size(), not(equalTo(0)));
     }
 
     private void given_controller_is_created() {
-        controller = new MonitorinoController(healthcheckCaseRunners:[healthcheckCaseRunner]);
+        controller = new MonitorinoController(runners:[healthcheckCaseRunner]);
     }
 
     private void given_runner_returns_successful_case() {
-        given(healthcheckCaseRunner.run()).willReturn(new TestCase())
+        given(healthcheckCaseRunner.run()).willReturn(new Case())
     }
 
     private void given_runner_throws_exception() {
@@ -73,7 +73,7 @@ class MonitorinoControllerTest {
     }
 
     private void given_runner_returns_case_that_has_failed() {
-        TestCase failedHealthcheckCase = new TestCase();
+        Case failedHealthcheckCase = new Case();
         failedHealthcheckCase.failure = new Stacktrace();
         given(healthcheckCaseRunner.run()).willReturn(failedHealthcheckCase);
     }
@@ -109,7 +109,7 @@ class MonitorinoControllerTest {
     }
 
     private void then_case_should_have_stacktrace() {
-        Collection<TestCase> cases = suite.testCases;
+        Collection<Case> cases = suite.testCases;
         assertThat(cases, notNullValue());
         assertThat(cases.size(), not(0));
         Stacktrace error = cases.iterator().next().error
@@ -120,8 +120,8 @@ class MonitorinoControllerTest {
 
     private static final String EXPECTED_EXCEPTION_MESSAGE = "Exception made by mockito for unit test"
     @Mock
-    HealthcheckCaseRunner healthcheckCaseRunner;
+    MonitorinoRunner healthcheckCaseRunner;
     MonitorinoController controller;
-    TestSuite suite;
+    MonitorinoSuite suite;
 
 }

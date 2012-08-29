@@ -1,7 +1,7 @@
 package com.github.judoole.monitorino.web;
 
-import com.github.judoole.monitorino.internal.dto.TestCase;
-import com.github.judoole.monitorino.internal.dto.TestSuite;
+import com.github.judoole.monitorino.internal.dto.Case;
+import com.github.judoole.monitorino.internal.dto.MonitorinoSuite;
 import com.github.judoole.monitorino.web.xstream.StacktraceConverter;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;
@@ -9,27 +9,27 @@ import com.thoughtworks.xstream.io.xml.CompactWriter;
 import java.io.StringWriter;
 
 public class XmlView {
-    public String process(TestSuite suite) {
+    public String process(MonitorinoSuite suite) {
         return process(suite, true);
     }
 
-    String process(TestSuite suite, boolean prettyPrint) {
+    String process(MonitorinoSuite suite, boolean prettyPrint) {
         XStream xStream = new XStream();
 
-        xStream.alias("testsuite", TestSuite.class);
-        xStream.alias("testcase", TestCase.class);
+        xStream.alias("testsuite", MonitorinoSuite.class);
+        xStream.alias("testcase", Case.class);
 
-        xStream.useAttributeFor(TestSuite.class, "name");
-        xStream.useAttributeFor(TestSuite.class, "tests");
-        xStream.useAttributeFor(TestSuite.class, "skipped");
-        xStream.useAttributeFor(TestSuite.class, "time");
-        xStream.useAttributeFor(TestSuite.class, "errors");
-        xStream.useAttributeFor(TestSuite.class, "failures");
-        xStream.addImplicitCollection(TestSuite.class, "testCases");
-        xStream.aliasField("properties", TestSuite.class, "healthcheckProperties");
+        xStream.useAttributeFor(MonitorinoSuite.class, "name");
+        xStream.useAttributeFor(MonitorinoSuite.class, "tests");
+        xStream.useAttributeFor(MonitorinoSuite.class, "skipped");
+        xStream.useAttributeFor(MonitorinoSuite.class, "time");
+        xStream.useAttributeFor(MonitorinoSuite.class, "errors");
+        xStream.useAttributeFor(MonitorinoSuite.class, "failures");
+        xStream.addImplicitCollection(MonitorinoSuite.class, "testCases");
+        xStream.aliasField("properties", MonitorinoSuite.class, "healthcheckProperties");
 
-        xStream.useAttributeFor(TestCase.class, "name");
-        xStream.useAttributeFor(TestCase.class, "time");
+        xStream.useAttributeFor(Case.class, "name");
+        xStream.useAttributeFor(Case.class, "time");
 
         xStream.registerConverter(new StacktraceConverter());
 

@@ -1,12 +1,12 @@
 package com.github.judoole.monitorino.cases;
 
-import com.github.judoole.monitorino.internal.HealthcheckCaseRunner;
+import com.github.judoole.monitorino.internal.MonitorinoRunner;
 import com.github.judoole.monitorino.internal.dto.MonitorinoFailureCase;
 
-public class AssertTwoPlusTwoIsFour extends HealthcheckCaseRunner {
+public class AssertTwoPlusTwoIsFour extends MonitorinoRunner {
     @Override
     protected String getName() {
-        return "TestCase for two plus two";
+        return "Case for two plus two";
     }
 
     @Override
