@@ -5,7 +5,7 @@
 
     <servlet>
         <servlet-name>pure-http-servlet</servlet-name>
-        <servlet-class>com.github.judoole.healthcheck.WebappHealthcheckHttpServletExample</servlet-class>
+        <servlet-class>com.github.judoole.monitorino.WebappHealthcheckHttpServletExample</servlet-class>
     </servlet>
 
     <servlet>
@@ -19,7 +19,7 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>com.github.judoole.healthcheck.SpringApplicationContext</param-value>
+            <param-value>com.github.judoole.monitorino.SpringApplicationContext</param-value>
         </init-param>
     </servlet>
 
