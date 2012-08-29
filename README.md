@@ -54,4 +54,4 @@ TODO
 
 Go see the [Project Documentation](http://judoole.github.com/monitorino/site/)
 
-The project has a Procfile and the example is reguarly deployed to Heroku on [http://gentle-dawn-7825.herokuapp.com/](http://gentle-dawn-7825.herokuapp.com/)
+The project has a Procfile and the example is reguarly deployed to Heroku on [http://monitorino.herokuapp.com/](http://monitorino.herokuapp.com/)
