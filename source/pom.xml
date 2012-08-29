@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.judoole</groupId>
-    <artifactId>webapp-healthcheck</artifactId>
+    <artifactId>monitorino</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Webapp Healthcheck</name>
+    <name>Monitorino</name>
     <url>http://judoole.github.com/webapp-healthcheck/</url>
     <description>
         This projects goal is to deliver helper classes for easily monitoring your Java Webapp.
