@@ -7,7 +7,7 @@ import static org.junit.matchers.JUnitMatchers.containsString
 import com.github.judoole.monitorino.internal.dto.HealthcheckCase
 import com.github.judoole.monitorino.internal.dto.HealthcheckStacktrace
 
-class HealthcheckXmlViewTest {
+class XmlViewTest {
     @Test
     void should_be_able_to_represent_as_xml() {
         given_healthchecksuite_has_name("My healthchecksuite");
@@ -38,6 +38,6 @@ class HealthcheckXmlViewTest {
         assertThat(view.process(suite, false), containsString(string));
     }
 
-    HealthcheckXmlView view = new HealthcheckXmlView()
+    XmlView view = new XmlView()
     HealthcheckSuite suite = new HealthcheckSuite(name: "", healthcheckCases: new HashSet(), healthcheckProperties: new HashSet());
 }

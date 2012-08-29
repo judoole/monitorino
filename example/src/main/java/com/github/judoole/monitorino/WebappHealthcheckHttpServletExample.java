@@ -5,7 +5,7 @@ import com.github.judoole.monitorino.internal.HealthcheckSuiteAssembler;
 import com.github.judoole.monitorino.cases.AssertTwoPlusTwoIsFour;
 import com.github.judoole.monitorino.cases.EverythingIsOk;
 import com.github.judoole.monitorino.internal.dto.HealthcheckSuite;
-import com.github.judoole.monitorino.web.HealthcheckHtmlView;
+import com.github.judoole.monitorino.web.HtmlView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +25,6 @@ public class WebappHealthcheckHttpServletExample extends HttpServlet {
         list.add(new AssertTwoPlusTwoIsFour());
         list.add(new EverythingIsOk());
         HealthcheckSuite suite = new HealthcheckSuiteAssembler("Monitor from HttpServlet", list, null).run();
-        out.println(new HealthcheckHtmlView().process(suite));
+        out.println(new HtmlView().process(suite));
     }
 }

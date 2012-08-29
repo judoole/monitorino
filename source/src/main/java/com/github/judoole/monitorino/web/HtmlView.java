@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 /**
  * Okey. So maybe I hate template frameworks also now? Nike. Just Do It. Yourself.
  */
-public class HealthcheckHtmlView {
+public class HtmlView {
     private static final String TEMPLATE_FOR_HEALTHCHECK_CASER = "<tr><td>[name]</td><td class=\"[isSuccess]\"/></tr>\n";
     private static final String TEMPLATE_FOR_HEALTHCHECK_PROPERTY = "<tr><td><b>[name]:</b></td><td>[value]</td></tr>\n";
 

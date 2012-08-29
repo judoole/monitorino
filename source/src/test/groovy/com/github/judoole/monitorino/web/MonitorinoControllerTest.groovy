@@ -21,7 +21,7 @@ import com.github.judoole.monitorino.internal.dto.HealthcheckCase
 import com.github.judoole.monitorino.internal.dto.HealthcheckStacktrace
 
 @RunWith(MockitoJUnit44Runner.class)
-class HealthcheckControllerTest {
+class MonitorinoControllerTest {
 
     @Test
     void should_create_a_healthcheck_suite() {
@@ -55,7 +55,7 @@ class HealthcheckControllerTest {
 
     @Test
     void should_autowire_all_runners_to_controller() {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigurationHealthcheckControllerTest.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigurationMonitorinoControllerTest.class);
         MonitorinoController controller = context.getBean(MonitorinoController.class);
         assertThat(controller, notNullValue());
         assertThat(controller.healthcheckCaseRunners.size(), not(equalTo(0)));

@@ -8,7 +8,7 @@ import com.thoughtworks.xstream.io.xml.CompactWriter;
 
 import java.io.StringWriter;
 
-public class HealthcheckXmlView {
+public class XmlView {
     public String process(HealthcheckSuite suite) {
         return process(suite, true);
     }

@@ -15,8 +15,8 @@ import java.util.Set;
 @Controller
 @RequestMapping("/healthcheck")
 public class MonitorinoController {
-    private HealthcheckHtmlView htmlView = new HealthcheckHtmlView();
-    private HealthcheckXmlView xmlView = new HealthcheckXmlView();
+    private HtmlView htmlView = new HtmlView();
+    private XmlView xmlView = new XmlView();
     Set<HealthcheckCaseRunner> healthcheckCaseRunners;
     Properties healthcheckProperties;
 

@@ -7,7 +7,7 @@ import com.github.judoole.monitorino.internal.dto.HealthcheckCase
 import com.github.judoole.monitorino.internal.dto.HealthcheckStacktrace
 import com.github.judoole.monitorino.internal.dto.HealthcheckSuite
 
-class HealthcheckHtmlViewTest {
+class HtmlViewTest {
 
     @Test
     void should_be_able_to_represent_as_html() {
@@ -39,6 +39,6 @@ class HealthcheckHtmlViewTest {
         assertThat(view.process(suite), containsString(string));
     }
 
-    HealthcheckHtmlView view = new HealthcheckHtmlView()
+    HtmlView view = new HtmlView()
     HealthcheckSuite suite = new HealthcheckSuite(name: "", healthcheckCases: new HashSet(), healthcheckProperties: new HashSet());
 }
