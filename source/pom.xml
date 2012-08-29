@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.judoole</groupId>
-    <artifactId>webapp-healthcheck</artifactId>
+    <artifactId>monitorino</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Webapp Healthcheck</name>
-    <url>http://judoole.github.com/webapp-healthcheck/</url>
+    <name>Monitorino</name>
+    <url>http://judoole.github.com/monitorino/</url>
     <description>
         This projects goal is to deliver helper classes for easily monitoring your Java Webapp.
     </description>
@@ -53,7 +53,7 @@
     </properties>
 
     <issueManagement>
-        <url>https://github.com/judoole/webapp-healthcheck/issues</url>
+        <url>https://github.com/judoole/monitorino/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
 
@@ -65,9 +65,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/judoole/webapp-healthcheck</url>
-        <connection>scm:git:git://github.com/judoole/webapp-healthcheck.git</connection>
-        <developerConnection>scm:git:git@github.com:judoole/webapp-healthcheck.git</developerConnection>
+        <url>https://github.com/judoole/monitorino</url>
+        <connection>scm:git:git://github.com/judoole/monitorino.git</connection>
+        <developerConnection>scm:git:git@github.com:judoole/monitorino.git</developerConnection>
     </scm>
 
     <developers>
