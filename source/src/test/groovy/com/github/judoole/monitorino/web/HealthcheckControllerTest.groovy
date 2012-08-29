@@ -56,13 +56,13 @@ class HealthcheckControllerTest {
     @Test
     void should_autowire_all_runners_to_controller() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigurationHealthcheckControllerTest.class);
-        HealthcheckController controller = context.getBean(HealthcheckController.class);
+        MonitorinoController controller = context.getBean(MonitorinoController.class);
         assertThat(controller, notNullValue());
         assertThat(controller.healthcheckCaseRunners.size(), not(equalTo(0)));
     }
 
     private void given_controller_is_created() {
-        controller = new HealthcheckController(healthcheckCaseRunners:[healthcheckCaseRunner]);
+        controller = new MonitorinoController(healthcheckCaseRunners:[healthcheckCaseRunner]);
     }
 
     private void given_runner_returns_successful_case() {
@@ -122,7 +122,7 @@ class HealthcheckControllerTest {
     private static final String EXPECTED_EXCEPTION_MESSAGE = "Exception made by mockito for unit test"
     @Mock
     HealthcheckCaseRunner healthcheckCaseRunner;
-    HealthcheckController controller;
+    MonitorinoController controller;
     HealthcheckSuite suite;
 
 }

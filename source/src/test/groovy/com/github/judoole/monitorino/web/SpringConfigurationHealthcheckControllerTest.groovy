@@ -25,7 +25,7 @@ public class SpringConfigurationHealthcheckControllerTest {
     }
 
     @Bean
-    public HealthcheckController controller() {
-        return new HealthcheckController();
+    public MonitorinoController controller() {
+        return new MonitorinoController();
     }
 }

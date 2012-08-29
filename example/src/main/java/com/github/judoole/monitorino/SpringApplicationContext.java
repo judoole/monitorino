@@ -3,7 +3,7 @@ package com.github.judoole.monitorino;
 import com.github.judoole.monitorino.cases.AssertTwoPlusTwoIsFour;
 import com.github.judoole.monitorino.cases.EverythingIsOk;
 import com.github.judoole.monitorino.internal.HealthcheckCaseRunner;
-import com.github.judoole.monitorino.web.HealthcheckController;
+import com.github.judoole.monitorino.web.MonitorinoController;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,8 +26,8 @@ public class SpringApplicationContext {
     }
 
     @Bean
-    public HealthcheckController healthcheckController() throws IOException {
-        HealthcheckController controller = new HealthcheckController();
+    public MonitorinoController healthcheckController() throws IOException {
+        MonitorinoController controller = new MonitorinoController();
         controller.setProperties(mavenBuildProperties());
         return controller;
     }
@@ -46,7 +46,7 @@ public class SpringApplicationContext {
     }
 
     @Bean
-    public HealthcheckController controllerWithMyOwnMapping() {
+    public MonitorinoController controllerWithMyOwnMapping() {
         ControllerWithMyOwnRequestMapping controller = new ControllerWithMyOwnRequestMapping();
         controller.setName("App Smoketest");
         return controller;
