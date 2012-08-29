@@ -1,19 +1,20 @@
 package com.github.judoole.monitorino.web
 
-import com.github.judoole.monitorino.internal.dto.HealthcheckSuite
 import org.junit.Test
 import static org.junit.Assert.assertThat
 import static org.junit.matchers.JUnitMatchers.containsString
-import com.github.judoole.monitorino.internal.dto.HealthcheckCase
-import com.github.judoole.monitorino.internal.dto.HealthcheckStacktrace
+
+import com.github.judoole.monitorino.internal.dto.TestCase
+import com.github.judoole.monitorino.internal.dto.TestSuite
+import com.github.judoole.monitorino.internal.dto.Stacktrace
 
 class XmlViewTest {
     @Test
     void should_be_able_to_represent_as_xml() {
         given_healthchecksuite_has_name("My healthchecksuite");
-        given_healthchecksuite_has_case(new HealthcheckCase(name: "case1", failure: new HealthcheckStacktrace(message: "Things went far from good")));
-        given_healthchecksuite_has_case(new HealthcheckCase(name: "case 2", error: new HealthcheckStacktrace(message: "Things did not go so well no either", stacktrace: "Bla, bla, BLAM!")));
-        given_healthchecksuite_has_case(new HealthcheckCase(name: "case 3. The good case"));
+        given_healthchecksuite_has_case(new TestCase(name: "case1", failure: new Stacktrace(message: "Things went far from good")));
+        given_healthchecksuite_has_case(new TestCase(name: "case 2", error: new Stacktrace(message: "Things did not go so well no either", stacktrace: "Bla, bla, BLAM!")));
+        given_healthchecksuite_has_case(new TestCase(name: "case 3. The good case"));
         given_healthchecksuite_has_property("Simple property", "Simple value")
         then_the_xml_should_contain('<testsuite name="My healthchecksuite" tests="3" skipped="0" errors="1" failures="1">');
         then_the_xml_should_contain('<testcase name="case1"><failure message="Things went far from good"/></testcase>');
@@ -22,7 +23,7 @@ class XmlViewTest {
         then_the_xml_should_contain('<property name="Simple property" value="Simple value"/></properties>');
     }
 
-    void given_healthchecksuite_has_case(HealthcheckCase healthcheckCase) {
+    void given_healthchecksuite_has_case(TestCase healthcheckCase) {
         suite.addCase(healthcheckCase);
     }
 
@@ -39,5 +40,5 @@ class XmlViewTest {
     }
 
     XmlView view = new XmlView()
-    HealthcheckSuite suite = new HealthcheckSuite(name: "", healthcheckCases: new HashSet(), healthcheckProperties: new HashSet());
+    TestSuite suite = new TestSuite(name: "", testCases: new HashSet(), healthcheckProperties: new HashSet());
 }

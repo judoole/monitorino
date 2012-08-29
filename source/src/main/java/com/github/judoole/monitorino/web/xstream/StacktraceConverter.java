@@ -1,22 +1,22 @@
 package com.github.judoole.monitorino.web.xstream;
 
-import com.github.judoole.monitorino.internal.dto.HealthcheckStacktrace;
+import com.github.judoole.monitorino.internal.dto.Stacktrace;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
-public class HealthcheckStacktraceConverter implements Converter {
+public class StacktraceConverter implements Converter {
 
     public boolean canConvert(Class clazz) {
-        return clazz.equals(HealthcheckStacktrace.class);
+        return clazz.equals(Stacktrace.class);
     }
 
     public void marshal(Object value, HierarchicalStreamWriter writer, MarshallingContext context) {
-        HealthcheckStacktrace healthcheckStacktrace = (HealthcheckStacktrace) value;
-        if (healthcheckStacktrace.message != null) writer.addAttribute("message", healthcheckStacktrace.message);
-        if (healthcheckStacktrace.stacktrace != null) writer.setValue(healthcheckStacktrace.stacktrace);
+        Stacktrace stacktrace = (Stacktrace) value;
+        if (stacktrace.message != null) writer.addAttribute("message", stacktrace.message);
+        if (stacktrace.stacktrace != null) writer.setValue(stacktrace.stacktrace);
     }
 
     public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {

@@ -3,18 +3,19 @@ package com.github.judoole.monitorino.web
 import org.junit.Test
 import static org.junit.Assert.assertThat
 import static org.junit.matchers.JUnitMatchers.containsString
-import com.github.judoole.monitorino.internal.dto.HealthcheckCase
-import com.github.judoole.monitorino.internal.dto.HealthcheckStacktrace
-import com.github.judoole.monitorino.internal.dto.HealthcheckSuite
+
+import com.github.judoole.monitorino.internal.dto.TestCase
+import com.github.judoole.monitorino.internal.dto.TestSuite
+import com.github.judoole.monitorino.internal.dto.Stacktrace
 
 class HtmlViewTest {
 
     @Test
     void should_be_able_to_represent_as_html() {
         given_healthchecksuite_has_name("My healthchecksuite");
-        given_healthchecksuite_has_case(new HealthcheckCase(name: "case 1", failure: new HealthcheckStacktrace(message: "Things went far from good")));
-        given_healthchecksuite_has_case(new HealthcheckCase(name: "case 2", error: new HealthcheckStacktrace(message: "Things did not go so well no either", stacktrace: "Bla, bla, BLAM!")));
-        given_healthchecksuite_has_case(new HealthcheckCase(name: "case 3. The good case"));
+        given_healthchecksuite_has_case(new TestCase(name: "case 1", failure: new Stacktrace(message: "Things went far from good")));
+        given_healthchecksuite_has_case(new TestCase(name: "case 2", error: new Stacktrace(message: "Things did not go so well no either", stacktrace: "Bla, bla, BLAM!")));
+        given_healthchecksuite_has_case(new TestCase(name: "case 3. The good case"));
         given_healthchecksuite_has_property("Simple property", "Simple value")
         then_the_html_should_contain('<title>My healthchecksuite</title>');
         then_the_html_should_contain('<tr><td><b>Simple property:</b></td><td>Simple value</td></tr>');
@@ -23,7 +24,7 @@ class HtmlViewTest {
         then_the_html_should_contain('<tr><td>case 3. The good case</td><td class="success"/></tr>');
     }
 
-    void given_healthchecksuite_has_case(HealthcheckCase healthcheckCase) {
+    void given_healthchecksuite_has_case(TestCase healthcheckCase) {
         suite.addCase(healthcheckCase);
     }
 
@@ -40,5 +41,5 @@ class HtmlViewTest {
     }
 
     HtmlView view = new HtmlView()
-    HealthcheckSuite suite = new HealthcheckSuite(name: "", healthcheckCases: new HashSet(), healthcheckProperties: new HashSet());
+    TestSuite suite = new TestSuite(name: "", testCases: new HashSet(), healthcheckProperties: new HashSet());
 }

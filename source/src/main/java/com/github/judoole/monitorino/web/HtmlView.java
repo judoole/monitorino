@@ -1,7 +1,7 @@
 package com.github.judoole.monitorino.web;
 
-import com.github.judoole.monitorino.internal.dto.HealthcheckCase;
-import com.github.judoole.monitorino.internal.dto.HealthcheckSuite;
+import com.github.judoole.monitorino.internal.dto.TestCase;
+import com.github.judoole.monitorino.internal.dto.TestSuite;
 import org.apache.commons.io.IOUtils;
 
 import java.io.FileNotFoundException;
@@ -17,10 +17,10 @@ public class HtmlView {
     private static final String TEMPLATE_FOR_HEALTHCHECK_CASER = "<tr><td>[name]</td><td class=\"[isSuccess]\"/></tr>\n";
     private static final String TEMPLATE_FOR_HEALTHCHECK_PROPERTY = "<tr><td><b>[name]:</b></td><td>[value]</td></tr>\n";
 
-    public String process(HealthcheckSuite suite) {
+    public String process(TestSuite suite) {
         Map<String, String> map = new HashMap<String, String>();
         map.put("name", suite.name);
-        map.put("cases", createHtmlForCases(suite.healthcheckCases));
+        map.put("cases", createHtmlForCases(suite.testCases));
         map.put("properties", createHtmlForProperties(suite.healthcheckProperties));
 
         return replaceTokens(template(), map);
@@ -36,16 +36,16 @@ public class HtmlView {
         }
     }
 
-    private String createHtmlForCases(Collection<HealthcheckCase> cases) {
+    private String createHtmlForCases(Collection<TestCase> cases) {
         if(cases == null) return "";
 
         StringBuilder html = new StringBuilder();
-        for (HealthcheckCase healthcheckCase : cases) {
+        for (TestCase testCase : cases) {
             Map<String, Object> replaceMap = new HashMap<String, Object>();
-            replaceMap.put("name", (Object) healthcheckCase.name);
-            if (healthcheckCase.hasError()) {
+            replaceMap.put("name", (Object) testCase.name);
+            if (testCase.hasError()) {
                 replaceMap.put("isSuccess", "error");
-            } else if (healthcheckCase.hasFailure()) {
+            } else if (testCase.hasFailure()) {
                 replaceMap.put("isSuccess", "warning");
             } else {
                 replaceMap.put("isSuccess", "success");

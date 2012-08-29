@@ -1,7 +1,5 @@
 package com.github.judoole.monitorino.web
 
-import com.github.judoole.monitorino.internal.dto.HealthcheckSuite
-
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -17,8 +15,9 @@ import static org.junit.matchers.JUnitMatchers.containsString
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.github.judoole.monitorino.internal.HealthcheckCaseRunner
 
-import com.github.judoole.monitorino.internal.dto.HealthcheckCase
-import com.github.judoole.monitorino.internal.dto.HealthcheckStacktrace
+import com.github.judoole.monitorino.internal.dto.TestCase
+import com.github.judoole.monitorino.internal.dto.TestSuite
+import com.github.judoole.monitorino.internal.dto.Stacktrace
 
 @RunWith(MockitoJUnit44Runner.class)
 class MonitorinoControllerTest {
@@ -66,7 +65,7 @@ class MonitorinoControllerTest {
     }
 
     private void given_runner_returns_successful_case() {
-        given(healthcheckCaseRunner.run()).willReturn(new HealthcheckCase())
+        given(healthcheckCaseRunner.run()).willReturn(new TestCase())
     }
 
     private void given_runner_throws_exception() {
@@ -74,8 +73,8 @@ class MonitorinoControllerTest {
     }
 
     private void given_runner_returns_case_that_has_failed() {
-        HealthcheckCase failedHealthcheckCase = new HealthcheckCase();
-        failedHealthcheckCase.failure = new HealthcheckStacktrace();
+        TestCase failedHealthcheckCase = new TestCase();
+        failedHealthcheckCase.failure = new Stacktrace();
         given(healthcheckCaseRunner.run()).willReturn(failedHealthcheckCase);
     }
 
@@ -110,10 +109,10 @@ class MonitorinoControllerTest {
     }
 
     private void then_case_should_have_stacktrace() {
-        Collection<HealthcheckCase> cases = suite.healthcheckCases;
+        Collection<TestCase> cases = suite.testCases;
         assertThat(cases, notNullValue());
         assertThat(cases.size(), not(0));
-        HealthcheckStacktrace error = cases.iterator().next().error
+        Stacktrace error = cases.iterator().next().error
         assertThat(error, notNullValue());
         assertThat(error.message, equalTo(EXPECTED_EXCEPTION_MESSAGE));
         assertThat(error.stacktrace, containsString(getClass().name));
@@ -123,6 +122,6 @@ class MonitorinoControllerTest {
     @Mock
     HealthcheckCaseRunner healthcheckCaseRunner;
     MonitorinoController controller;
-    HealthcheckSuite suite;
+    TestSuite suite;
 
 }

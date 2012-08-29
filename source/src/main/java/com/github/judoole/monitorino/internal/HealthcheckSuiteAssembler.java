@@ -1,8 +1,8 @@
 package com.github.judoole.monitorino.internal;
 
-import com.github.judoole.monitorino.internal.dto.HealthcheckCase;
-import com.github.judoole.monitorino.internal.dto.HealthcheckStacktrace;
-import com.github.judoole.monitorino.internal.dto.HealthcheckSuite;
+import com.github.judoole.monitorino.internal.dto.Stacktrace;
+import com.github.judoole.monitorino.internal.dto.TestCase;
+import com.github.judoole.monitorino.internal.dto.TestSuite;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import java.util.Collection;
@@ -19,8 +19,8 @@ public class HealthcheckSuiteAssembler {
         this.healthcheckProperties = healthcheckProperties;
     }
 
-    public HealthcheckSuite run() {
-        HealthcheckSuite suite = new HealthcheckSuite();
+    public TestSuite run() {
+        TestSuite suite = new TestSuite();
         suite.name = suiteName;
         suite.healthcheckProperties = healthcheckProperties;
         StopWatch stopWatch = new StopWatch().start();
@@ -31,7 +31,7 @@ public class HealthcheckSuiteAssembler {
         return suite;
     }
 
-    private void runCase(HealthcheckSuite suite, HealthcheckCaseRunner runner) {
+    private void runCase(TestSuite suite, HealthcheckCaseRunner runner) {
         try {
             suite.addCase(runner.run());
         } catch (Exception e) {
@@ -39,13 +39,13 @@ public class HealthcheckSuiteAssembler {
         }
     }
 
-    private void createCaseWithErrorFromExceptionAndAdd(HealthcheckSuite suite, Throwable e) {
-        HealthcheckCase healthcheckCase = new HealthcheckCase();
-        healthcheckCase.name = e.getClass().getName();
-        HealthcheckStacktrace error = new HealthcheckStacktrace();
+    private void createCaseWithErrorFromExceptionAndAdd(TestSuite suite, Throwable e) {
+        TestCase testCase = new TestCase();
+        testCase.name = e.getClass().getName();
+        Stacktrace error = new Stacktrace();
         error.message = e.getMessage();
         error.stacktrace = ExceptionUtils.getStackTrace(e);
-        healthcheckCase.error = error;
-        suite.addCase(healthcheckCase);
+        testCase.error = error;
+        suite.addCase(testCase);
     }
 }

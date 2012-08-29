@@ -2,7 +2,7 @@ package com.github.judoole.monitorino.web;
 
 import com.github.judoole.monitorino.internal.HealthcheckCaseRunner;
 import com.github.judoole.monitorino.internal.HealthcheckSuiteAssembler;
-import com.github.judoole.monitorino.internal.dto.HealthcheckSuite;
+import com.github.judoole.monitorino.internal.dto.TestSuite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,7 +53,7 @@ public class MonitorinoController {
         this.name = name;
     }
 
-    HealthcheckSuite runSuite() {
+    TestSuite runSuite() {
         return new HealthcheckSuiteAssembler(name, healthcheckCaseRunners, healthcheckProperties).run();
     }
 

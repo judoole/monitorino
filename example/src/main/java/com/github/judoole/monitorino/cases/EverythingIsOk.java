@@ -1,16 +1,16 @@
 package com.github.judoole.monitorino.cases;
 
 import com.github.judoole.monitorino.internal.HealthcheckCaseRunner;
-import com.github.judoole.monitorino.internal.dto.HealthcheckFailureCase;
+import com.github.judoole.monitorino.internal.dto.MonitorinoFailureCase;
 
 public class EverythingIsOk extends HealthcheckCaseRunner {
     @Override
     protected String getName() {
-        return "HealthcheckCase thats goes OK.";
+        return "TestCase thats goes OK.";
     }
 
     @Override
-    protected HealthcheckFailureCase assertNoFailure() {
+    protected MonitorinoFailureCase assertNoFailure() {
         return null;
     }
 }

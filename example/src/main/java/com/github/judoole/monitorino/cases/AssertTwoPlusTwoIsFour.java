@@ -1,20 +1,20 @@
 package com.github.judoole.monitorino.cases;
 
 import com.github.judoole.monitorino.internal.HealthcheckCaseRunner;
-import com.github.judoole.monitorino.internal.dto.HealthcheckFailureCase;
+import com.github.judoole.monitorino.internal.dto.MonitorinoFailureCase;
 
 public class AssertTwoPlusTwoIsFour extends HealthcheckCaseRunner {
     @Override
     protected String getName() {
-        return "HealthcheckCase for two plus two";
+        return "TestCase for two plus two";
     }
 
     @Override
-    protected HealthcheckFailureCase assertNoFailure() {
+    protected MonitorinoFailureCase assertNoFailure() {
         if (2 + 2 == 4) {
             return null;
         } else {
-            return new HealthcheckFailureCase("Two plus two is quite not four.");
+            return new MonitorinoFailureCase("Two plus two is quite not four.");
         }
 
     }

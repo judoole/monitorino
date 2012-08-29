@@ -5,7 +5,7 @@
 
     <servlet>
         <servlet-name>pure-http-servlet</servlet-name>
-        <servlet-class>com.github.judoole.monitorino.WebappHealthcheckHttpServletExample</servlet-class>
+        <servlet-class>com.github.judoole.monitorino.WebappMonitorinoHttpServletExample</servlet-class>
     </servlet>
 
     <servlet>

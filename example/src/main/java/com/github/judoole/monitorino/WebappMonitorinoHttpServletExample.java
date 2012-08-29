@@ -4,7 +4,7 @@ import com.github.judoole.monitorino.internal.HealthcheckCaseRunner;
 import com.github.judoole.monitorino.internal.HealthcheckSuiteAssembler;
 import com.github.judoole.monitorino.cases.AssertTwoPlusTwoIsFour;
 import com.github.judoole.monitorino.cases.EverythingIsOk;
-import com.github.judoole.monitorino.internal.dto.HealthcheckSuite;
+import com.github.judoole.monitorino.internal.dto.TestSuite;
 import com.github.judoole.monitorino.web.HtmlView;
 
 import javax.servlet.ServletException;
@@ -16,7 +16,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class WebappHealthcheckHttpServletExample extends HttpServlet {
+public class WebappMonitorinoHttpServletExample extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
@@ -24,7 +24,7 @@ public class WebappHealthcheckHttpServletExample extends HttpServlet {
         Collection<HealthcheckCaseRunner> list = new ArrayList<HealthcheckCaseRunner>();
         list.add(new AssertTwoPlusTwoIsFour());
         list.add(new EverythingIsOk());
-        HealthcheckSuite suite = new HealthcheckSuiteAssembler("Monitor from HttpServlet", list, null).run();
+        TestSuite suite = new HealthcheckSuiteAssembler("Monitor from HttpServlet", list, null).run();
         out.println(new HtmlView().process(suite));
     }
 }

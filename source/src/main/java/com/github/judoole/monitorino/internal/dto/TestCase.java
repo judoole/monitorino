@@ -1,10 +1,10 @@
 package com.github.judoole.monitorino.internal.dto;
 
-public class HealthcheckCase {
+public class TestCase {
     public String time;
     public String name;
-    public HealthcheckStacktrace error;
-    public HealthcheckStacktrace failure;
+    public Stacktrace error;
+    public Stacktrace failure;
 
     public boolean hasError() {
         return error != null;
