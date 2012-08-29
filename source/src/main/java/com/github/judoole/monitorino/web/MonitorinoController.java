@@ -13,14 +13,14 @@ import java.util.Properties;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/healthcheck")
+@RequestMapping("/monitor")
 public class MonitorinoController {
     private HtmlView htmlView = new HtmlView();
     private XmlView xmlView = new XmlView();
     Set<MonitorinoRunner> runners;
     Properties healthcheckProperties;
 
-    String name = "AppserverHealthcheck";
+    String name = "AppserverMonitorino";
 
     @Autowired(required = false)
     public void setRunners(Set<MonitorinoRunner> runners) {

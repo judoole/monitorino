@@ -73,9 +73,9 @@ class MonitorinoControllerTest {
     }
 
     private void given_runner_returns_case_that_has_failed() {
-        Case failedHealthcheckCase = new Case();
-        failedHealthcheckCase.failure = new Stacktrace();
-        given(healthcheckCaseRunner.run()).willReturn(failedHealthcheckCase);
+        Case failedMonitorinoCase = new Case();
+        failedMonitorinoCase.failure = new Stacktrace();
+        given(healthcheckCaseRunner.run()).willReturn(failedMonitorinoCase);
     }
 
     private void when_I_run_the_controller() {

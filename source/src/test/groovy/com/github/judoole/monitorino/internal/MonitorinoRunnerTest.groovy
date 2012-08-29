@@ -27,11 +27,11 @@ public class MonitorinoRunnerTest {
         when(runner.run()).thenCallRealMethod();
         when(runner.assertNoFailure()).thenThrow(new RuntimeException(EXPECTED_EXCEPTION_MESSAGE));
 
-        Case healthcheckCase = runner.run();
-        assertThat(healthcheckCase, notNullValue());
-        assertThat(healthcheckCase.error, notNullValue());
-        assertThat(healthcheckCase.error.message, equalTo(EXPECTED_EXCEPTION_MESSAGE));
-        assertThat(healthcheckCase.error.stacktrace, containsString(getClass().name));
+        Case monitorinoCase = runner.run();
+        assertThat(monitorinoCase, notNullValue());
+        assertThat(monitorinoCase.error, notNullValue());
+        assertThat(monitorinoCase.error.message, equalTo(EXPECTED_EXCEPTION_MESSAGE));
+        assertThat(monitorinoCase.error.stacktrace, containsString(getClass().name));
     }
 
     @Test
@@ -39,10 +39,10 @@ public class MonitorinoRunnerTest {
         when(runner.run()).thenCallRealMethod();
         when(runner.assertNoFailure()).thenReturn(new MonitorinoFailureCase("Testcase"));
 
-        Case healthcheckCase = runner.run();
-        assertThat(healthcheckCase, notNullValue());
-        assertThat(healthcheckCase.error, nullValue());
-        assertThat(healthcheckCase.failure.message, equalTo("Testcase"));
+        Case monitorinoCase = runner.run();
+        assertThat(monitorinoCase, notNullValue());
+        assertThat(monitorinoCase.error, nullValue());
+        assertThat(monitorinoCase.failure.message, equalTo("Testcase"));
     }
 
     @Test

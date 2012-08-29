@@ -26,7 +26,7 @@ public class SpringApplicationContext {
     }
 
     @Bean
-    public MonitorinoController healthcheckController() throws IOException {
+    public MonitorinoController monitorinoController() throws IOException {
         MonitorinoController controller = new MonitorinoController();
         controller.setProperties(mavenBuildProperties());
         return controller;
