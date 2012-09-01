@@ -71,7 +71,21 @@ The real power lies in getting Jenkins to give you quick feedback. For setup loo
 ````
 
 ## HttpServlet
-TODO
+You could maybe do it like [WebappMonitorinoHttpServletExample](https://github.com/judoole/monitorino/blob/master/example/src/main/java/com/github/judoole/monitorino/WebappMonitorinoHttpServletExample.java)
+````java
+public class WebappMonitorinoHttpServletExample extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter out = resp.getWriter();
+        resp.setContentType("text/html");
+        Collection<MonitorinoRunner> list = new ArrayList<MonitorinoRunner>();
+        list.add(new AssertTwoPlusTwoIsFour());
+        list.add(new EverythingIsOk());
+        MonitorinoSuite suite = new SuiteAssembler("Monitor from HttpServlet", list, null).run();
+        out.println(new HtmlView().process(suite));
+    }
+}
+````
 
 ## What else?
 
