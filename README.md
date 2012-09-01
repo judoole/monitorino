@@ -47,6 +47,29 @@ Results for html and junit should be accessable from [http://localhost:8090/spri
 ## Jenkins
 The real power lies in getting Jenkins to give you quick feedback. For setup look at Knut Haugens [Ruby Smoketest blogpost](http://blog.knuthaugen.no/2011/04/continuous-delivery-ii-smoketests-in-ruby-and-rails.html)
 
+## Maven 
+````xml
+...
+<dependency>
+	<groupId>com.github.judoole</groupId>
+	<artifactId>monitorino</artifactId>
+	<version>0.1-SNAPSHOT</version>
+</dependency>
+
+...
+
+<repositories>
+	<repository>
+		<id>sonatype-oss-snapshots</id>
+		<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+	</repository>
+	<repository>
+		<id>sonatype-oss-releases</id>
+		<url>https://oss.sonatype.org/content/repositories/releases/</url>
+	</repository>
+</repositories>
+````
+
 ## HttpServlet
 TODO
 
