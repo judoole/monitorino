@@ -21,6 +21,7 @@
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>7</version>
+        <relativePath></relativePath>
     </parent>
 
     <distributionManagement>
@@ -35,21 +36,9 @@
     </distributionManagement>
 
     <properties>
+        <project.jdk>1.5</project.jdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <github.global.server>github</github.global.server>
-        <surefire-plugin.version>2.6</surefire-plugin.version>
-        <clean-plugin.version>2.4.1</clean-plugin.version>
-        <gpg-plugin>1.1</gpg-plugin>
-        <javadoc-plugin>2.7</javadoc-plugin>
-        <cobertura-plugin.version>2.4</cobertura-plugin.version>
-        <changelog-plugin.version>2.2</changelog-plugin.version>
-        <jxr-plugin>2.2</jxr-plugin>
-        <pmd-plugin>2.5</pmd-plugin>
-        <taglist-plugin>2.4</taglist-plugin>
-        <jdepend-plugin>2.0-beta-2</jdepend-plugin>
-        <findbugs-plugin>2.3.1</findbugs-plugin>
-        <site-plugin.version>3.0</site-plugin.version>
-        <project-info-reports-plugin.version>2.4</project-info-reports-plugin.version>
     </properties>
 
     <issueManagement>
@@ -168,6 +157,19 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
@@ -183,7 +185,7 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-project-info-reports-plugin</artifactId>
-                            <version>${project-info-reports-plugin.version}</version>
+                            <version>2.4</version>
                             <configuration>
                                 <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
                                 <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
@@ -199,12 +201,12 @@
                         <plugin>
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>cobertura-maven-plugin</artifactId>
-                            <version>${cobertura-plugin.version}</version>
+                            <version>2.4</version>
                         </plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-changelog-plugin</artifactId>
-                            <version>${changelog-plugin.version}</version>
+                            <version>2.2</version>
                             <configuration>
                                 <type>range</type>
                                 <range>1095</range>
@@ -213,7 +215,7 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-javadoc-plugin</artifactId>
-                            <version>${javadoc-plugin}</version>
+                            <version>2.7</version>
                             <configuration>
                                 <minmemory>128m</minmemory>
                                 <maxmemory>512</maxmemory>
@@ -222,7 +224,7 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-pmd-plugin</artifactId>
-                            <version>${pmd.plugin}</version>
+                            <version>2.5</version>
                             <configuration>
                                 <targetjdk>${project.jdk}</targetjdk>
                                 <rulesets>
@@ -238,25 +240,25 @@
                         <plugin>
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>taglist-maven-plugin</artifactId>
-                            <version>${taglist-plugin}</version>
+                            <version>2.2</version>
                         </plugin>
                         <plugin>
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>jdepend-maven-plugin</artifactId>
-                            <version>${jdepend-plugin}</version>
+                            <version>2.0-beta-2</version>
                         </plugin>
                         <plugin>
                             <artifactId>maven-surefire-report-plugin</artifactId>
-                            <version>${surefire-plugin.version}</version>
+                            <version>2.6</version>
                         </plugin>
                         <plugin>
                             <artifactId>maven-surefire-plugin</artifactId>
-                            <version>${surefire-plugin.version}</version>
+                            <version>2.6</version>
                         </plugin>
                         <plugin>
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>findbugs-maven-plugin</artifactId>
-                            <version>${findbugs-plugin}</version>
+                            <version>2.3.1</version>
                         </plugin>
                     </reportPlugins>
                 </configuration>
@@ -266,21 +268,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5.1</version>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>${project.jdk}</source>
+                    <target>${project.jdk}</target>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.1.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
@@ -299,7 +289,7 @@
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
-            <version>1.4.1</version>
+            <version>1.4.3</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -322,19 +312,19 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit-dep</artifactId>
-            <version>4.9</version>
+            <version>4.10</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
-            <version>1.9.0</version>
+            <version>1.9.5-rc1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>2.0.0</version>
+            <version>2.0.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
