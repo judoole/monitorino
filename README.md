@@ -15,10 +15,10 @@ Anyways, this is a light jar-file which you can plug into any webapp project you
 If you like reading code check out the [example](https://github.com/judoole/monitorino/tree/master/example) project. Simplest way to get the example started is running [start-example-webapp.sh](https://github.com/judoole/monitorino/blob/master/start-example-webapp.sh) and checking the result at [http://localhost:8090/spring/monitor/](http://localhost:8090/spring/monitor/) or [http://localhost:8090/spring/monitor/junit](http://localhost:8090/spring/monitor/junit)
 
 ## Spring
-For Spring it's as easy as to include a bean of class `com.github.judoole.monitorino.web.MonitorinoController`.
+For Spring it's as easy as to include a bean of class [MonitorinoController](https://github.com/judoole/monitorino/blob/master/source/src/main/java/com/github/judoole/monitorino/web/MonitorinoController.java).
 The junit report will now be accessible from `.../your-spring-dispatcher-mapping/healtcheck/xml` and as html on `.../your-spring-dispatcher-mapping/healtcheck/html`
 
-But to make it show something you need to add some healthchecks. Create beans that extends [MonitorinoRunner](https://github.com/judoole/monitorino/blob/master/source/src/main/java/com/github/judoole/monitorino/internal/MonitorinoRunner.java) like  [EverythingIsOk](https://github.com/judoole/monitorino/blob/master/example/src/main/java/com/github/judoole/monitorino/cases/EverythingIsOk.java) and be sure to **return null if success**
+But to make it show something you need to add some healthchecks. Create beans that extends [MonitorinoRunner](https://github.com/judoole/monitorino/blob/master/source/src/main/java/com/github/judoole/monitorino/internal/MonitorinoRunner.java) like  [EverythingIsOk](https://github.com/judoole/monitorino/blob/master/example/src/main/java/com/github/judoole/monitorino/cases/EverythingIsOk.java) and be sure to **return null if success**. These will be autowired into your `MonitorinoController`.
 
 If you'd like to see some properties add them to your Controller, perhaps like this from the example apps [SpringApplicationContext](https://github.com/judoole/monitorino/blob/master/example/src/main/java/com/github/judoole/monitorino/SpringApplicationContext.java)
 
@@ -41,7 +41,7 @@ public Properties mavenBuildProperties() throws IOException {
 
 That's it. You're good to go.
 
-Test example by git cloning/forking and run [start-example-webapp.sh](https://github.com/judoole/monitorino/blob/master/start-example-webapp.sh).
+Test example by git cloning/forking and run mvn install and [start-example-webapp.sh](https://github.com/judoole/monitorino/blob/master/start-example-webapp.sh).
 Results for html and junit should be accessable from [http://localhost:8090/spring/monitor](http://localhost:8090/spring/monitor)
 
 ## Jenkins
@@ -71,7 +71,7 @@ The real power lies in getting Jenkins to give you quick feedback. For setup loo
 ````
 
 ## HttpServlet
-You could maybe do it like [WebappMonitorinoHttpServletExample](https://github.com/judoole/monitorino/blob/master/example/src/main/java/com/github/judoole/monitorino/WebappMonitorinoHttpServletExample.java)
+You could do it like [WebappMonitorinoHttpServletExample](https://github.com/judoole/monitorino/blob/master/example/src/main/java/com/github/judoole/monitorino/WebappMonitorinoHttpServletExample.java)
 ````java
 public class WebappMonitorinoHttpServletExample extends HttpServlet {
     @Override
