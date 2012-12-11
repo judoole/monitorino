@@ -8,6 +8,10 @@
     <version>0.1-SNAPSHOT</version>
     <name>Monitorino Example</name>
 
+    <prerequisites>
+        <maven>3.0</maven>
+    </prerequisites>
+
     <dependencies>
         <dependency>
             <groupId>com.github.judoole</groupId>
