@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.judoole</groupId>
     <artifactId>monitorino</artifactId>
-    <version>0.1</version>
+    <version>0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Monitorino</name>
     <url>http://judoole.github.com/monitorino/</url>
@@ -55,7 +55,7 @@
         <url>https://github.com/judoole/monitorino</url>
         <connection>scm:git:git://github.com/judoole/monitorino.git</connection>
         <developerConnection>scm:git:git@github.com:judoole/monitorino.git</developerConnection>
-      <tag>v0.1</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <developers>
