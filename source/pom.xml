@@ -176,6 +176,7 @@
                 <configuration>
                     <minmemory>128m</minmemory>
                     <maxmemory>512</maxmemory>
+                    <javadocVersion>1.5</javadocVersion>
                 </configuration>
                 <executions>
                     <execution>
@@ -236,6 +237,7 @@
                             <configuration>
                                 <minmemory>128m</minmemory>
                                 <maxmemory>512</maxmemory>
+                                <javadocVersion>1.5</javadocVersion>
                             </configuration>
                         </plugin>
                         <plugin>
