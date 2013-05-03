@@ -53,7 +53,7 @@ The real power lies in getting Jenkins to give you quick feedback. For setup loo
 <dependency>
 	<groupId>com.github.judoole</groupId>
 	<artifactId>monitorino</artifactId>
-	<version>0.1-SNAPSHOT</version>
+	<version>0.1</version>
 </dependency>
 
 ...
