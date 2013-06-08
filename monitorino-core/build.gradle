@@ -68,13 +68,17 @@ uploadArchives {
 			mavenDeployer {
 				beforeDeployment { MavenDeployment deployment -> signPom(deployment) }
 
-				repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+				//repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+				//	authentication(userName: sonatypeUsername, password: sonatypePassword)
+				//}
+				repository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
 					authentication(userName: sonatypeUsername, password: sonatypePassword)
 				}
 
 				pom.project {
 					name 'Monitorino'
 					packaging 'jar'
+                    artifactId 'monitorino'
 					description 'This projects goal is to deliver helper classes for easily monitoring your Java Webapp.'
 					url 'http://judoole.github.com/monitorino/'
 
