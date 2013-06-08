@@ -1,5 +1,7 @@
 *.class
 target/
+.gradle/
+build/
 
 # Package Files #
 *.jar
@@ -8,6 +10,8 @@ target/
 
 #IntelliJ
 *.iml
+*.ipr
+*.iws
 .idea/
 
 #Mac things
