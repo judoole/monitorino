@@ -18,6 +18,9 @@ group = 'com.github.judoole'
 version = '0.2-SNAPSHOT'
 ext.packaging = 'jar'
 
+sourceCompatibility = 1.5
+targetCompatibility = 1.5
+
 def isDevBuild
 
 repositories {

@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin:'application'
+
+mainClassName = "com.github.judoole.monitorino.Main"
+
+sourceCompatibility = 1.5
+targetCompatibility = 1.5
+
+
+dependencies {
+    //compile group: 'com.github.judoole', name: 'monitorino', version:'0.1-SNAPSHOT'
+    compile project(':monitorino-core')
+    compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version:'7.6.0.v20120127'
+    compile group: 'org.eclipse.jetty', name: 'jetty-webapp', version:'7.6.0.v20120127'
+    compile group: 'javax.servlet', name: 'servlet-api', version:'2.5'
+    compile group: 'org.springframework', name: 'spring-web', version:'3.1.2.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version:'3.1.2.RELEASE'
+    compile group: 'org.springframework', name: 'spring-core', version:'3.1.2.RELEASE'
+    compile group: 'cglib', name: 'cglib', version:'2.2.2'
+}
