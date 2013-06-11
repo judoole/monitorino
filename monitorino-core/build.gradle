@@ -42,6 +42,7 @@ signing {
 }
 
 uploadArchives {
+    description = "Uploads artifact to Maven locally"
     doFirst {
         repositories {
             if (isDevBuild) {
