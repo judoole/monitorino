@@ -15,13 +15,11 @@ apply plugin: 'propdeps'
 apply plugin: 'signing'
 
 group = 'com.github.judoole'
-version = '0.2-SNAPSHOT'
+version = '0.2'
 ext.packaging = 'jar'
 
-//sourceCompatibility = 1.5
-//targetCompatibility = 1.5
-
-def isDevBuild
+def isDevBuild = false
+def sonatypeRepositoryUrl
 
 repositories {
     mavenCentral()
@@ -39,11 +37,80 @@ dependencies {
     testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.0.5'
 }
 
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    doFirst {
+        repositories {
+            if (isDevBuild) {
+                mavenLocal()
+            } else {
+                mavenDeployer {
+                    beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+                    repository(url: sonatypeRepositoryUrl) {
+                        authentication(userName: sonatypeUsername, password: sonatypePassword)
+                    }
+
+                    pom.project {
+                        name 'Monitorino'
+                        packaging 'jar'
+                        artifactId 'monitorino'
+                        description 'This projects goal is to deliver helper classes for easily monitoring your Java Webapp.'
+                        url 'http://judoole.github.com/monitorino/'
+
+                        scm {
+                            url 'https://github.com/judoole/monitorino'
+                            connection 'scm:git:git://github.com/judoole/monitorino.git'
+                            developerConnection 'scm:git:git://github.com/judoole/monitorino.git'
+                        }
+
+                        licenses {
+                            license {
+                                name 'BSD License'
+                                url 'http://www.opensource.org/licenses/bsd-license.php'
+                                distribution 'repo'
+                            }
+                        }
+                        developers {
+                            developer {
+                                id 'judoole'
+                                name 'Ole Christian Langfjaeran'
+                                url 'https://github.com/judoole'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.hasTask(snapshot)) {
+        version += '-SNAPSHOT'
+        sonatypeRepositoryUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+    } else if(taskGraph.hasTask(stage)) {
+        sonatypeRepositoryUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+    } else {
+        version += '-SNAPSHOT'
+        isDevBuild = true;
+    }
+}
+
+task snapshot(description: "Uploads snapshot to Sonatype", dependsOn: uploadArchives) {
+}
+
+task stage(description: "Stages version to Sonatype", dependsOn: uploadArchives) {
+}
+
 task javadocJar(type: Jar, dependsOn: javadoc) {
-	classifier = 'javadoc'
+    classifier = 'javadoc'
     from 'build/docs/javadoc'
 }
- 
+
 task sourcesJar(type: Jar) {
     from sourceSets.main.allSource
     classifier = 'sources'
@@ -53,57 +120,4 @@ artifacts {
     archives jar
     archives javadocJar
     archives sourcesJar
-}
-
-signing {
-    sign configurations.archives
-}
-
-uploadArchives {
-	repositories {
-		if (isDevBuild) {
-            mavenLocal()
-        }
-        else {
-			mavenDeployer {
-				beforeDeployment { MavenDeployment deployment -> signPom(deployment) }
-
-				//repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-				//	authentication(userName: sonatypeUsername, password: sonatypePassword)
-				//}
-				repository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-					authentication(userName: sonatypeUsername, password: sonatypePassword)
-				}
-
-				pom.project {
-					name 'Monitorino'
-					packaging 'jar'
-                    artifactId 'monitorino'
-					description 'This projects goal is to deliver helper classes for easily monitoring your Java Webapp.'
-					url 'http://judoole.github.com/monitorino/'
-
-					scm {
-						url 'https://github.com/judoole/monitorino'
-						connection 'scm:git:git://github.com/judoole/monitorino.git'
-						developerConnection 'scm:git:git://github.com/judoole/monitorino.git'
-					}
-
-					licenses {
-						license {
-							name 'BSD License'
-							url 'http://www.opensource.org/licenses/bsd-license.php'
-							distribution 'repo'
-						}
-					}
-					developers {
-						developer {
-							id 'judoole'
-							name 'Ole Christian Langfjaeran'
-							url 'https://github.com/judoole'
-						}
-					}
-				}
-			}
-		}
-	}
 }

@@ -1,2 +1,2 @@
 include 'monitorino-core', 'example'
-rootProject.name = 'monitorino-build'
+rootProject.name = 'monitorino-parent'
