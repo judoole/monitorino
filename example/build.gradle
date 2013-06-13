@@ -13,7 +13,7 @@ task run(description: "Runs the example as an embedded Jetty app", dependsOn: 'c
 }
 
 task checkLocalhost(type:MonitorinoTask){
-    url = "Something from example"
+    url = "http://localhost:8090/spring/monitor/xml"
 }
 
 processResources {
