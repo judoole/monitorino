@@ -1,3 +1,5 @@
+
+
 buildscript {
     repositories {
         maven { url "http://repo.springsource.org/plugins-release" }
@@ -21,6 +23,14 @@ ext.packaging = 'jar'
 def isDevBuild = false
 def sonatypeRepositoryUrl
 
+sourceSets{
+    main{
+        groovy{
+            srcDir '../buildSrc/src/main/groovy'
+        }
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -31,10 +41,13 @@ dependencies {
     compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.3'
     optional group: 'org.springframework', name: 'spring-web', version: '3.1.2.RELEASE'
     optional group: 'org.springframework', name: 'spring-webmvc', version: '3.1.2.RELEASE'
-    optional group: 'cglib', name: 'cglib', version: '2.2.2'
-    testCompile group: 'junit', name: 'junit-dep', version: '4.10'
+    optional group: 'cglib', name: 'cglib', version: '3.0'
+    testCompile group: 'junit', name: 'junit', version: '4.10'
     testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.5-rc1'
-    testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.0.5'
+    //Groovy and Gradle for the Gradle-plugin and testing
+    //optional group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.0.5'
+    optional gradleApi()
+    //optional localGroovy()
 }
 
 signing {
@@ -46,6 +59,7 @@ uploadArchives {
     doFirst {
         repositories {
             if (isDevBuild) {
+                println "Uploading to Maven Local: " + version
                 mavenLocal()
             } else {
                 mavenDeployer {
@@ -55,45 +69,49 @@ uploadArchives {
                         authentication(userName: sonatypeUsername, password: sonatypePassword)
                     }
 
-                    pom.project {
-                        name 'Monitorino'
-                        packaging 'jar'
-                        artifactId 'monitorino'
-                        description 'This projects goal is to deliver helper classes for easily monitoring your Java Webapp.'
-                        url 'http://judoole.github.com/monitorino/'
-
-                        scm {
-                            url 'https://github.com/judoole/monitorino'
-                            connection 'scm:git:git://github.com/judoole/monitorino.git'
-                            developerConnection 'scm:git:git://github.com/judoole/monitorino.git'
-                        }
-
-                        licenses {
-                            license {
-                                name 'BSD License'
-                                url 'http://www.opensource.org/licenses/bsd-license.php'
-                                distribution 'repo'
-                            }
-                        }
-                        developers {
-                            developer {
-                                id 'judoole'
-                                name 'Ole Christian Langfjaeran'
-                                url 'https://github.com/judoole'
-                            }
-                        }
-                    }
                 }
             }
         }
     }
 }
 
+configure(install.repositories.mavenInstaller){
+    pom.project {
+        name 'Monitorino'
+        packaging 'jar'
+        artifactId 'monitorino'
+        description 'This projects goal is to deliver helper classes for easily monitoring your Java Webapp.'
+        url 'http://judoole.github.com/monitorino/'
+
+        scm {
+            url 'https://github.com/judoole/monitorino'
+            connection 'scm:git:git://github.com/judoole/monitorino.git'
+            developerConnection 'scm:git:git://github.com/judoole/monitorino.git'
+        }
+
+        licenses {
+            license {
+                name 'BSD License'
+                url 'http://www.opensource.org/licenses/bsd-license.php'
+                distribution 'repo'
+            }
+        }
+        developers {
+            developer {
+                id 'judoole'
+                name 'Ole Christian Langfjaeran'
+                url 'https://github.com/judoole'
+            }
+        }
+    }
+
+}
+
 gradle.taskGraph.whenReady { taskGraph ->
     if (taskGraph.hasTask(snapshot)) {
         version += '-SNAPSHOT'
         sonatypeRepositoryUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
-    } else if(taskGraph.hasTask(stage)) {
+    } else if (taskGraph.hasTask(stage)) {
         sonatypeRepositoryUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
     } else {
         version += '-SNAPSHOT'
