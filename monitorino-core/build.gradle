@@ -1,5 +1,3 @@
-
-
 apply plugin: 'maven'
 apply plugin: 'groovy'
 apply plugin: 'java'
@@ -51,42 +49,40 @@ uploadArchives {
                         authentication(userName: sonatypeUsername, password: sonatypePassword)
                     }
 
+                    pom.project {
+                        name 'Monitorino'
+                        packaging 'jar'
+                        artifactId 'monitorino'
+                        description 'This projects goal is to deliver helper classes for easily monitoring your Java Webapp.'
+                        url 'http://judoole.github.com/monitorino/'
+
+                        scm {
+                            url 'https://github.com/judoole/monitorino'
+                            connection 'scm:git:git://github.com/judoole/monitorino.git'
+                            developerConnection 'scm:git:git://github.com/judoole/monitorino.git'
+                        }
+
+                        licenses {
+                            license {
+                                name 'BSD License'
+                                url 'http://www.opensource.org/licenses/bsd-license.php'
+                                distribution 'repo'
+                            }
+                        }
+                        developers {
+                            developer {
+                                id 'judoole'
+                                name 'Ole Christian Langfjaeran'
+                                url 'https://github.com/judoole'
+                            }
+                        }
+                    }
+
+
                 }
             }
         }
     }
-}
-
-configure(install.repositories.mavenInstaller){
-    pom.project {
-        name 'Monitorino'
-        packaging 'jar'
-        artifactId 'monitorino'
-        description 'This projects goal is to deliver helper classes for easily monitoring your Java Webapp.'
-        url 'http://judoole.github.com/monitorino/'
-
-        scm {
-            url 'https://github.com/judoole/monitorino'
-            connection 'scm:git:git://github.com/judoole/monitorino.git'
-            developerConnection 'scm:git:git://github.com/judoole/monitorino.git'
-        }
-
-        licenses {
-            license {
-                name 'BSD License'
-                url 'http://www.opensource.org/licenses/bsd-license.php'
-                distribution 'repo'
-            }
-        }
-        developers {
-            developer {
-                id 'judoole'
-                name 'Ole Christian Langfjaeran'
-                url 'https://github.com/judoole'
-            }
-        }
-    }
-
 }
 
 gradle.taskGraph.whenReady { taskGraph ->
