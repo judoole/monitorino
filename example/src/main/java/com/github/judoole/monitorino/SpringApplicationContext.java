@@ -1,5 +1,7 @@
 package com.github.judoole.monitorino;
 
+import com.github.judoole.monitorino.cases.AssertThatFailes;
+import com.github.judoole.monitorino.cases.AssertThatThrowsRuntimeException;
 import com.github.judoole.monitorino.cases.AssertTwoPlusTwoIsFour;
 import com.github.judoole.monitorino.cases.EverythingIsOk;
 import com.github.judoole.monitorino.internal.MonitorinoRunner;
@@ -23,6 +25,16 @@ public class SpringApplicationContext {
     @Bean
     public MonitorinoRunner everythingIsOk() {
         return new EverythingIsOk();
+    }
+
+    @Bean
+    public MonitorinoRunner assertThatFailes() {
+        return new AssertThatFailes();
+    }
+
+    @Bean
+    public MonitorinoRunner assertThatThrowsRuntimeException() {
+        return new AssertThatThrowsRuntimeException();
     }
 
     @Bean
