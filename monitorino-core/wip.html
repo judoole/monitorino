@@ -26,49 +26,46 @@ function minifyMaximize(id) {
 
 <style>
 body{
-    background-color: black;
+    background-color: #EAF4FF;
     padding: 10px 10px 10px 10px;
     color: white;
     font-size: 13px;
-    font-family: 'helvetica neue', helvetica, arial, geneva, sans-serif;
+    font-family: 'Montserrat', arial, sans-serif;
 }
 h1{
-    color: #A292FF;
+    width: 100%;
     font-size: 26px;
-    font-weight: bold;
-    text-align: center;
+    font-weight: normal;  
     margin-bottom: 10px;
-    font-family: "CorbelRegular","helvetica neue",helvetica,arial,geneva,sans-serif;
+    padding: 5px;    
 }
 properties{
     float: left;
+    overflow: hidden;
     min-width: 250px;
-    border: 0 1 0 0 solid #282936;
-    /*border-bottom-left-radius: 5px 5px;
-    border-bottom-right-radius: 5px 5px;
-    background-color: #282936;
-    word-wrap: break-word;
-    margin-bottom: 20px;*/
+    margin-right: 10px;    
 }
-header{
-    background-color: #3D3D4D;
-    color: white;
-    font-weight: bold;
+header, case name{    
+    margin-bottom: 1px;
     font-size: 15px;
     padding: 5px;
 }
-header, property name, property value{
-    padding: 5px;
-    font-weight: bold;
-    color: white;    
+header, h1{
+	background-color: #6A7E93;
 }
 property{
+	background-color: #B7CBE0;
 	float: left;
-	clear: both;
+	width: 100%;
+	margin-bottom: 1px;
+	padding: 5px;
 }
-property value{
-    /*width: 100%;*/
-    color: #8584B2;    
+property name, property value{
+	float: left;
+	clear: left;
+}
+property name{
+	color: #6A7E93;
 }
 cases{
 	overflow: hidden;
@@ -78,25 +75,18 @@ cases{
 case{
     width: 100%;
     float: left;
-    /*clear: both;*/
-    /*clear: right;*/
-    margin: 0 0 12px 0;
+    margin-bottom: 5px;
 }
 case name, case info{
     float: left;
     width: 100%;    
-    color: #0F0E13;
-    padding: 0 5px 0 5px;
 }
 case name{
-    font-weight: bold;
     clear: right;
-    padding: 5px 5px 5px 5px;    
+    padding: 5px;    
 }
 .success name{
-    padding: 5px 5px 5px 5px;
-    background-color: #91FF00;
-    background-image: -webkit-linear-gradient(top, #9EFF1F, #92E327 50%, #89D526 50%, #7AD600);
+    background-color: #2ecc71;
 }
 .failure name, .error name{
     cursor: pointer;
@@ -107,29 +97,22 @@ case name{
     user-select: none;
 }
 .failure name{
-    background-color: #f1e767;
-    background-image: -webkit-linear-gradient(top, #f1e767 0%,#feb645 100%);        
+    background-color: #f1c40f;
 }
 .error name{
-    background-color: #ff3019;
-    background-image:-webkit-linear-gradient(top,  #ff3019 0%,#cf0404 100%);
+    background-color: #e74c3c;    
 }
-.show name{
-    padding: 5px 5px 5px 5px;   
-}   
 case info{
-    color: #8584B2;
-    background-color: #282936;
+    background-color: #B7CBE0;
     word-wrap: break-word;
 }
 .show info{
     height: auto;
-    padding: 5px 5px 5px 5px;    
+    padding: 5px;    
 }
 .hide info{
     height: 0;
     display: none;
-    /*overflow: hidden;*/
     padding-top: 0;
 }
 </style>
@@ -140,7 +123,7 @@ case info{
     <properties id="props">
        <header>Properties</header>
        <property>
-           <name>OS</name>
+           <name>OS asdf kjasldkjfh alkjshdf lkadsflkhalksjhdf lkahjsd fladsß</name>
            <value>Mac</value>
         </property>           
        <property>
@@ -154,7 +137,7 @@ case info{
             <name>This is case 1</name>
         </case>
         
-        <case id="case2" class="error show" >
+        <case id="case2" class="error hide" >
             <name onclick="showHideCaseInfo('case2')">This is case 2</name>
             <info>java.lang.RuntimeException: Hello
     at com.github.judoole.monitorino.cases.EverythingIsOk.assertNoFailure(EverythingIsOk.java:14)
