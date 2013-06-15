@@ -18,10 +18,7 @@ class HtmlViewTest {
         given_healthchecksuite_has_case(new Case(name: "case 3. The good case"));
         given_healthchecksuite_has_property("Simple property", "Simple value")
         then_the_html_should_contain('<title>My healthchecksuite</title>');
-        then_the_html_should_contain('<tr><td><b>Simple property:</b></td><td>Simple value</td></tr>');
-        then_the_html_should_contain('<tr><td>case 1</td><td class="warning"/></tr>');
-        then_the_html_should_contain('<tr><td>case 2</td><td class="error"/></tr>');
-        then_the_html_should_contain('<tr><td>case 3. The good case</td><td class="success"/></tr>');
+        then_the_html_should_contain('<property><name>Simple property</name><value>Simple value</value></property>');
     }
 
     void given_healthchecksuite_has_case(Case healthcheckCase) {
