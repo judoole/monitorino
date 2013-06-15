@@ -39,7 +39,7 @@ h1{
     padding: 15px;    
 }
 properties{
-    float: left;
+    float: left;    
     overflow: hidden;
     min-width: 250px;
     margin-right: 10px;    
@@ -74,7 +74,7 @@ cases{
 case{
     width: 100%;
     float: left;
-    margin-bottom: 5px;
+    margin-bottom: 1px;
 }
 case name, case info{
     float: left;
@@ -112,6 +112,15 @@ case info{
     height: 0;
     display: none;
     padding-top: 0;
+}
+@media screen and (max-width: 480px) {
+    cases{
+        clear: left;
+    }
+    properties{
+        margin: 0 0 10px 0;
+        width: 100%;
+    }
 }
 </style>
 </head>

@@ -1,30 +1,125 @@
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <title>[name]</title>
-  <style type="text/css">
+    <script type="text/javascript">
+        function showHideCaseInfo(id) {
+            var theclass = document.getElementById(id).getAttribute("class");
+            if (theclass == 'failure show') {
+                document.getElementById(id).setAttribute("class", "failure hide");
+            } else if (theclass == 'failure hide') {
+                document.getElementById(id).setAttribute("class", "failure show");
+            } else if (theclass == 'error hide') {
+                document.getElementById(id).setAttribute("class", "error show");
+            } else if (theclass == 'error show') {
+                document.getElementById(id).setAttribute("class", "error hide");
+            }
+        }
 
-  .success, .error, .warning{
-	background-repeat: no-repeat;
-	height: 16px;
-	width: 16px;
-	}
-  .success {
-    background-image: url('data:image/gif;base64,R0lGODlhEAAQAOYAAARsE5zgd0/AJtfsyi6wFoS1hACZALLWsmbIQx+oCwCICDmMO7/ov/r2/Pnq+gBtJjq1HIXMeqfJqu/37xaFF9Hh0XnTTCydJ2bMMw2jAKflg5Xcd0CmQRNzGVC+O+rm7EW7IgByMojYXi6gKgCFEiWjF9/v2wB9IRyUHGzGU4zFjDq1IQBmMweeAPXw9gCND4i/jiqqIBupCH7TWQB8Kf///1rFLEe8ISetC+nz3C+oJBF6GCStEUK1IbjfuIa7hjGoKB6RHXPKVgBsOpvde1TDKTqUOkKrQo/LjwiODk3AJwuNCCmlKTOvHiKqCf/3/0C5G5bbeABxNonYYQCGGxmtCD60K////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUUAFcALAAAAAAQABAAAAe5gFeCg4SFhkhHIyMcKoaCDExCATMIHjEoPoUMQBoiGEU3EAQJS5mDTBoWGJ8gEAkRPBQTgkgpU6s2SiBOJk8DST+CHBs2IEUCIDgmNTVRLwuCIzMlMDxQysxELVQ7ghceEg4VTcs12gY03Vcclh8uT0/mLS0GUtBXKjoyVi4N8vQnHhQYFERGBg85zhkgMaTDLEE+lszLYKDiiSEADhTyQUHBixcnQjzooNHQhB8LdnRYUOCho5eDAgEAOw==');
-  }
-  .error{
-	background-image: url('data:image/gif;base64,R0lGODlhEAAQAOYAAKIEANjU2ORgOtsmBdGMjP/9+McTANxBKex3T93q7ts4HcgnD9S5vf+BTePl5bcIAPE7D/FmQ+ZRM//guuKsoPHx8aAQEP+kZ8wyH/9uEfFBFvdPKfAzAdIUALcWCv9zRP/q4N6Pif9KBPH09Oi6sK4TCu8pAPXc1p8KCv2hkf+aVtI1D/9mM+7X0+NMMetUOMUVAP88APf39+MzBvjZz9Y/KPlEGeTHwMyZmfTj3+ibk+Tt7tceAOTY2f/4774ZCv+EReVAHMchCaYOCrwLAPhiO/U0BaoSDeYgAPdpSK4KAPY4BvpnQP/v6uxbPO5KJsotGe9KIfdIHP9SKP/e0N9ILNy4tv+OVtM3IbYXDf///6YQDfXu7tgZAOBDIM8WAO0zB+xULvc0A//f1Pf3/+9dP7AWDdESAODt8fVlQv/t3vgoAK0AAODX1/BfPcInGf+rbe9CIf9LBe/BsP+gXNM2Eezf2fZFHr8SAP9aKQAAAAAAAAAAAAAAAAAAAAAAACH5BAQUAP8ALAAAAAAQABAAAAfWgFqCg4SFgilMSUkRZU4vEi5VBzU6gkUTdCoCQB8seTZ3dwpQgmlwGXUMMyIxRidLSDw/pRcrATs9HEtcglJfs1puCDgJDjstOYNUAx6CL1ccVjs7IzKCIGAGZoISDXJrJBUV1mMmXTAlgi4fMUstO+NaTVFneEeCVSxibdPVggVhHgwRdGAKhWI7TtAYpGYBCkE1Nqy5gcYOBDAgtPjwwuahFixPkBiZo6FLhyBUvDxQ4hGDFx48BhiYSUSIEiUALAgK8SZLFjNHjmzZYqGoBQKGkhIKBAA7');
-  }
-  .warning{
-	background-image: url('data:image/gif;base64,R0lGODlhEAAQAOYAAAIGEe7kANGuIOvNhLaTDfDgUN2/enJ0QPbSOPjw38+qR7yeN/DiwzU2P9rGAvTfqvPpF+PUuvHibOG+XuLQqcmtffDjlPHPRbaOKN3NoCYnOP//AI6IGt3cRsulQ0A3Hvf3KtrOIPbkWPXoQfDeiefUdxASIfLlK+zadsCZKLSMGP/7HdOuV/fu2PPnpfn1AO3cWs6mNN3DadSsO/3jMu/fh+/euNi2Svz1CLyWEsOdP//oR+jTgvbuBvrlZ/z25fbuIb+YIOjTpLuUG8KbNffmpfbpsffqyfbmnf7yJuXJI9OwMfHjVvbrQLidEuzce9itQvrxGfHhlMehQM+tJ+vZhzg8RRAUK+vmMuzbYePHb/LouN61SP//Cffrpv///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUUAF8ALAAAAAAQABAAAAeWgF+Cg4SFhl8tCh42h4VcW0YejYMPWi5SJQaTXzNIS1Q+MQmNAzwXAFdKTCyHPzMWCCYaISMCDIYTVU87Hw0rJ0ALhUc3NRIiHAdJEDgOGYRQUihZBVgdED0vG0ODQjIkKDAjBE442hsBFYJTLk9ZMDQfVl0b9RsE617GTE1RIPb1VAiioINIihRBhuRYuBBDhE0QIwYCADs=');
-  }
-  </style>
+    </script>
+
+    <style>
+        body{
+            background-color: #EAF4FF;
+            padding: 10px 10px 10px 10px;
+            color: white;
+            font-size: 13px;
+            font-family: 'Montserrat', arial, sans-serif;
+        }
+        h1{
+            font-size: 26px;
+            font-weight: normal;
+            margin-bottom: 10px;
+            padding: 15px;
+        }
+        properties{
+            float: left;
+            overflow: hidden;
+            min-width: 250px;
+            margin-right: 10px;
+        }
+        header, case name{
+            margin-bottom: 1px;
+            font-size: 15px;
+            padding: 10px;
+        }
+        header, h1{
+            background-color: #6A7E93;
+        }
+        property{
+            background-color: #B7CBE0;
+            float: left;
+            width: 100%;
+            margin-bottom: 1px;
+            padding: 10px 0 10px 10px;
+        }
+        property name, property value{
+            float: left;
+            clear: left;
+        }
+        property name{
+            color: #6A7E93;
+        }
+        cases{
+            overflow: hidden;
+            display: block;
+            margin: 0 auto;
+        }
+        case{
+            width: 100%;
+            float: left;
+            margin-bottom: 1px;
+        }
+        case name, case info{
+            float: left;
+            width: 100%;
+        }
+        case name{
+            clear: right;
+        }
+        .success name{
+            background-color: #2ecc71;
+        }
+        .failure name, .error name{
+            cursor: pointer;
+        }
+        .failure name{
+            background-color: #f1c40f;
+        }
+        .error name{
+            background-color: #e74c3c;
+        }
+        case info{
+            background-color: #B7CBE0;
+            word-wrap: break-word;
+        }
+        .show info{
+            height: auto;
+            padding: 5px;
+        }
+        .hide info{
+            height: 0;
+            display: none;
+            padding-top: 0;
+        }
+        @media screen and (max-width: 960px), (device-aspect-ratio: 40/71) {
+            cases{
+                clear: left;
+            }
+            properties{
+                margin: 0 0 10px 0;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
+<body>
 <h1>[name]</h1>
-<table>
-[properties]
-</table>
-<table>
-[cases]
-</table>
-</html>
+
+<properties>
+    <header>Properties</header>
+    [properties]
+</properties>
+
+<cases>
+    [cases]
+</cases>
+</body>

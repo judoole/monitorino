@@ -14,8 +14,8 @@ import java.util.regex.Pattern;
  * Okey. So maybe I hate template frameworks also now? Nike. Just Do It. Yourself.
  */
 public class HtmlView {
-    private static final String TEMPLATE_FOR_HEALTHCHECK_CASER = "<tr><td>[name]</td><td class=\"[isSuccess]\"/></tr>\n";
-    private static final String TEMPLATE_FOR_HEALTHCHECK_PROPERTY = "<tr><td><b>[name]:</b></td><td>[value]</td></tr>\n";
+    private static final String TEMPLATE_FOR_HEALTHCHECK_CASER = "<case id=\"case[id]\" class=\"[isSuccess]\"><name onclick=\"showHideCaseInfo('case[id]')\">[name]</name><info>[info]</info></case>\n";
+    private static final String TEMPLATE_FOR_HEALTHCHECK_PROPERTY = "<property><name>[name]</name><value>[value]</value></property>\n";
 
     public String process(MonitorinoSuite suite) {
         Map<String, String> map = new HashMap<String, String>();
@@ -40,15 +40,20 @@ public class HtmlView {
         if(cases == null) return "";
 
         StringBuilder html = new StringBuilder();
+        int casenumber=0;
         for (Case testCase : cases) {
             Map<String, Object> replaceMap = new HashMap<String, Object>();
             replaceMap.put("name", (Object) testCase.name);
+            replaceMap.put("id", ++casenumber);
             if (testCase.hasError()) {
-                replaceMap.put("isSuccess", "error");
+                replaceMap.put("isSuccess", "error hide");
+                replaceMap.put("info", testCase.error.stacktrace);
             } else if (testCase.hasFailure()) {
-                replaceMap.put("isSuccess", "warning");
+                replaceMap.put("isSuccess", "failure hide");
+                replaceMap.put("info", testCase.failure.message);
             } else {
                 replaceMap.put("isSuccess", "success");
+                replaceMap.put("info", "");
             }
             String aNewRow = replaceTokens(TEMPLATE_FOR_HEALTHCHECK_CASER, replaceMap);
             html.append(aNewRow);
