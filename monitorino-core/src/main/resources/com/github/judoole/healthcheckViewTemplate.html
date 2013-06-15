@@ -17,95 +17,118 @@
     </script>
 
     <style>
-        body{
+        body {
             background-color: #EAF4FF;
             padding: 10px 10px 10px 10px;
             color: white;
-            font-size: 13px;
+            /*font-size: 13px;*/
             font-family: 'Montserrat', arial, sans-serif;
         }
-        h1{
-            font-size: 26px;
+
+        h1 {
+            font-size: 2em;
             font-weight: normal;
-            margin-bottom: 10px;
-            padding: 15px;
+            margin-bottom: 0.8em;
+            padding: 1.1em;
         }
-        properties{
+
+        properties {
             float: left;
             overflow: hidden;
-            min-width: 250px;
-            margin-right: 10px;
+            min-width: 20em;
+            margin-right: 0.8em;
         }
-        header, case name{
+
+        header, case name {
             margin-bottom: 1px;
-            font-size: 15px;
-            padding: 10px;
+            padding: 0.8em;
         }
-        header, h1{
+
+        header, h1 {
             background-color: #6A7E93;
         }
-        property{
+
+        property {
             background-color: #B7CBE0;
             float: left;
             width: 100%;
             margin-bottom: 1px;
-            padding: 10px 0 10px 10px;
+            padding: 0.8em 0 0.8em 0.8em;
         }
-        property name, property value{
+
+        property name, property value {
             float: left;
             clear: left;
         }
-        property name{
+
+        property name {
             color: #6A7E93;
         }
-        cases{
+
+        cases {
             overflow: hidden;
             display: block;
             margin: 0 auto;
         }
-        case{
+
+        case {
             width: 100%;
             float: left;
             margin-bottom: 1px;
         }
-        case name, case info{
+
+        case name, case info {
             float: left;
             width: 100%;
         }
-        case name{
+
+        case name {
             clear: right;
         }
-        .success name{
+
+        .success name {
             background-color: #2ecc71;
         }
-        .failure name, .error name{
+
+        .failure name, .error name {
             cursor: pointer;
         }
-        .failure name{
+
+        .failure name {
             background-color: #f1c40f;
         }
-        .error name{
+
+        .error name {
             background-color: #e74c3c;
         }
-        case info{
+
+        case info {
             background-color: #B7CBE0;
             word-wrap: break-word;
         }
-        .show info{
+
+        .show info {
             height: auto;
-            padding: 5px;
+            padding: 0.5em;
         }
-        .hide info{
+
+        .hide info {
             height: 0;
             display: none;
             padding-top: 0;
         }
+
         @media screen and (max-width: 960px), (device-aspect-ratio: 40/71) {
-            cases{
+            body{
+                font-size: 2.5em;
+            }
+
+            cases {
                 clear: left;
             }
-            properties{
-                margin: 0 0 10px 0;
+
+            properties {
+                margin: 0 0 0.8em 0;
                 width: 100%;
             }
         }
