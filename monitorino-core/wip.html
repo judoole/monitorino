@@ -41,24 +41,20 @@ h1{
     font-family: "CorbelRegular","helvetica neue",helvetica,arial,geneva,sans-serif;
 }
 properties{
-    display:table;
-    width: 100%;
-    border: 1px solid #282936;
-    border-bottom-left-radius: 5px 5px;
+    float: left;
+    min-width: 250px;
+    border: 0 1 0 0 solid #282936;
+    /*border-bottom-left-radius: 5px 5px;
     border-bottom-right-radius: 5px 5px;
     background-color: #282936;
     word-wrap: break-word;
-    margin-bottom: 20px;
+    margin-bottom: 20px;*/
 }
 header{
-    display: table-caption;
     background-color: #3D3D4D;
-    border-top-left-radius: 5px 5px;
-    border-top-right-radius: 5px 5px;    
     color: white;
     font-weight: bold;
     font-size: 15px;
-    text-align: center;
     padding: 5px;
 }
 header, property name, property value{
@@ -67,56 +63,42 @@ header, property name, property value{
     color: white;    
 }
 property{
-    display: table-row;            
-}
-.minified property{
-    display:none;        
-}
-property name{
-    display:table-cell;
+	float: left;
+	clear: both;
 }
 property value{
-    width: 100%;
-    display: table-cell;
+    /*width: 100%;*/
     color: #8584B2;    
 }
 cases{
+	overflow: hidden;
+	display: block;
     margin: 0 auto;
-    max-width: 800px;
 }
 case{
-    display: block;
-    width: 40%;
-    float: right;
-    clear: right;
-    margin: 0 0 12px 0;
-}
-case:nth-child(odd){
+    width: 100%;
     float: left;
-    clear: left;
+    /*clear: both;*/
+    /*clear: right;*/
+    margin: 0 0 12px 0;
 }
 case name, case info{
     float: left;
     width: 100%;    
     color: #0F0E13;
-    padding: 0 5px 0 5px;        
+    padding: 0 5px 0 5px;
 }
 case name{
     font-weight: bold;
-    border-top-left-radius: 5px 5px;
-    border-top-right-radius: 5px 5px;
-    border-bottom-left-radius: 5px 5px ;
-    border-bottom-right-radius: 5px 5px;    
+    clear: right;
     padding: 5px 5px 5px 5px;    
 }
 .success name{
-    border-bottom-left-radius: 5px 5px ;
-    border-bottom-right-radius: 5px 5px;
     padding: 5px 5px 5px 5px;
     background-color: #91FF00;
     background-image: -webkit-linear-gradient(top, #9EFF1F, #92E327 50%, #89D526 50%, #7AD600);
 }
-.failure name, .error name, header{
+.failure name, .error name{
     cursor: pointer;
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
@@ -126,33 +108,28 @@ case name{
 }
 .failure name{
     background-color: #f1e767;
-    backgroun-image: -webkit-linear-gradient(top, #f1e767 0%,#feb645 100%);        
+    background-image: -webkit-linear-gradient(top, #f1e767 0%,#feb645 100%);        
 }
 .error name{
     background-color: #ff3019;
     background-image:-webkit-linear-gradient(top,  #ff3019 0%,#cf0404 100%);
 }
 .show name{
-    border-bottom-left-radius: 0 0;
-    border-bottom-right-radius: 0 0;
     padding: 5px 5px 5px 5px;   
 }   
 case info{
-    border-top-left-radius: 0 0;
-    border-top-right-radius: 0 0;
     color: #8584B2;
     background-color: #282936;
     word-wrap: break-word;
 }
 .show info{
     height: auto;
-    border-bottom-left-radius: 5px 5px ;
-    border-bottom-right-radius: 5px 5px;
     padding: 5px 5px 5px 5px;    
 }
 .hide info{
     height: 0;
-    overflow:hidden;
+    display: none;
+    /*overflow: hidden;*/
     padding-top: 0;
 }
 </style>
@@ -160,8 +137,8 @@ case info{
 <body>
     <h1>Awesome Webservice</h1>
     
-    <properties id="props" class="minified">
-       <header onclick="minifyMaximize('props')">Properties</header>
+    <properties id="props">
+       <header>Properties</header>
        <property>
            <name>OS</name>
            <value>Mac</value>
@@ -177,7 +154,7 @@ case info{
             <name>This is case 1</name>
         </case>
         
-        <case id="case2" class="error hide" >
+        <case id="case2" class="error show" >
             <name onclick="showHideCaseInfo('case2')">This is case 2</name>
             <info>java.lang.RuntimeException: Hello
     at com.github.judoole.monitorino.cases.EverythingIsOk.assertNoFailure(EverythingIsOk.java:14)
