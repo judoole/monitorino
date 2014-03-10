@@ -3,4 +3,4 @@ branches:
   only:
     - master
 
-script: gradle check
+script: ./gradlew check
