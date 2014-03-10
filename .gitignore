@@ -3,11 +3,6 @@ target/
 .gradle/
 build/
 
-# Package Files #
-*.jar
-*.war
-*.ear
-
 #IntelliJ
 *.iml
 *.ipr
