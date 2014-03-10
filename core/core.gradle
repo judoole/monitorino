@@ -1,7 +1,6 @@
 apply plugin: 'maven'
 apply plugin: 'groovy'
 apply plugin: 'java'
-apply plugin: 'propdeps'
 apply plugin: 'signing'
 
 group = 'com.github.judoole'
@@ -32,6 +31,7 @@ signing {
 }
 
 uploadArchives {
+    group = "Release"
     description = "Uploads artifact to Maven locally"
     doFirst {
         repositories {
@@ -94,10 +94,10 @@ gradle.taskGraph.whenReady { taskGraph ->
     }
 }
 
-task snapshot(description: "Uploads snapshot to Sonatype", dependsOn: uploadArchives) {
+task snapshot(description: "Uploads snapshot to Sonatype", dependsOn: uploadArchives, group: "Release") {
 }
 
-task stage(description: "Stages version to Sonatype", dependsOn: uploadArchives) {
+task stage(description: "Stages version to Sonatype", dependsOn: uploadArchives, group: "Release") {
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {

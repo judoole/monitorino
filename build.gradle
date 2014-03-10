@@ -6,7 +6,6 @@ buildscript {
         classpath("org.springframework.build.gradle:propdeps-plugin:0.0.5")
     }
 }
-apply plugin: 'idea'
 
 configure(allprojects) {
     apply plugin: 'propdeps'
@@ -21,6 +20,6 @@ subprojects {
     }
 }
 
-task wrapper(type: Wrapper) {
+task wrapper(type: Wrapper, description: "Creates gradlew and what not") {
     gradleVersion = '1.11'
 }
