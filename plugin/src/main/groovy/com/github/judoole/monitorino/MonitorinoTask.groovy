@@ -4,6 +4,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.TaskExecutionException
 import org.gradle.api.tasks.TaskInstantiationException
+import org.gradle.api.DefaultTask
 
 class MonitorinoTask extends DefaultTask {
     String url

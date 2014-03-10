@@ -3,7 +3,8 @@ package com.github.judoole.monitorino.web
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.runners.MockitoJUnit44Runner
+import org.mockito.runners.MockitoJUnitRunner
+
 import static org.hamcrest.core.IsNot.not
 import static org.junit.Assert.assertThat
 import static org.mockito.BDDMockito.given
@@ -19,7 +20,7 @@ import com.github.judoole.monitorino.internal.MonitorinoRunner
 import com.github.judoole.monitorino.internal.dto.MonitorinoSuite
 import com.github.judoole.monitorino.internal.dto.Case
 
-@RunWith(MockitoJUnit44Runner.class)
+@RunWith(MockitoJUnitRunner.class)
 class MonitorinoControllerTest {
 
     @Test

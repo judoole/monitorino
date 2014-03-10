@@ -1,7 +1,15 @@
 sourceSets{
     main{
         groovy{
-            srcDir '../monitorino-core/src/main/groovy'
+            srcDir '../plugin/src/main/groovy'
         }
     }
+}
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
 }
