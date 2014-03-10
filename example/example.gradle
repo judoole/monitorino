@@ -3,10 +3,6 @@ import com.github.judoole.monitorino.MonitorinoTask
 apply plugin: 'java'
 apply plugin: 'maven'
 
-version = "1.0"
-
-
-
 task run(description: "Runs the example as an embedded Jetty app", dependsOn: 'classes', type: JavaExec) {
     main = "com.github.judoole.monitorino.Main"
     classpath = sourceSets.main.runtimeClasspath
@@ -24,7 +20,7 @@ processResources {
 dependencies {
     //If you were to include in your project, this would be the dependency
     //compile group: 'com.github.judoole', name: 'monitorino', version:'0.1-SNAPSHOT'
-    compile project(':monitorino-core')
+    compile project(':core')
     compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '7.6.0.v20120127'
     compile group: 'org.eclipse.jetty', name: 'jetty-webapp', version: '7.6.0.v20120127'
     compile group: 'javax.servlet', name: 'servlet-api', version: '2.5'

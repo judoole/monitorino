@@ -1,4 +1,4 @@
-include 'monitorino-core', 'example', 'plugin'
+include 'core', 'example', 'plugin'
 rootProject.name = 'monitorino'
 
 rootProject.children.each { project ->
