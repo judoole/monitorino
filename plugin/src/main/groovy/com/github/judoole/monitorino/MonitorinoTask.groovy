@@ -9,6 +9,16 @@ import org.gradle.api.DefaultTask
 class MonitorinoTask extends DefaultTask {
     String url
 
+    public MonitorinoTask(){
+        group = "Monitorino"
+        description = "Checks the health of url"
+    }
+
+    public setUrl(String url){
+        this.url = url;
+        description = "Checks the health of ${url}"
+    }
+
     @TaskAction
     def parseUrl() {
         //def xml = new XmlSlurper().parse(new File("somexml"))
