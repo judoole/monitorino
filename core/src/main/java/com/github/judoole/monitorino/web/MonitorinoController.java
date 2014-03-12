@@ -17,6 +17,7 @@ import java.util.Set;
 public class MonitorinoController {
     private HtmlView htmlView = new HtmlView();
     private XmlView xmlView = new XmlView();
+    private JsonView jsonView = new JsonView();
     Set<MonitorinoRunner> runners;
     Properties healthcheckProperties;
 
@@ -41,6 +42,12 @@ public class MonitorinoController {
     @ResponseBody
     public String htmlRapport() {
         return htmlView.process(runSuite());
+    }
+
+    @RequestMapping(value = {"/json"}, method = RequestMethod.GET)
+    @ResponseBody
+    public String jsonRapport() {
+        return jsonView.process(runSuite());
     }
 
     @RequestMapping(value = {"/xml", "/junit", "/", "/html"}, method = RequestMethod.HEAD)
