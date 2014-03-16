@@ -12,29 +12,25 @@ import java.io.Writer;
 
 public class JsonView {
 
-    public String process(MonitorinoSuite suite) {
-        try {
-            return process(suite, true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
+	public String process(MonitorinoSuite suite) {
+		return process(suite, true);
+	}
 
-    String process(MonitorinoSuite suite, final boolean prettyPrint) throws IOException {
-        XStream xstream = new XStream(new JsonHierarchicalStreamDriver() {
-            public HierarchicalStreamWriter createWriter(Writer writer) {
-                if (!prettyPrint) {
-                    return new JsonWriter(writer, JsonWriter.DROP_ROOT_MODE,
-                            new JsonWriter.Format(new char[]{}, new char[]{}, JsonWriter.Format.SPACE_AFTER_LABEL));
-                } else {
-                    return new JsonWriter(writer, JsonWriter.DROP_ROOT_MODE);
-                }
-            }
-        });
-        xstream.setMode(XStream.NO_REFERENCES);
-        xstream.registerConverter(new PropertiesToJsonConverter());
+	String process(MonitorinoSuite suite, final boolean prettyPrint) {
+		XStream xstream = new XStream(new JsonHierarchicalStreamDriver() {
+			public HierarchicalStreamWriter createWriter(Writer writer) {
+				if (!prettyPrint) {
+					return new JsonWriter(writer, JsonWriter.DROP_ROOT_MODE,
+							new JsonWriter.Format(new char[]{}, new char[]{}, JsonWriter.Format.SPACE_AFTER_LABEL));
+				} else {
+					return new JsonWriter(writer, JsonWriter.DROP_ROOT_MODE);
+				}
+			}
+		});
+		xstream.setMode(XStream.NO_REFERENCES);
+		xstream.aliasField("properties", MonitorinoSuite.class, "healthcheckProperties");
+		xstream.registerConverter(new PropertiesToJsonConverter());
 
-        return xstream.toXML(suite);
-    }
+		return xstream.toXML(suite);
+	}
 }
