@@ -17,10 +17,10 @@ class XmlViewTest {
         given_healthchecksuite_has_case(new Case(name: "case 3. The good case"));
         given_healthchecksuite_has_property("Simple property", "Simple value")
         then_the_xml_should_contain('<testsuite name="My healthchecksuite" tests="3" skipped="0" errors="1" failures="1">');
-        then_the_xml_should_contain('<testcase name="case1"><failure message="Things went far from good"/></testcase>');
-        then_the_xml_should_contain('<testcase name="case 2"><error message="Things did not go so well no either">Bla, bla, BLAM!</error></testcase>');
+        then_the_xml_should_contain('<testcase name="case 2">\n        <error message="Things did not go so well no either">Bla, bla, BLAM!</error>\n    </testcase>');
+        then_the_xml_should_contain('<testcase name="case1">\n        <failure message="Things went far from good"/>\n    </testcase>');
         then_the_xml_should_contain('<testcase name="case 3. The good case"/>');
-        then_the_xml_should_contain('<property name="Simple property" value="Simple value"/></properties>');
+        then_the_xml_should_contain('<property name="Simple property" value="Simple value"/>');
     }
 
     void given_healthchecksuite_has_case(Case healthcheckCase) {
@@ -36,7 +36,7 @@ class XmlViewTest {
     }
 
     void then_the_xml_should_contain(String string) {
-        assertThat(view.process(suite, false), containsString(string));
+        assertThat(view.process(suite), containsString(string));
     }
 
     XmlView view = new XmlView()
