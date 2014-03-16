@@ -21,7 +21,7 @@ class JsonViewTest {
         then_the_json_should_contain('{"name": "case 1","failure": {"message": "Things went far from good"}}')
         then_the_json_should_contain('{"name": "case 3. The good case"}')
         then_the_json_should_contain('{"name": "case 2","error": {"message": "Things did not go so well no either","stacktrace": "Bla, bla, BLAM!"}}')
-        then_the_json_should_contain('"healthcheckProperties": [{"some-other-property": "Some other value","Simple property": "Simple value"}]')
+        then_the_json_should_contain('"properties": [{"some-other-property": "Some other value","Simple property": "Simple value"}]')
     }
 
     void given_healthchecksuite_has_case(Case healthcheckCase) {
