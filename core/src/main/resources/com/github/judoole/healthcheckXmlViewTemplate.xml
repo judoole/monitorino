@@ -1,4 +1,0 @@
-<testsuite name="[name]" tests="[number_of_tests]" skipped="[number_of_skipped]" errors="[number_of_errors]" failures="[number_of_failures]">
-    [cases]
-    [properties]
-</testsuite>

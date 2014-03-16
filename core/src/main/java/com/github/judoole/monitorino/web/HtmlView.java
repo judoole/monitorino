@@ -2,11 +2,13 @@ package com.github.judoole.monitorino.web;
 
 import com.github.judoole.monitorino.internal.dto.Case;
 import com.github.judoole.monitorino.internal.dto.MonitorinoSuite;
+import org.apache.commons.io.IOUtils;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
-
-import static com.github.judoole.monitorino.web.util.MonitorinoTemplater.replaceTokens;
-import static com.github.judoole.monitorino.web.util.MonitorinoTemplater.template;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Okey. So maybe I hate template frameworks also now? Nike. Just Do It. Yourself.
@@ -21,7 +23,17 @@ public class HtmlView {
         map.put("cases", createHtmlForCases(suite.testCases));
         map.put("properties", createHtmlForProperties(suite.healthcheckProperties));
 
-        return replaceTokens(template("/com/github/judoole/healthcheckViewTemplate.html"), map);
+        return replaceTokens(template(), map);
+    }
+
+    private String template() {
+        try {
+            return IOUtils.toString(getClass().getResourceAsStream("/com/github/judoole/healthcheckViewTemplate.html"), "UTF-8");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private String createHtmlForCases(Collection<Case> cases) {
@@ -67,4 +79,18 @@ public class HtmlView {
         return html.toString();
     }
 
+    private String replaceTokens(String text, Map<String, ?> replacements) {
+        Pattern pattern = Pattern.compile("\\[(.+?)\\]");
+        Matcher matcher = pattern.matcher(text);
+        StringBuffer buffer = new StringBuffer();
+        while (matcher.find()) {
+            Object replacement = replacements.get(matcher.group(1));
+            if (replacement != null) {
+                matcher.appendReplacement(buffer, "");
+                buffer.append(replacement.toString());
+            }
+        }
+        matcher.appendTail(buffer);
+        return buffer.toString();
+    }
 }
