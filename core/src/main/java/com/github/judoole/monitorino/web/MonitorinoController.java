@@ -4,6 +4,7 @@ import com.github.judoole.monitorino.internal.MonitorinoRunner;
 import com.github.judoole.monitorino.internal.SuiteAssembler;
 import com.github.judoole.monitorino.internal.dto.MonitorinoSuite;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,19 +33,19 @@ public class MonitorinoController {
         this.healthcheckProperties = healthcheckProperties;
     }
 
-    @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/xml", "/junit"}, method = RequestMethod.GET, produces = MediaType.TEXT_XML_VALUE)
     @ResponseBody
     public String jUnitRapport() {
         return xmlView.process(runSuite());
     }
 
-    @RequestMapping(value = {"/", "/html"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/html"}, method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     public String htmlRapport() {
         return htmlView.process(runSuite());
     }
 
-    @RequestMapping(value = {"/json"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/json"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String jsonRapport() {
         return jsonView.process(runSuite());
