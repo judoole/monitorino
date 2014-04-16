@@ -4,7 +4,7 @@ apply plugin: 'java'
 apply plugin: 'signing'
 
 group = 'com.github.judoole'
-version = '0.2'
+version = '0.3'
 ext.packaging = 'jar'
 
 def isDevBuild = false
