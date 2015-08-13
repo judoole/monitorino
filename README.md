@@ -1,5 +1,7 @@
 [![Build Status](https://secure.travis-ci.org/judoole/monitorino.png)](http://travis-ci.org/judoole/monitorino)
 
+**Alert:** This is a highly deprecated library. After Coda Hales metrics library this library is by all means replaced in projects I am involved. I urge you to check out https://dropwizard.github.io/metrics/ and punch your metrics to something like Graphite. Also write your own script in something like Hubot to do the healthchecking.
+
 Webapp Monitorino
 ==================
 
